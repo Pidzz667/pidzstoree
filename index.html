@@ -136,6 +136,55 @@
             100% { top: 0%; }
         }
 
+        /* Real-Time Notification Premium CSS */
+        .rt-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1.5px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            box-shadow: 0 12px 30px -8px var(--primary-glow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 340px;
+            pointer-events: none;
+        }
+        .rt-notification.show {
+            bottom: 24px;
+        }
+        .rt-icon {
+            font-size: 24px;
+            animation: bounce-small 1.8s infinite;
+        }
+        .rt-content {
+            font-size: 11px;
+            line-height: 1.4;
+            color: #334155;
+        }
+        .rt-title {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+        .rt-time {
+            font-size: 9px;
+            color: #94a3b8;
+            display: block;
+            margin-top: 3px;
+            font-weight: 600;
+        }
+        @keyframes bounce-small {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -398,7 +447,7 @@
                             <span id="finalPriceLabel" class="text-2xl font-black text-blue-600 dynamic-text">Rp0</span>
                         </div>
                         
-                        <!-- Perbaikan tombol dengan teks yang tebal, jelas, dan terlindungi dari bug wrap di semua HP -->
+                        <!-- Tombol "Bayar Sekarang" terlindung dari pemotongan di semua browser -->
                         <button onclick="handleCheckout()" class="w-full sm:w-auto px-10 py-4.5 rounded-2xl text-white font-extrabold text-sm theme-gradient-bg theme-gradient-glow hover:opacity-95 transition-all transform active:scale-95 text-center flex items-center justify-center gap-3">
                             <span class="whitespace-nowrap">Bayar Sekarang via QRIS</span>
                             <i class="fa-solid fa-bolt text-amber-300"></i>
@@ -649,39 +698,39 @@
         let timerInterval = null;
 
         // =========================================================================
-        // 🌟 TEMPAT EDIT FOTO, JUDUL, DAN HARGA KATALOG AKUN (FREE FIRE & ROBLOX) 🌟
+        // 🌟 TEMPAT EDIT FOTO, JUDUL, DESKRIPSI, DAN HARGA KATALOG AKUN 🌟
         // =========================================================================
-        // Di sini Anda bisa menambahkan URL gambar di dalam tanda kutip "".
-        // - Jika gambar dikosongkan "" maka otomatis menampilkan status: "KOSONG / TIDAK ADA STOK".
-        // - Jika gambar diisi link url, otomatis statusnya menjadi: "READY / BISA DIBELI".
+        // - Parameter 'desc' (deskripsi) digunakan untuk mengisi spek/penjelasan stok akun.
+        // - Jika gambar 'image' dikosongkan "", otomatis menampilkan status: "TIDAK ADA STOK".
+        // - Jika gambar 'image' diisi link URL gambar (1:1), otomatis status menjadi: "READY STOK".
         // =========================================================================
         
-        // --- DATA AKUN FREE FIRE (BARIS 410) ---
+        // --- DATA AKUN FREE FIRE (BARIS 719) ---
         const LIST_AKUN_FF = [
-            { id: 1, name: "Akun FF Tier Master Elite", image: "", price: 150000 },
-            { id: 2, name: "Akun FF Full Set Legend", image: "", price: 280000 },
-            { id: 3, name: "Akun FF Bundle Lama Kuno", image: "", price: 420000 },
-            { id: 4, name: "Akun FF Vault Melimpah", image: "", price: 195000 },
-            { id: 5, name: "Akun FF Elite Pass S2", image: "", price: 650000 },
-            { id: 6, name: "Akun FF Tier Heroic Murah", image: "", price: 90000 },
-            { id: 7, name: "Akun FF Spek Sultan Ak", image: "", price: 1200000 },
-            { id: 8, name: "Akun FF Polosan Diamond", image: "", price: 45000 },
-            { id: 9, name: "Akun FF Old Gg Raw", image: "", price: 320000 },
-            { id: 10, name: "Akun FF Level Tinggi", image: "", price: 150000 },
+            { id: 1, name: "Akun FF Tier Master Elite", image: "", price: 150000, desc: "Skins SG2 Terompet, Bundle Elite Pass Old Season, Vault Melimpah." },
+            { id: 2, name: "Akun FF Full Set Legend", image: "", price: 280000, desc: "Set Alok Gg, Senjata Evo Max 2 biji, Tas Kelinci Old." },
+            { id: 3, name: "Akun FF Bundle Lama Kuno", image: "", price: 420000, desc: "Bundle Letda Hyper, Celana Malaikat Hitam, Emote King lengkap." },
+            { id: 4, name: "Akun FF Vault Melimpah", image: "", price: 195000, desc: "Skins Senjata 50+, Vault Baju Rame, Siap Pakai Main Mabar." },
+            { id: 5, name: "Akun FF Elite Pass S2", image: "", price: 650000, desc: "Sertifikat Akun Sepuh, Elite Pass Season 2 (Hip Hop) Langka." },
+            { id: 6, name: "Akun FF Tier Heroic Murah", image: "", price: 90000, desc: "Tier Heroic Bintang 3, Winrate Tinggi, KD Bagus." },
+            { id: 7, name: "Akun FF Spek Sultan Ak", image: "", price: 1200000, desc: "AK Naga Max, M1014 Green Flame Max, MP40 Cobra Max, Akun Mewah." },
+            { id: 8, name: "Akun FF Polosan Diamond", image: "", price: 45000, desc: "Sisa Diamond 1200, Level 20, Akun Fresh Segar belum dikaitkan." },
+            { id: 9, name: "Akun FF Old Gg Raw", image: "", price: 320000, desc: "Koleksi Baju Season 5-8 lengkap, Parasut Sepuh, Emote Langka." },
+            { id: 10, name: "Akun FF Level Tinggi", image: "", price: 150000, desc: "Level 72, Like 10k+, Banner Sepuh, Siap Menarik Perhatian." },
         ];
 
-        // --- DATA AKUN ROBLOX (BARIS 425) ---
+        // --- DATA AKUN ROBLOX (BARIS 734) ---
         const LIST_AKUN_ROBLOX = [
-            { id: 1, name: "Akun Roblox Blox Fruit Max", image: "", price: 125000 },
-            { id: 2, name: "Akun Roblox Tier Gede", image: "", price: 85000 },
-            { id: 3, name: "Akun Roblox Premium Avatar", image: "", price: 250000 },
-            { id: 4, name: "Akun Roblox Pet Simulator 99", image: "", price: 110000 },
-            { id: 5, name: "Akun Roblox King Legacy", image: "", price: 95000 },
-            { id: 6, name: "Akun Roblox Murder Mystery 2", image: "", price: 70000 },
-            { id: 7, name: "Akun Roblox Polosan Tahun 2018", image: "", price: 50000 },
-            { id: 8, name: "Akun Roblox Bedwars Pro", image: "", price: 140000 },
-            { id: 9, name: "Akun Roblox Blade Ball", image: "", price: 160000 },
-            { id: 10, name: "Akun Roblox Legend Item", image: "", price: 350000 },
+            { id: 1, name: "Akun Roblox Blox Fruit Max", image: "", price: 125000, desc: "Level Max 2550, Melee Godhuman, Fruit Kitsune/Dough Awaken." },
+            { id: 2, name: "Akun Roblox Tier Gede", image: "", price: 85000, desc: "Level 1500+, Fruit Dragon di Inventory, Beli Pass Komplet." },
+            { id: 3, name: "Akun Roblox Premium Avatar", image: "", price: 250000, desc: "Aksesoris Avatar Sultan, Pernah Top-up 2000+ Robux, Rambut Rame." },
+            { id: 4, name: "Akun Roblox Pet Simulator 99", image: "", price: 110000, desc: "Berisi 5 Huge Pet, Gems Melimpah, Area Terbuka Habis." },
+            { id: 5, name: "Akun Roblox King Legacy", image: "", price: 95000, desc: "Level 4000, Sword Muramasa, Fruit Acak Bagus." },
+            { id: 6, name: "Akun Roblox Murder Mystery 2", image: "", price: 70000, desc: "Knife Candy Set / Chroma, Efek Efek Mewah, Level Gede." },
+            { id: 7, name: "Akun Roblox Polosan Tahun 2018", image: "", price: 50000, desc: "Akun Buatan Lama (Tahun 2018), Nama Pendek Keren, Unik." },
+            { id: 8, name: "Akun Roblox Bedwars Pro", image: "", price: 140000, desc: "Kit Melimpah (Yuzi, Evelynn, dll.), Level Tinggi, Rank Gold." },
+            { id: 9, name: "Akun Roblox Blade Ball", image: "", price: 160000, desc: "Ability Infinity, Skin Pedang Berputar Efek, Kills 2000+." },
+            { id: 10, name: "Akun Roblox Legend Item", image: "", price: 350000, desc: "Pernah Ikut Event Klasik roblox, Item Limited Terpasang Mewah." },
         ];
 
         // Layanan SMM Data
@@ -774,7 +823,7 @@
                     { qty: 200, price: 19000 }, { qty: 250, price: 24000 }, { qty: 300, price: 28000 },
                     { qty: 350, price: 33000 }, { qty: 400, price: 35000 }, { qty: 450, price: 36000 },
                     { qty: 500, price: 41000 }, { qty: 550, price: 46000 }, { qty: 600, price: 48000 },
-                    { qty: 650, price: 52000 }, { qty: 700, price: 56000 }, { qty: 750, price: 61000 },
+                    { qty: 650, price: 52000 }, { qty: 700, price: 56000 }, { qty: 750, py: 61000 },
                     { qty: 800, price: 66000 }, { qty: 850, price: 71000 }, { qty: 900, price: 77000 },
                     { qty: 950, price: 78000 }, { qty: 1000, price: 80000 }
                 ]
@@ -1039,12 +1088,17 @@
                                     <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[9px] px-2.5 py-1 rounded-full shadow-sm">READY STOK</span>
                                 </div>
-                                <div class="p-4">
-                                    <h5 class="font-extrabold text-sm text-slate-800 line-clamp-1">${item.name}</h5>
-                                    <p class="text-blue-600 font-black text-sm mt-1 dynamic-text">${formatIDR(item.price)}</p>
-                                    <button onclick="selectFinalProduct('gallery', '${cat}_${item.id}', '${item.name}', ${item.price})" class="w-full mt-3 py-2.5 bg-blue-600 hover:opacity-90 text-white font-extrabold text-xs rounded-xl transition shadow-md shadow-blue-500/10 dynamic-bg">
-                                        Beli Akun Ini
-                                    </button>
+                                <div class="p-4 flex flex-col justify-between min-h-[160px]">
+                                    <div>
+                                        <h5 class="font-extrabold text-sm text-slate-800 line-clamp-1">${item.name}</h5>
+                                        <p class="text-[10px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${item.desc || "Silakan hubungi admin untuk spesifikasi detail akun."}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-blue-600 font-black text-sm mt-2 dynamic-text">${formatIDR(item.price)}</p>
+                                        <button onclick="selectFinalProduct('gallery', '${cat}_${item.id}', '${item.name}', ${item.price})" class="w-full mt-3 py-2.5 bg-blue-600 hover:opacity-90 text-white font-extrabold text-xs rounded-xl transition shadow-md shadow-blue-500/10 dynamic-bg">
+                                            Beli Akun Ini
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         `;
@@ -1488,6 +1542,128 @@
                 modal.classList.add('hidden');
             }
         }
+    </script>
+
+    <!-- REAL-TIME PURCHASE NOTIFICATION SCRIPT (Fisher-Yates Shuffle mutlak) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Pool Data Acak (Sangat banyak dan variatif untuk mencegah kesamaan berulang)
+            const listNamaAcak = ["Rian", "Bagas", "Dimas", "Ahmad", "Fajar", "Rizky", "Daffa", "Adit", "Zaki", "Eko", "Andi", "Sultan", "Gilang", "Reza", "Bayu", "Arif", "Hendra", "Yanto", "Dedi", "Wahyu", "Siti", "Amel", "Putri", "Indah", "Dewi", "Nabila", "Alya", "Salsa", "Mega", "Fitri", "Taufik", "Zul", "Husein", "Kurnia", "Dina", "Hani", "Rani", "Budi", "Agung", "Farhan"];
+            const listProviderAcak = ["812", "813", "819", "857", "895", "821", "822", "852", "878", "896"];
+            
+            const listProdukAcak = [
+                { nama: "SpxToolsV1", ikon: "⚡" },
+                { nama: "Easy Drag 90%", ikon: "🎯" },
+                { nama: "Aplikasi Minecraft Ori PlayStore", ikon: "🧱" },
+                { nama: "Akun Roblox Blox Fruit Max", ikon: "🎮" },
+                { nama: "100 Followers TikTok Indonesia", ikon: "🇮🇩" },
+                { nama: "500 Followers TikTok Global", ikon: "🌏" },
+                { nama: "250 Like TikTok Indonesia", ikon: "🇮🇩" },
+                { nama: "1000 Like TikTok Global", ikon: "🌏" },
+                { nama: "100 Instagram Followers Indo", ikon: "📸" },
+                { nama: "1000 Instagram Followers Luar", ikon: "🌏" },
+                { nama: "200 Pengikut WhatsApp Global", ikon: "💬" }
+            ];
+
+            const listWaktuAcak = ["Baru saja", "1 menit yang lalu", "2 menit yang lalu", "3 menit yang lalu", "5 detik yang lalu", "30 detik yang lalu"];
+
+            // Algoritma Fisher-Yates untuk Pengocokan Sempurna
+            function kocokDaftar(array) {
+                let currentIndex = array.length, randomIndex;
+                while (currentIndex != 0) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex--;
+                    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                }
+                return array;
+            }
+
+            // Membangun list antrean mutlak acak saat pertama dimuat
+            function inisialisasiAntrean() {
+                let antrean = [];
+                let namaTerkocok = kocokDaftar([...listNamaAcak]);
+                let produkTerkocok = kocokDaftar([...listProdukAcak]);
+
+                for (let i = 0; i < namaTerkocok.length; i++) {
+                    let nama = namaTerkocok[i];
+                    let produk = produkTerkocok[i % produkTerkocok.length];
+                    let provider = listProviderAcak[Math.floor(Math.random() * listProviderAcak.length)];
+                    let digitAcak = Math.floor(1000 + Math.random() * 9000); // 4 digit angka acak belakang
+                    let waktu = listWaktuAcak[Math.floor(Math.random() * listWaktuAcak.length)];
+
+                    antrean.push({
+                        pembeli: `${nama} (0${provider}-****-${digitAcak})`,
+                        barang: produk.nama,
+                        ikon: produk.ikon,
+                        waktu: waktu
+                    });
+                }
+                return kocokDaftar(antrean);
+            }
+
+            // Mengontrol antrean melalui sessionStorage agar bener-bener ganti tiap kali page-refresh
+            let antreanNotif = JSON.parse(sessionStorage.getItem("antrean_notif_pidz"));
+            let indeksNotif = parseInt(sessionStorage.getItem("indeks_notif_pidz")) || 0;
+
+            if (!antreanNotif || indeksNotif >= antreanNotif.length) {
+                antreanNotif = inisialisasiAntrean();
+                sessionStorage.setItem("antrean_notif_pidz", JSON.stringify(antreanNotif));
+                indeksNotif = 0;
+                sessionStorage.setItem("indeks_notif_pidz", indeksNotif);
+            }
+
+            // Membuat element popup dinamis secara virtual di HTML
+            const modalNotif = document.createElement("div");
+            modalNotif.className = "rt-notification";
+            modalNotif.id = "rtNotification";
+            modalNotif.innerHTML = `
+                <div class="rt-icon" id="rtIcon">🎉</div>
+                <div class="rt-content">
+                    <div class="rt-title" id="rtPembeli">Berhasil Membeli!</div>
+                    <div id="rtDetail">Memuat transaksi terbaru...</div>
+                    <span class="rt-time" id="rtWaktu">Baru saja</span>
+                </div>
+            `;
+            document.body.appendChild(modalNotif);
+
+            // Fungsi Loop Menampilkan Notifikasi
+            function triggerRealTimeNotification() {
+                if (antreanNotif.length === 0) return;
+
+                const data = antreanNotif[indeksNotif];
+
+                // Memasukkan data acak ke template HTML
+                document.getElementById("rtIcon").innerText = data.ikon;
+                document.getElementById("rtPembeli").innerText = "🎉 Transaksi Sukses!";
+                document.getElementById("rtDetail").innerHTML = `<strong>${data.pembeli}</strong> baru saja memesan <span style="font-weight: 800; color: var(--primary-color);">${data.barang}</span> via QRIS.`;
+                document.getElementById("rtWaktu").innerText = data.waktu;
+
+                // Tampilkan Popup
+                const toast = document.getElementById("rtNotification");
+                toast.classList.add("show");
+
+                // Hilangkan Popup setelah 5.5 detik
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 5500);
+
+                // Update indeks berikutnya
+                indeksNotif++;
+                if (indeksNotif >= antreanNotif.length) {
+                    antreanNotif = inisialisasiAntrean();
+                    sessionStorage.setItem("antrean_notif_pidz", JSON.stringify(antreanNotif));
+                    indeksNotif = 0;
+                }
+                sessionStorage.setItem("indeks_notif_pidz", indeksNotif);
+
+                // Atur kemunculan berikutnya acak (antara 14 s/d 28 detik)
+                let jedaBerikutnya = Math.floor(Math.random() * (28000 - 14000 + 1)) + 14000;
+                setTimeout(triggerRealTimeNotification, jedaBerikutnya);
+            }
+
+            // Mulai menampilkan notifikasi pertama dalam waktu 4 detik setelah web dimuat
+            setTimeout(triggerRealTimeNotification, 4000);
+        });
     </script>
 </body>
 </html>
