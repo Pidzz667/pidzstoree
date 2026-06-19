@@ -5,1604 +5,1489 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Pidzstore - Toko SMM &amp; Optimasi Game Terpercaya</title>
-
     <link rel="icon" type="image/png" href="favicon.png?v=1">
     
     <meta name="description" content="Pidzstore menyediakan layanan optimasi media sosial, suntik sosmed, dan kebutuhan game termurah, cepat, dan aman.">
     
-    <meta name="keywords" content="pidzstore, suntik sosmed, optimasi game, followers instagram">
+    <meta name="keywords" content="pidzstore, suntik sosmed, optimasi game, akun game,mimecraft">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        },
-                    },
-                    boxShadow: {
-                        'premium': '0 4px 25px -4px rgba(0, 0, 0, 0.04), 0 2px 10px -2px rgba(0, 0, 0, 0.02)',
-                        'hover-card': '0 15px 30px -10px rgba(14, 165, 233, 0.12), 0 2px 10px -1px rgba(0, 0, 0, 0.01)',
-                        'glow': '0 0 15px rgba(14, 165, 233, 0.25)',
-                    }
-                }
-            }
-        }
-    </script>
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            scroll-behavior: smooth;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            transition: background 0.3s ease;
         }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
+
+        /* Dynamic Theme Variables - Default to Blue */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --primary-border: #bfdbfe;
+            --primary-gradient-start: #1d4ed8;
+            --primary-gradient-end: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.3);
+        }
+
+        .dynamic-bg {
+            background-color: var(--primary-color);
+        }
+        .dynamic-hover-bg:hover {
+            background-color: var(--primary-hover);
+        }
+        .dynamic-text {
+            color: var(--primary-color);
+        }
+        .dynamic-border {
+            border-color: var(--primary-color);
+        }
+        .dynamic-bg-light {
+            background-color: var(--primary-light);
+        }
+        .dynamic-border-light {
+            border-color: var(--primary-border);
+        }
+
+        .theme-gradient-bg {
+            background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+        }
+        .theme-gradient-glow {
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
+        }
+        .text-theme-gradient {
+            background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Beautiful Dynamic Interactive Card Styling */
+        .custom-card {
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-b: 1px solid rgba(241, 245, 249, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .active-tab {
-            background-color: #0ea5e9;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+        .custom-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px -10px var(--primary-glow);
         }
-        .platform-card.active {
-            border-color: #0ea5e9;
-            background-color: #f0f9ff;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08);
+
+        /* Smooth rounded category button animations */
+        .category-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
         }
-        .service-type-btn.active {
-            background-color: #0f172a;
-            color: #ffffff;
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+        .category-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2.5px;
+            background: linear-gradient(135deg, transparent, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: all 0.3s;
         }
+        .category-card:hover::before {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+        }
+        .category-card:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 12px 24px -8px var(--primary-glow);
+        }
+
+        /* Selected State Styling */
+        .category-card.selected-active {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+            box-shadow: 0 8px 20px -6px var(--primary-glow);
+        }
+
+        /* QRIS Laser Scanner Animation */
+        .scanner-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: scan 2s linear infinite;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 5px;
+            width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
         }
         ::-webkit-scrollbar-thumb {
             background: #cbd5e1;
-            border-radius: 4px;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col text-sm selection:bg-primary-100 selection:text-primary-700">
+<body class="text-slate-800 flex flex-col min-h-screen">
 
-    <!-- Header Navbar -->
-    <header class="sticky top-0 z-40 w-full glass-effect transition-all duration-300">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="flex items-center justify-between h-14 sm:h-16">
-                <!-- Logo & Status -->
-                <div class="flex items-center gap-3">
-                    <div class="relative group">
-                        <img src="https://cdn.phototourl.com/member/2026-06-18-1d3dd309-6290-4b8c-9f11-32adbaa9722a.png" alt="PidzStore Logo" class="w-9 h-9 rounded-full object-cover border border-slate-200 shadow-sm transition-transform duration-300 group-hover:rotate-12">
-                        <div class="absolute inset-0 rounded-full border-2 border-primary-500 opacity-60 animate-pulse"></div>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-base font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-primary-600 to-slate-950 bg-clip-text text-transparent">PidzStore</span>
-                            <span id="nav-server-status" class="flex h-2 w-2 relative">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2"></span>
-                            </span>
-                        </div>
-                        <p class="text-[8px] text-slate-400 tracking-wider uppercase font-semibold">Premium SMM Panel</p>
-                    </div>
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-100 shadow-sm transition-all">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Logo Avatar di samping PidzStore -->
+                <div class="relative w-11 h-11 rounded-2xl overflow-hidden shadow-md group-hover:scale-105 transition-transform duration-300 bg-slate-50 border border-slate-100 flex items-center justify-center">
+                    <img src="https://cdn.phototourl.com/member/2026-06-18-1d3dd309-6290-4b8c-9f11-32adbaa9722a.png" alt="Logo PidzStore" class="w-full h-full object-cover">
                 </div>
-
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-600">
-                    <a href="#edukasi" class="hover:text-primary-500 transition-colors">Edukasi & FAQ</a>
-                    <a href="#kategori" class="hover:text-primary-500 transition-colors">Katalog Produk</a>
-                    <a href="#syarat" class="hover:text-primary-500 transition-colors">Ketentuan IG</a>
-                </nav>
-
-                <!-- Auth Area & Admin Contact -->
-                <div class="flex items-center gap-2">
-                    <!-- Session User Area -->
-                    <div id="auth-header-area" class="flex items-center gap-2">
-                        <!-- Tombol Masuk/Daftar (Default) -->
-                        <button onclick="openAuthModal()" id="btn-show-login" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-bold transition-all">
-                            <i class="fa-solid fa-right-to-bracket text-xs text-primary-500"></i>
-                            <span>Masuk / Daftar</span>
-                        </button>
-                        <!-- Info Akun Setelah Login (Dinamis) -->
-                        <div id="logged-user-container" class="hidden flex items-center gap-2 bg-slate-50 border border-slate-200/60 rounded-xl px-2.5 py-1">
-                            <div class="w-5 h-5 rounded-full bg-primary-500 flex items-center justify-center text-[10px] text-white font-extrabold" id="user-avatar-char">
-                                U
-                            </div>
-                            <span id="user-display-name" class="font-bold text-xs text-slate-800 max-w-[80px] truncate">Akun</span>
-                            <button onclick="handleLogout()" title="Keluar" class="text-slate-400 hover:text-rose-500 transition-colors pl-1">
-                                <i class="fa-solid fa-power-off text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <a href="https://wa.me/6285816148963" target="_blank" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 text-xs font-bold transition-all shadow-sm">
-                        <i class="fa-brands fa-whatsapp text-sm text-emerald-400"></i>
-                        <span>Admin</span>
-                    </a>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black text-theme-gradient tracking-tight leading-none">PidzStore</span>
+                    <span class="text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-1">Premium Store</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleHistoryModal()" class="text-slate-600 hover:text-blue-600 transition p-2.5 rounded-xl hover:bg-slate-100/50 flex items-center gap-2 font-semibold text-sm">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="hidden md:inline">Riwayat Belanja</span>
+                </button>
+                <div id="authContainer">
+                    <button onclick="openRegisterModal()" class="theme-gradient-bg hover:opacity-90 text-white font-extrabold text-xs md:text-sm px-4 py-2.5 rounded-xl transition shadow-md shadow-blue-600/10 flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i> Profil / Daftar
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Professional Top Banner Section -->
-    <div class="w-full bg-white border-b border-slate-100">
-        <div class="max-w-4xl mx-auto p-4 sm:p-5">
-            <div class="relative rounded-2xl overflow-hidden shadow-premium border border-slate-200/60 aspect-[16/6] sm:aspect-[21/7]">
-                <img src="https://cdn.phototourl.com/member/2026-06-18-10c85e89-5e80-44f5-99db-33e1d9175ff7.jpg" alt="PidzStore Banner" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+    <!-- PROMO BANNER -->
+    <div class="max-w-6xl mx-auto w-full px-4 mt-6">
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100 aspect-[3/1] md:aspect-[4/1] relative">
+            <img src="https://cdn.phototourl.com/member/2026-06-18-10c85e89-5e80-44f5-99db-33e1d9175ff7.jpg" alt="PidzStore Banner" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent flex items-center p-6 md:p-12">
+                <div class="max-w-md text-white">
+                    <span class="bg-white/20 backdrop-blur-md text-white font-extrabold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">PROMO AKHIR PEKAN</span>
+                    <h1 class="text-2xl md:text-4xl font-black mt-3 leading-tight">Optimasi SMM &amp; Game Terpercaya</h1>
+                    <p class="text-xs md:text-sm text-slate-300 mt-2 font-medium">Layanan instan, aman, dengan jaminan optimasi penuh performa terbaik.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-white pt-6 pb-8 text-center">
-        <div class="absolute inset-0 z-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-40"></div>
-        <div class="max-w-3xl mx-auto px-4 relative z-10">
-            <!-- Dynamic Server Status Badge -->
-            <div class="mb-3 inline-block">
-                <span id="hero-server-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                    <span id="hero-server-status-dot" class="w-1.5 h-1.5 rounded-full"></span>
-                    <span id="hero-server-status-text">Mengecek Server...</span>
-                </span>
-            </div>
-
-            <!-- Welcoming Member Banner (Promo Countdown 24H) -->
-            <div id="promo-banner-container" class="max-w-md mx-auto mb-4 bg-gradient-to-r from-sky-500 to-primary-600 text-white rounded-xl p-3 shadow-md hidden animate-pulse">
-                <p class="text-[10px] font-bold tracking-widest uppercase">PROMO REGISTER MEMBER BARU</p>
-                <p class="text-xs font-medium mt-0.5">Dapatkan Diskon SpxTools & AIMHEAD Rp 20.000!</p>
-                <div class="inline-flex items-center gap-1.5 bg-slate-950/20 px-2 py-0.5 rounded-full mt-2 text-[10px] font-extrabold text-amber-300">
-                    <i class="fa-regular fa-clock"></i> Sisa Waktu Promo: <span id="promo-global-countdown">24:00:00</span>
-                </div>
-            </div>
-
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 mb-3 leading-tight">
-                Optimasi Game & Sosial Media Anda
-            </h1>
-            <p class="max-w-xl mx-auto text-xs sm:text-sm text-slate-500 mb-6 leading-relaxed">
-                Platform SMM dan software optimasi digital murni terpercaya dengan pelayanan terbaik dan pengerjaan kilat.
-            </p>
+    <!-- MAIN BODY -->
+    <main class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
+        
+        <!-- SIDE PANEL INFO & FAQ -->
+        <section class="lg:col-span-4 space-y-6">
             
-            <div class="flex items-center justify-center gap-2.5">
-                <a href="#kategori" class="px-5 py-2.5 rounded-lg bg-primary-500 text-white hover:bg-primary-600 font-bold text-xs tracking-wide shadow-md transition-all">
-                    Lihat Katalog
-                </a>
-                <a href="#edukasi" class="px-5 py-2.5 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-semibold border border-slate-200 text-xs transition-all">
-                    Edukasi / FAQ
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="flex-grow max-w-4xl mx-auto px-4 py-6 w-full">
-
-        <!-- Info / Pengumuman Banner -->
-        <div class="mb-8 bg-amber-50 border border-amber-200/50 rounded-xl p-4 flex items-start gap-3 shadow-sm">
-            <div class="w-7 h-7 rounded-md bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
-                <i class="fa-solid fa-bell text-xs"></i>
-            </div>
-            <div class="text-xs">
-                <h4 class="font-bold text-amber-900">Pemberitahuan Transaksi Penting!</h4>
-                <p class="text-amber-800 mt-0.5 leading-relaxed">
-                    Setiap transaksi pembelian produk akan diarahkan secara otomatis ke WhatsApp Admin <strong>085816148963</strong> untuk diproses secara manual dan instan.
-                </p>
-            </div>
-        </div>
-
-        <!-- PERTANYAAN UMUM / FAQ & MATERI BACAAN -->
-        <section id="edukasi" class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-slate-200 pb-8 scroll-mt-20">
-            
-            <!-- Accordion FAQ Area -->
-            <div>
-                <span class="text-xs font-bold text-primary-500 uppercase tracking-widest block mb-1">Informasi Wajib Baca</span>
-                <h2 class="text-lg font-extrabold text-slate-900 mb-4">FAQ & Pemahaman SMM</h2>
-                
-                <div class="space-y-3">
-                    <!-- FAQ 1 -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                        <button onclick="toggleFAQ(1)" class="w-full text-left px-4 py-3 flex items-center justify-between text-slate-900 font-bold hover:bg-slate-50 transition-colors text-xs">
-                            <span class="flex items-center gap-2.5">
-                                <i class="fa-regular fa-circle-question text-primary-500 text-sm"></i>
-                                APAKAH PERMANEN GAK? (WAJIB TAHU)
-                            </span>
-                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-slate-400 transition-transform text-[10px]"></i>
-                        </button>
-                        <div id="faq-content-1" class="hidden border-t border-slate-100 px-4 py-3 text-slate-600 text-xs leading-relaxed bg-slate-50/50">
-                            <p class="font-semibold text-slate-800 mb-2">Banyak yang sering tanya, "Ini beneran permanen gak?" atau "Kok masih turun padahal tulisannya No Drop?". Yuk, disimak bentar biar nggak salah paham sebelum order:</p>
-                            
-                            <p class="mb-2">
-                                <strong>Gak Ada yang 100% Abadi:</strong> Di dunia SMM, istilah "Permanen" atau "No Drop" itu sifatnya estimasi. Kenapa? Karena Instagram, TikTok, dan sosmed lainnya rutin melakukan pembersihan akun bot/fake secara otomatis.
-                            </p>
-                            
-                            <p>
-                                <strong>Pilihan di Tangan Anda:</strong> Kami gak mau kasih janji manis atau promosi jebakan. Kalau kamu ragu atau belum siap dengan risiko drop, sangat disarankan untuk tidak melakukan order. Kami lebih menghargai kejujuran di awal daripada komplain di akhir.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 2 -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                        <button onclick="toggleFAQ(2)" class="w-full text-left px-4 py-3 flex items-center justify-between text-slate-900 font-bold hover:bg-slate-50 transition-colors text-xs">
-                            <span class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-wallet text-primary-500 text-sm"></i>
-                                Bagaimana sistem pembayarannya?
-                            </span>
-                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-slate-400 transition-transform text-[10px]"></i>
-                        </button>
-                        <div id="faq-content-2" class="hidden border-t border-slate-100 px-4 py-3 text-slate-600 text-xs leading-relaxed bg-slate-50/50">
-                            Kami menyediakan pembayaran via QRIS murni (bisa scan semua e-wallet), DANA, OVO, GOPAY, ShopeePay, dan Transfer Bank. Pembayaran aman dan pesanan diproses langsung oleh admin yang bersiap di jam kerja aktif.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ketentuan Pembelian IG -->
-            <div id="syarat" class="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-5 text-white relative overflow-hidden shadow-sm scroll-mt-20">
-                <div class="relative z-10">
-                    <span class="inline-flex items-center gap-1 bg-red-500/15 text-red-400 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider mb-2.5">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Wajib Baca Sebelum Beli Followers IG
+            <!-- INFORMASI PRODUK APAKAH PERMANEN -->
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('faq-content', 'faq-arrow')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition text-left">
+                    <span class="font-bold text-slate-900 flex items-center gap-2.5 text-sm">
+                        <i class="fa-solid fa-circle-question text-blue-600 text-lg" id="faq-icon-svg"></i> APAKAH PERMANEN?
                     </span>
-                    
-                    <h3 class="text-sm font-extrabold mb-1.5 text-white">
-                        Ketentuan Pemesanan Instagram
-                    </h3>
-                    <p class="text-slate-300 text-[11px] mb-3 leading-relaxed">
-                        Instruksi berikut harus diikuti secara ketat untuk mencegah penyaringan otomatis (Flag of Review / Spam) oleh Instagram:
-                    </p>
-
-                    <div class="space-y-1.5 text-[11px]">
-                        <div class="flex items-start gap-1.5">
-                            <span class="font-bold text-primary-400 shrink-0">1.</span>
-                            <p class="text-slate-300">Buka <strong class="text-white">Pengaturan/Setting</strong> akun Instagram profil Anda.</p>
-                        </div>
-                        <div class="flex items-start gap-1.5">
-                            <span class="font-bold text-primary-400 shrink-0">2.</span>
-                            <p class="text-slate-300">Pilih opsi <strong class="text-white">"Ikuti dan Undang Teman"</strong>.</p>
-                        </div>
-                        <div class="flex items-start gap-1.5">
-                            <span class="font-bold text-primary-400 shrink-0">3.</span>
-                            <p class="text-slate-300">Nonaktifkan fitur <strong class="text-rose-400">"Laporkan untuk Ditinjau"</strong> sebelum membuat pesanan agar proses suntik berjalan lancar.</p>
-                        </div>
-                    </div>
+                    <i id="faq-arrow" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+                </button>
+                <div id="faq-content" class="hidden p-5 border-t border-slate-100 text-xs text-slate-600 space-y-3 leading-relaxed bg-white/50">
+                    <p class="font-semibold text-amber-600">Banyak yang sering tanya, "Ini beneran permanen gak?" atau "Kok masih turun padahal tulisannya No Drop?". Yuk, disimak bentar biar nggak salah paham sebelum order:</p>
+                    <p><strong>Gak Ada yang 100% Abadi:</strong> Di dunia SMM, istilah "Permanen" atau "No Drop" itu sifatnya estimasi. Kenapa? Karena Instagram, Tik Tok, dan sosmed lainnya rutin melakukan pembersihan akun bot/fake secara otomatis.</p>
+                    <p class="font-medium text-slate-800"><strong>Pilihan di Tangan Anda:</strong> Kami gak mau kasih janji manis atau promosi jebakan. Kalau kamu ragu atau belum siap dengan risiko drop, sangat disarankan untuk tidak melakukan order. Kami lebih menghargai kejujuran di awal daripada komplain di akhir.</p>
                 </div>
+            </div>
+
+            <!-- CARD MEMBER PROMO STATUS -->
+            <div id="memberPromoCard" class="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-5 border border-slate-100 shadow-sm relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 text-slate-300/20 text-8xl font-black"><i class="fa-solid fa-gift"></i></div>
+                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-blue-600" id="info-promo-icon"></i> Promo Member PidzStore</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Daftarkan akun profil Anda sekarang untuk mendapatkan harga khusus produk <strong>SpxToolsV1</strong> &amp; <strong>Easy Drag 90%</strong> seharga hanya <strong>Rp20.000</strong> berlaku selama 24 jam penuh!</p>
             </div>
 
         </section>
 
-        <!-- Category Selector Section -->
-        <div id="kategori" class="text-center mb-8 scroll-mt-20">
-            <!-- Filter Tabs -->
-            <div class="inline-flex p-1 bg-white border border-slate-200 rounded-xl shadow-sm">
-                <button onclick="switchCategory('all')" id="btn-all" class="px-4 py-2 rounded-lg text-xs font-bold transition-all active-tab">
-                    <i class="fa-solid fa-folder-open mr-1.5"></i> ALL FILE
-                </button>
-                <button onclick="switchCategory('suntik')" id="btn-suntik" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-primary-500">
-                    <i class="fa-solid fa-share-nodes mr-1.5"></i> SUNTIK SOSMED
-                </button>
-            </div>
-        </div>
+        <!-- SELEKSI KATEGORI & LAYANAN UTAMA -->
+        <section class="lg:col-span-8 space-y-6">
 
-        <!-- PRODUCTS: ALL FILE -->
-        <div id="section-all" class="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-20">
-            
-            <!-- Product 1: SpxToolsV1 -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-premium hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-                <div>
-                    <!-- Promo Tag Badge -->
-                    <div id="promo-tag-spx" class="absolute -right-12 top-6 bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-extrabold text-[9px] py-1 px-12 rotate-45 hidden shadow-sm uppercase tracking-widest text-center animate-pulse">
-                        Promo Member
-                    </div>
-
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2 py-1 bg-primary-50 text-primary-600 rounded-md text-[10px] font-bold uppercase tracking-wider">Premium Tool</span>
-                        <div class="text-slate-400 group-hover:text-primary-500 transition-colors">
-                            <i class="fa-solid fa-laptop-code text-lg"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">SpxToolsV1</h3>
-                    
-                    <div class="flex items-baseline gap-1.5 mb-2">
-                        <!-- Harga Coret -->
-                        <span id="price-old-spx" class="text-xs text-slate-400 line-through hidden">Rp 25.000</span>
-                        <span id="price-active-spx" class="text-xl font-extrabold text-primary-500">Rp 25.000</span>
-                        <span class="text-slate-400 text-[10px] font-semibold bg-slate-100 px-1.5 py-0.5 rounded">Selama OB53 Free Fire</span>
-                    </div>
-
-                    <!-- Personal Promo Banner di dalam Card -->
-                    <div id="promo-countdown-box-spx" class="bg-amber-50 border border-amber-100 rounded-lg p-2 mb-4 text-[10px] text-amber-800 hidden flex items-center justify-between">
-                        <span><i class="fa-solid fa-fire text-amber-500"></i> Diskon Khusus Member</span>
-                        <span class="font-extrabold text-amber-900" id="personal-timer-spx">24:00:00</span>
-                    </div>
-                    
-                    <p class="text-slate-500 text-xs mb-4 leading-relaxed">
-                        Layanan software optimalisasi terkemuka yang dirancang khusus untuk meningkatkan sensitivitas gameplay, kenyamanan kontrol, serta performa kestabilan frame rate pada perangkat mobile Anda.
-                    </p>
-
-                    <div class="border-t border-slate-100 pt-4 mb-5">
-                        <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Fitur Utama Tersedia:</h4>
-                        <ul class="grid grid-cols-2 gap-2 text-xs text-slate-600">
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Easy to head</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Easy drag</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Screen response</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Smooth screen</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Clear cache</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Increase perf</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-regular fa-circle-check text-emerald-500 text-[10px]"></i> Optimize FF</li>
-                        </ul>
-                    </div>
+            <!-- STEP 1: PILIHAN KATEGORI UTAMA -->
+            <div class="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 font-extrabold flex items-center justify-center text-sm shadow-sm" id="step-one-badge">1</div>
+                    <h2 class="font-extrabold text-lg text-slate-900">Pilih Kategori Utama</h2>
                 </div>
-                <button onclick="handlePurchaseAllFile('SpxToolsV1', 'price-active-spx')" class="w-full py-2.5 bg-primary-500 hover:bg-primary-600 text-white font-bold text-xs rounded-xl transition-all shadow-sm hover:shadow-glow">
-                    <i class="fa-solid fa-basket-shopping mr-1.5"></i> Ambil SpxToolsV1
-                </button>
-            </div>
 
-            <!-- Product 2: AIM HEAD 90% -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-premium hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-                <div>
-                    <!-- Promo Tag Badge -->
-                    <div id="promo-tag-aim" class="absolute -right-12 top-6 bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-extrabold text-[9px] py-1 px-12 rotate-45 hidden shadow-sm uppercase tracking-widest text-center animate-pulse">
-                        Promo Member
-                    </div>
-
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2 py-1 bg-rose-50 text-rose-600 rounded-md text-[10px] font-bold uppercase tracking-wider">AIM Optimizer</span>
-                        <div class="text-slate-400 group-hover:text-rose-500 transition-colors">
-                            <i class="fa-solid fa-crosshairs text-lg"></i>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <button onclick="changeCategory('ff')" id="cat-btn-ff" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-fire-flame-curved text-xl text-blue-600" id="cat-icon-ff"></i>
                         </div>
-                    </div>
-                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">AIM HEAD 90%</h3>
+                        <span class="text-xs font-bold text-slate-800">Free Fire</span>
+                    </button>
                     
-                    <div class="flex items-baseline gap-1.5 mb-2">
-                        <!-- Harga Coret -->
-                        <span id="price-old-aim" class="text-xs text-slate-400 line-through hidden">Rp 25.000</span>
-                        <span id="price-active-aim" class="text-xl font-extrabold text-rose-500">Rp 25.000</span>
-                        <span class="text-slate-400 text-[10px] font-semibold bg-slate-100 px-1.5 py-0.5 rounded">Selama OB53 Free Fire</span>
-                    </div>
-
-                    <!-- Personal Promo Banner di dalam Card -->
-                    <div id="promo-countdown-box-aim" class="bg-amber-50 border border-amber-100 rounded-lg p-2 mb-4 text-[10px] text-amber-800 hidden flex items-center justify-between">
-                        <span><i class="fa-solid fa-fire text-amber-500"></i> Diskon Khusus Member</span>
-                        <span class="font-extrabold text-amber-900" id="personal-timer-aim">24:00:00</span>
-                    </div>
-
-                    <div class="bg-rose-50 border border-rose-100 rounded-xl p-3 mb-4">
-                        <h4 class="text-[10px] font-bold uppercase tracking-wider text-rose-700 flex items-center gap-1 mb-1">
-                            <i class="fa-solid fa-shield-halved"></i> Disclaimer Penggunaan:
-                        </h4>
-                        <p class="text-rose-600 text-[11px] leading-relaxed">
-                            Bukan program ilegal/cheat auto headshot otomatis. Alat bantu ini bekerja 100% aman untuk memudahkan Anda dalam mengarahkan bidikan (aim) ke arah kepala secara natural tanpa resiko banned.
-                        </p>
-                    </div>
-
-                    <div class="border-t border-slate-100 pt-4 mb-5">
-                        <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Kelebihan Tools:</h4>
-                        <ul class="space-y-1.5 text-xs text-slate-600">
-                            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> Memperluas area sensitivitas layar</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> Memperkecil sebaran peluru saat menembak</li>
-                            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> 100% Anti-Banned & Aman Akun Utama</li>
-                        </ul>
-                    </div>
-                </div>
-                <button onclick="handlePurchaseAllFile('AIM HEAD 90%', 'price-active-aim')" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-all">
-                    <i class="fa-solid fa-basket-shopping mr-1.5"></i> Ambil AIM HEAD 90%
-                </button>
-            </div>
-        </div>
-
-        <!-- PRODUCTS: SUNTIK SOSMED (REBUILT ALUR BARU) -->
-        <div id="section-suntik" class="hidden space-y-6 scroll-mt-20">
-            
-            <!-- LANGKAH 1: PILIH SOSIAL MEDIA -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 text-center">Langkah 1: Pilih Media Sosial</h3>
-                <div class="grid grid-cols-3 gap-3">
-                    
-                    <!-- Platform TikTok -->
-                    <button onclick="selectPlatform('tiktok')" id="plat-tiktok" class="platform-card flex flex-col items-center justify-center p-4 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 mb-2">
-                            <i class="fa-brands fa-tiktok text-lg"></i>
+                    <button onclick="changeCategory('suntik')" id="cat-btn-suntik" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-nodes text-xl text-blue-600" id="cat-icon-suntik"></i>
                         </div>
-                        <span class="font-bold text-xs text-slate-800">TikTok</span>
+                        <span class="text-xs font-bold text-slate-800">Suntik Sosmed</span>
                     </button>
 
-                    <!-- Platform Instagram -->
-                    <button onclick="selectPlatform('instagram')" id="plat-instagram" class="platform-card flex flex-col items-center justify-center p-4 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all">
-                        <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500 mb-2">
-                            <i class="fa-brands fa-instagram text-lg"></i>
+                    <button onclick="changeCategory('akun_ff')" id="cat-btn-akun_ff" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i class="fa-solid fa-user-shield text-xl text-blue-600" id="cat-icon-akff"></i>
                         </div>
-                        <span class="font-bold text-xs text-slate-800">Instagram</span>
+                        <span class="text-xs font-bold text-slate-800">Akun Free Fire</span>
                     </button>
 
-                    <!-- Platform WhatsApp -->
-                    <button onclick="selectPlatform('whatsapp')" id="plat-whatsapp" class="platform-card flex flex-col items-center justify-center p-4 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all">
-                        <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <button onclick="changeCategory('akun_roblox')" id="cat-btn-akun_roblox" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i class="fa-solid fa-shapes text-xl text-blue-600" id="cat-icon-akroblox"></i>
                         </div>
-                        <span class="font-bold text-xs text-slate-800">WhatsApp</span>
+                        <span class="text-xs font-bold text-slate-800">Akun Roblox</span>
                     </button>
 
+                    <button onclick="openDragSimulatorModal()" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i class="fa-solid fa-gauge-high text-xl text-blue-600" id="cat-icon-drag"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-800">Drag &amp; Drive Simulator</span>
+                    </button>
+
+                    <button onclick="changeCategory('minecraft')" id="cat-btn-minecraft" class="category-card p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-500 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i class="fa-solid fa-cubes text-xl text-blue-600" id="cat-icon-mc"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-800">Minecraft Playstore</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- LANGKAH 2: PILIH JENIS LAYANAN (DITAMPILKAN SETELAH PILIH PLATFORM) -->
-            <div id="container-service-types" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hidden transition-all">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 text-center">Langkah 2: Pilih Kategori Layanan</h3>
-                <div id="service-types-list" class="flex flex-wrap justify-center gap-2">
-                    <!-- Dinamis Diisi JS -->
+            <!-- STEP 2: PILIHAN PRODUK / SUB KATEGORI -->
+            <div id="subCategoryPanel" class="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm hidden">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 font-extrabold flex items-center justify-center text-sm shadow-sm" id="step-two-badge">2</div>
+                    <h2 id="subCategoryTitle" class="font-extrabold text-lg text-slate-900">Pilih Layanan</h2>
+                </div>
+
+                <!-- Suntik Sosmed Bingkai Platform Grid -->
+                <div id="smmMiniNav" class="hidden grid grid-cols-3 gap-3 mb-6">
+                    <button onclick="selectSmmPlatform('tiktok')" id="smm-platform-tiktok" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-slate-50 transition flex flex-col items-center gap-2">
+                        <i class="fa-brands fa-tiktok text-xl text-slate-800"></i>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wide">TikTok</span>
+                    </button>
+                    <button onclick="selectSmmPlatform('instagram')" id="smm-platform-instagram" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-slate-50 transition flex flex-col items-center gap-2">
+                        <i class="fa-brands fa-instagram text-xl text-pink-600"></i>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wide">Instagram</span>
+                    </button>
+                    <button onclick="selectSmmPlatform('whatsapp')" id="smm-platform-whatsapp" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-slate-50 transition flex flex-col items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl text-emerald-500"></i>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wide">WhatsApp</span>
+                    </button>
+                </div>
+
+                <!-- Suntik Sosmed Sub Layanan Grid (Like, Followers dll.) -->
+                <div id="smmServiceNav" class="hidden grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                    <!-- Javascript inject sub-pilihan layanan di sini -->
+                </div>
+
+                <!-- Instagram Followers Warning -->
+                <div id="igWarningBox" class="hidden bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl text-xs text-amber-950 mb-6 space-y-1">
+                    <h5 class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Baca Sebelum Beli Followers Instagram</h5>
+                    <p>Instruksi berikut harus diikuti secara ketat untuk mencegah <strong>Flag of Review / Spam Followers</strong>.</p>
+                    <p class="font-semibold pt-1">Berikut cara menonaktifkan Flag of Review/Spam Followers:</p>
+                    <ol class="list-decimal list-inside space-y-0.5 pl-1">
+                        <li>Buka Pengaturan/Setting Akun.</li>
+                        <li>Pilih opsi "Ikuti dan Undang Teman".</li>
+                        <li>Nonaktifkan fitur "Laporkan untuk Ditinjau".</li>
+                    </ol>
+                    <p class="font-bold text-amber-700 pt-1">Pengaturan ini harus dinonaktifkan sebelum melakukan pesanan agar lancar!</p>
+                </div>
+
+                <!-- GRID PRODUK / LAYANAN / PAKET HARGA -->
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Javascript Inject di sini -->
                 </div>
             </div>
 
-            <!-- LANGKAH 3: PILIH PAKET (Berbaris 2-2 / Grid 2 Kolom) -->
-            <div id="container-packages" class="hidden space-y-4">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-xs font-extrabold uppercase tracking-widest text-slate-400" id="packages-title">Paket Layanan Tersedia</h3>
-                    <span class="text-[10px] text-slate-400">Pilih salah satu paket</span>
+            <!-- STEP 3: DATA FORM PEMBELIAN & DETAIL SELEKSI -->
+            <div id="purchaseFormPanel" class="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm hidden">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 font-extrabold flex items-center justify-center text-sm shadow-sm" id="step-three-badge">3</div>
+                    <h2 class="font-extrabold text-lg text-slate-900">Lengkapi Informasi Pemesanan</h2>
                 </div>
-                
-                <!-- Package Cards Container (Grid 2 Kolom) -->
-                <div id="packages-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <!-- Dinamis Diisi JS -->
+
+                <!-- DYNAMIC SELECTED PRODUCT SUMMARY -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div class="space-y-1">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">PRODUK YANG DIPILIH:</span>
+                        <h4 id="summaryProductName" class="font-extrabold text-slate-900 text-sm">SpxToolsV1</h4>
+                    </div>
+                    <div class="text-left sm:text-right">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">HARGA LAYANAN:</span>
+                        <p id="summaryProductPrice" class="font-black text-blue-600 text-lg dynamic-text">Rp25.000</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Nama Lengkap Pembeli <span class="text-rose-500">*</span></label>
+                        <input type="text" id="buyerNameInput" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm font-medium" placeholder="Nama lengkap Anda">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Nomor WhatsApp Aktif <span class="text-rose-500">*</span></label>
+                        <input type="number" id="buyerWaInput" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm font-medium" placeholder="Contoh: 085816148963">
+                    </div>
+
+                    <div id="targetFieldContainer">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5" id="targetLabelText">Target / Username Akun <span class="text-rose-500">*</span></label>
+                        <input type="text" id="buyerTargetInput" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm font-medium" placeholder="Masukkan Link profil / Username tujuan">
+                    </div>
+
+                    <!-- Custom Quantity Field -->
+                    <div id="customQtyContainer" class="hidden">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Ketik Jumlah yang Anda Mau <span class="text-rose-500">*</span></label>
+                        <input type="number" id="customQtyInput" oninput="calculateCustomPrice()" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm font-medium" placeholder="Ketik nominal jumlah di sini">
+                        <p id="customQtyLimits" class="text-xxs text-slate-400 mt-1"></p>
+                    </div>
+
+                    <!-- PILIHAN PEMBAYARAN - HANYA QRIS -->
+                    <div class="pt-2">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Metode Pembayaran Tersedia</label>
+                        <div class="border-2 border-blue-500 rounded-3xl p-4 flex items-center justify-between bg-blue-50/10">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 dynamic-text dynamic-bg-light">
+                                    <i class="fa-solid fa-qrcode text-2xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-black text-slate-800 block">QRIS Otomatis Instan</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Mendukung pembayaran m-Banking &amp; e-Wallet</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full"><i class="fa-solid fa-shield-halved mr-1"></i> Terverifikasi</span>
+                                <input type="radio" checked disabled class="text-blue-600 h-4 w-4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RINGKASAN HARGA & BUTTON CHECKOUT - PERBAIKAN TEXT BESAR DAN JELAS -->
+                    <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <span class="text-xs text-slate-500 font-medium block">Total Pembayaran:</span>
+                            <span id="finalPriceLabel" class="text-2xl font-black text-blue-600 dynamic-text">Rp0</span>
+                        </div>
+                        
+                        <!-- Perbaikan tombol dengan teks yang tebal, jelas, dan terlindungi dari bug wrap di semua HP -->
+                        <button onclick="handleCheckout()" class="w-full sm:w-auto px-10 py-4.5 rounded-2xl text-white font-extrabold text-sm theme-gradient-bg theme-gradient-glow hover:opacity-95 transition-all transform active:scale-95 text-center flex items-center justify-center gap-3">
+                            <span class="whitespace-nowrap">Bayar Sekarang via QRIS</span>
+                            <i class="fa-solid fa-bolt text-amber-300"></i>
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
-        </div>
-
+        </section>
     </main>
 
-    <!-- Footer Area -->
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 mt-16 text-xs">
-        <div class="max-w-5xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center justify-center sm:justify-start gap-2.5">
-                <img src="https://cdn.phototourl.com/member/2026-06-18-1d3dd309-6290-4b8c-9f11-32adbaa9722a.png" alt="PidzStore Logo Footer" class="w-6 h-6 rounded-full object-cover">
-                <div>
-                    <span class="text-sm font-extrabold text-white">PidzStore</span>
-                    <p class="text-[9px] text-slate-500">Premium Digital Tools & SMM Panel Services</p>
-                </div>
+    <!-- CUSTOM WARNING POPUP (MODAL VALIDASI DATA) -->
+    <div id="validationWarningModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl text-center relative border border-slate-100">
+            <div class="w-16 h-16 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
             </div>
-            <span id="footer-server-time" class="text-slate-500 text-[10px]">Memuat jam operasional...</span>
-            <span>&copy; 2026 PidzStore SMM. All rights reserved.</span>
+            <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="warningTitle">Formulir Belum Lengkap</h3>
+            <p class="text-xs text-slate-500 leading-relaxed mb-6" id="warningMessage">Mohon isi nama lengkap Anda, nomor WhatsApp aktif, dan target pesanan terlebih dahulu sebelum melanjutkan checkout.</p>
+            <button onclick="closeWarningModal()" class="w-full py-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs tracking-wider transition">
+                Mengerti &amp; Lengkapi Form
+            </button>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="registerModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl relative border border-slate-100">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-3 shadow-inner">
+                    <i class="fa-solid fa-user-plus text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Daftar Akun Member</h3>
+                <p class="text-xs text-slate-500 mt-1">Dapatkan diskon promo langsung selama 24 jam</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Nama Lengkap</label>
+                    <input type="text" id="regNameInput" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-500" placeholder="Ketik nama Anda">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Nomor WhatsApp Aktif</label>
+                    <input type="number" id="regWaInput" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-500" placeholder="Ketik No. WhatsApp">
+                </div>
+                <button onclick="submitRegister()" class="w-full py-3 rounded-xl text-white font-extrabold text-sm blue-gradient-bg shadow-md mt-2 hover:opacity-90 transition shadow-blue-500/10">
+                    Daftar Sekarang &amp; Dapatkan Diskon
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAG & DRIVE SIMULATOR MODAL POPUP -->
+    <div id="dragSimulatorModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl text-center relative border border-slate-100">
+            <div class="w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4 dynamic-bg-light dynamic-text">
+                <i class="fa-solid fa-car-side text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-black text-slate-900 mb-2">Drag &amp; Drive Simulator</h3>
+            <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                Anda akan diarahkan menuju halaman eksternal untuk melakukan pemesanan &amp; joki Drag &amp; Drive Simulator secara khusus.
+            </p>
+            <div class="space-y-2">
+                <a href="https://jokidragdrivesimulator.vercel.app" target="_blank" onclick="closeDragSimulatorModal()" class="w-full py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs tracking-wider transition flex items-center justify-center gap-2 dynamic-bg">
+                    Lanjutkan ke Halaman Partner <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <button onclick="closeDragSimulatorModal()" class="w-full py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">
+                    Kembali ke PidzStore
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QRIS PAYMENT POPUP MODAL (SUPER PREMIUM REDESIGN WITH LASER EFFECT & STEP-BY-STEP) -->
+    <div id="qrisModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl text-center border border-slate-100 relative overflow-hidden">
+            <!-- Background elements -->
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+
+            <div class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-xs font-extrabold inline-block mb-3 dynamic-bg-light dynamic-text">
+                <i class="fa-solid fa-shield-halved mr-1"></i> Gerbang Pembayaran Aman QRIS
+            </div>
+            <h4 class="font-extrabold text-slate-900 text-base" id="qrisProductName">SpxToolsV1</h4>
+            <p class="text-2xl font-black text-blue-600 mt-1 dynamic-text" id="qrisProductPrice">Rp25.000</p>
+
+            <!-- QRIS Barcode Container with CSS scan line animation -->
+            <div class="w-64 h-64 mx-auto bg-white rounded-2xl p-4 border-2 border-slate-200 my-4 flex items-center justify-center shadow-lg relative scanner-container">
+                <div class="scanner-line"></div>
+                <img src="https://cdn.phototourl.com/member/2026-06-19-408e0b6c-e609-4563-a6a0-7e821e7a67af.jpg" alt="Kode QRIS Pembayaran" class="w-full h-full object-contain">
+            </div>
+
+            <!-- COUNTDOWN TIMER -->
+            <div class="bg-rose-50 text-rose-600 text-xs font-bold py-2.5 rounded-xl mb-4 flex items-center justify-center gap-2 shadow-inner border border-rose-100">
+                <i class="fa-regular fa-clock text-sm animate-pulse"></i> Sisa Waktu Pembayaran: <span id="qrisTimerText" class="font-black">02:00:00</span>
+            </div>
+
+            <!-- PAYMENT STEPS (INSTRUCTIONS) -->
+            <div class="text-left bg-slate-50 p-4 rounded-2xl text-[10px] text-slate-500 space-y-2 mb-5 border border-slate-100">
+                <p class="font-extrabold text-slate-700 text-xs flex items-center gap-1.5 mb-1"><i class="fa-solid fa-clipboard-list text-blue-500 dynamic-text"></i> Cara Pembayaran:</p>
+                <p class="flex items-start gap-1"><span class="font-bold text-blue-600 dynamic-text">1.</span> Screenshot atau simpan kode QRIS di atas ke galeri handphone Anda.</p>
+                <p class="flex items-start gap-1"><span class="font-bold text-blue-600 dynamic-text">2.</span> Buka aplikasi bank digital (BCA, Mandiri, BRI, dll.) atau e-wallet (DANA, OVO, GOPAY, ShopeePay).</p>
+                <p class="flex items-start gap-1"><span class="font-bold text-blue-600 dynamic-text">3.</span> Pilih menu scan/pay lalu unggah screenshot QRIS dan bayar sesuai total nominal.</p>
+            </div>
+
+            <button onclick="confirmQrisPayment()" class="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm shadow-lg shadow-emerald-500/20 transition duration-300 flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Sudah Bayar, Konfirmasi via WA
+            </button>
+        </div>
+    </div>
+
+    <!-- PURCHASE HISTORY MODAL -->
+    <div id="historyModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl relative border border-slate-100">
+            <button onclick="toggleHistoryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-blue-600"></i> Riwayat Pembelian Anda
+            </h3>
+            <div id="historyListContainer" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                <!-- Javascript Inject History -->
+            </div>
+        </div>
+    </div>
+
+    <!-- THEME CUSTOMIZER CUSTOM PALETTE (FLOATING CONTROLLER) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="relative inline-block text-left">
+            <button onclick="toggleThemePanel()" class="w-14 h-14 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center shadow-2xl transition-all duration-300 transform hover:rotate-45 active:scale-90 relative">
+                <i class="fa-solid fa-palette text-xl"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-pulse">NEW</span>
+            </button>
+            
+            <div id="themePalettePanel" class="hidden absolute right-0 bottom-16 bg-white border border-slate-100 p-4 rounded-3xl shadow-2xl w-48 space-y-3">
+                <h4 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-2 text-center">Kustomisasi Tema</h4>
+                <div class="grid grid-cols-5 gap-2 justify-items-center">
+                    <!-- Blue Theme (Default) -->
+                    <button onclick="setThemeColors('#2563eb', '#1d4ed8', '#eff6ff', '#bfdbfe', '#1d4ed8', '#3b82f6', 'rgba(59, 130, 246, 0.3)')" class="w-6 h-6 rounded-full bg-blue-600 border border-slate-200" title="Royal Blue"></button>
+                    <!-- Emerald Green -->
+                    <button onclick="setThemeColors('#059669', '#047857', '#ecfdf5', '#a7f3d0', '#047857', '#10b981', 'rgba(16, 185, 129, 0.3)')" class="w-6 h-6 rounded-full bg-emerald-600 border border-slate-200" title="Emerald Green"></button>
+                    <!-- Sunset Orange -->
+                    <button onclick="setThemeColors('#ea580c', '#c2410c', '#fff7ed', '#ffedd5', '#c2410c', '#f97316', 'rgba(249, 115, 22, 0.3)')" class="w-6 h-6 rounded-full bg-orange-600 border border-slate-200" title="Sunset Orange"></button>
+                    <!-- Indigo Purple -->
+                    <button onclick="setThemeColors('#4f46e5', '#4338ca', '#eef2ff', '#c7d2fe', '#4338ca', '#6366f1', 'rgba(99, 102, 241, 0.3)')" class="w-6 h-6 rounded-full bg-indigo-600 border border-slate-200" title="Indigo"></button>
+                    <!-- Deep Purple -->
+                    <button onclick="setThemeColors('#7c3aed', '#6d28d9', '#f5f3ff', '#ddd6fe', '#6d28d9', '#8b5cf6', 'rgba(139, 92, 246, 0.3)')" class="w-6 h-6 rounded-full bg-violet-600 border border-slate-200" title="Deep Purple"></button>
+                </div>
+                <p class="text-[9px] text-slate-400 text-center">Ubah warna website secara instan!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-100 mt-20 py-8 text-center text-xs text-slate-400 font-medium">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="text-slate-600 font-bold">&copy; 2026 PidzStore. Semua Hak Cipta Dilindungi.</p>
+            <p>SMM &amp; Game Optimizer Termurah, Tercepat, dan Paling Terpercaya di Indonesia.</p>
         </div>
     </footer>
 
-    <!-- MODAL AUTH: LOGIN & DAFTAR -->
-    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm hidden">
-        <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl border border-slate-100 overflow-hidden transform scale-95 transition-all duration-200" id="authModalContainer">
+    <!-- Firebase App initialization & Firestore Realtime Sync -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global App & Firebase Configuration
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'pidzstore-2026-app';
+        const rawConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{"apiKey":"","authDomain":"fallback-dom","projectId":"fallback-id","storageBucket":"","messagingSenderId":"","appId":""}';
+        const firebaseConfig = JSON.parse(rawConfig);
+
+        let app, auth, db, user;
+
+        // Inisialisasi Firebase & State Listener
+        const initFirebase = async () => {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+
+            // Auth Login (RULE 3)
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                await signInWithCustomToken(auth, __initial_auth_token);
+            } else {
+                await signInAnonymously(auth);
+            }
+
+            onAuthStateChanged(auth, (authUser) => {
+                user = authUser;
+                if (user) {
+                    // Sync Minecraft Stock global secara Realtime
+                    syncMinecraftStock();
+                }
+            });
+        };
+
+        // Sinkronisasi realtime stok Minecraft
+        const syncMinecraftStock = () => {
+            if (!user) return;
+            // RULE 1 - Strict Path
+            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'minecraft_stock', 'global_state');
             
-            <!-- Auth Header -->
-            <div class="bg-slate-900 text-white p-4 relative">
-                <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center text-white">
-                        <i class="fa-solid fa-user-shield text-xs"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-extrabold text-sm" id="auth-title">Masuk ke PidzStore</h3>
-                        <p class="text-slate-400 text-[10px]">Dapatkan promo member baru seketika</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Auth Body -->
-            <div class="p-5">
-                <div class="space-y-4">
-                    <!-- Form Username -->
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Username:</label>
-                        <input type="text" id="auth-username" placeholder="Masukkan username" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3.5 py-2.5 text-xs focus:outline-none focus:border-primary-500">
-                    </div>
-
-                    <!-- Form Password -->
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Password:</label>
-                        <input type="password" id="auth-password" placeholder="Masukkan password" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3.5 py-2.5 text-xs focus:outline-none focus:border-primary-500">
-                    </div>
-
-                    <!-- Action Auth Button -->
-                    <button onclick="submitAuth()" id="btn-submit-auth" class="w-full py-2.5 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-lg text-xs transition-all shadow-sm">
-                        Masuk Sekarang
-                    </button>
-
-                    <!-- Toggle Mode Login / Register -->
-                    <p class="text-center text-[11px] text-slate-500 mt-2">
-                        <span id="auth-toggle-text">Belum punya akun?</span>
-                        <button onclick="toggleAuthMode()" id="btn-auth-toggle" class="text-primary-500 font-bold hover:underline ml-1">Daftar Akun Baru</button>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- MODAL DETIL PEMBELIAN (POPUP) -->
-    <div id="orderModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm hidden overflow-y-auto">
-        <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl border border-slate-100 overflow-hidden transform scale-95 transition-all duration-200 my-8" id="modalContainer">
-            <!-- Modal Header -->
-            <div class="bg-slate-900 text-white p-4 relative">
-                <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center text-white">
-                        <i class="fa-solid fa-cart-shopping text-xs"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-extrabold text-sm">Konfirmasi Pesanan</h3>
-                        <p class="text-slate-400 text-[10px]">PidzStore Pembayaran QRIS Instan</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Body Content -->
-            <div class="p-5 max-h-[75vh] overflow-y-auto">
-                <!-- Target Input Area (Untuk SMM) -->
-                <div id="target-input-container" class="mb-4 hidden">
-                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Input Target / Username Sosmed:</label>
-                    <input type="text" id="target-link" placeholder="Contoh: @username atau link target" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3.5 py-2.5 text-xs focus:outline-none focus:border-primary-500">
-                    <p class="text-[9px] text-slate-400 mt-1">Sertakan target yang valid agar tidak terjadi salah suntik!</p>
-                </div>
-
-                <!-- Custom Input Area untuk Tambahan Manual -->
-                <div id="custom-amount-container" class="mb-4 hidden">
-                    <label id="label-custom-amount" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Jumlah Custom:</label>
-                    <input type="number" id="input-custom-amount" placeholder="Ketik jumlah pesanan kustom" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3.5 py-2.5 text-xs focus:outline-none focus:border-primary-500">
-                    <p id="sub-custom-amount" class="text-[9px] text-slate-400 mt-1">Tanyakan tarif total pesanan kepada admin lewat chat</p>
-                </div>
-
-                <!-- INFO METODE PEMBAYARAN (QRIS ONLY) -->
-                <div class="mb-4">
-                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Metode Pembayaran:</label>
-                    <div class="flex items-center justify-between p-3 border-2 border-primary-500 bg-primary-50/50 rounded-xl">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-qrcode text-primary-500 text-lg"></i>
-                            <div>
-                                <p class="font-extrabold text-xs text-slate-900">QRIS Instan Otomatis</p>
-                                <p class="text-[9px] text-slate-400">Scan via GOPAY, OVO, DANA, dll</p>
-                            </div>
-                        </div>
-                        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[9px] font-bold rounded">Pilihan Utama</span>
-                    </div>
-                </div>
-
-                <!-- QRIS DISPLAY SECTION -->
-                <div id="qris-payment-section" class="mb-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                    <div class="text-center">
-                        <p class="font-bold text-slate-800 text-xs">Pindai Kode QRIS Resmi PidzStore</p>
-                        
-                        <!-- QRIS Image -->
-                        <div class="my-3 mx-auto w-40 h-52 border-2 border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm p-1.5">
-                            <img src="https://cdn.phototourl.com/member/2026-06-17-ea6e5ab1-a7ff-4105-9c0b-a2e9ec1b4e8a.jpg" alt="PidzStore QRIS" class="w-full h-full object-contain">
-                        </div>
-
-                        <!-- Timer Mundur -->
-                        <div class="bg-rose-50 border border-rose-100 rounded-lg p-2 mb-2 text-center">
-                            <p class="text-[10px] text-rose-500 uppercase tracking-widest font-bold">Batas Waktu Pembayaran (2 Jam):</p>
-                            <p id="qris-timer" class="font-extrabold text-rose-600 text-sm mt-0.5">02:00:00</p>
-                            <p class="text-[8px] text-rose-400 mt-0.5">Transaksi hangus otomatis jika melebihi batas waktu.</p>
-                        </div>
-
-                        <div class="text-left text-[10px] text-slate-500 leading-relaxed bg-amber-50 border border-amber-200/50 p-2.5 rounded-lg">
-                            <p class="font-bold text-amber-900 mb-0.5"><i class="fa-solid fa-circle-info"></i> Langkah Verifikasi:</p>
-                            1. Selesaikan pembayaran dengan e-wallet/m-banking Anda.<br>
-                            2. <strong>Wajib screenshot bukti transfer sukses</strong>.<br>
-                            3. Kirimkan bukti ss tersebut dengan mengklik tombol WhatsApp di bawah agar admin memproses pesanan Anda langsung.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200/50 space-y-2 mb-4 text-xs">
-                    <div class="flex justify-between gap-4">
-                        <span class="text-slate-400 shrink-0">Nama Produk:</span>
-                        <span class="font-bold text-slate-900 text-right" id="modal-product-name">-</span>
-                    </div>
-                    <div class="flex justify-between gap-4">
-                        <span class="text-slate-400 shrink-0">Paket/Kuantitas:</span>
-                        <span class="font-bold text-slate-900 text-right" id="modal-product-pack">-</span>
-                    </div>
-                    <div class="flex justify-between gap-4">
-                        <span class="text-slate-400 shrink-0">Estimasi Biaya:</span>
-                        <span class="font-extrabold text-primary-500 text-right" id="modal-product-price">-</span>
-                    </div>
-                </div>
-
-                <!-- Instagram Pre-buy Note (Shown dynamically) -->
-                <div id="ig-warning-note" class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-800 mb-4 hidden">
-                    Pastikan Anda telah menonaktifkan fitur <strong>"Laporkan untuk Ditinjau"</strong> pada menu privasi akun Instagram Anda.
-                </div>
-
-                <!-- Action Button -->
-                <button id="btn-submit-order" class="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm hover:shadow-glow">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span>Kirim ke WhatsApp &amp; Kirim Bukti Transfer</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- UI TOAST NOTIFICATION -->
-    <div id="custom-toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 text-xs font-semibold opacity-0 pointer-events-none transition-all duration-300">
-        <i class="fa-solid fa-circle-info text-primary-400"></i>
-        <span id="toast-message">Pesan notifikasi</span>
-    </div>
-
-    <!-- REAL-TIME LIVE BUYERS POPUP (TOAST TRANSAKSI) -->
-    <div id="live-buyer-toast" class="fixed bottom-4 left-4 z-40 bg-white border border-slate-200 p-3 rounded-2xl shadow-xl flex items-center gap-3 w-72 transform -translate-x-[340px] transition-transform duration-500 pointer-events-none">
-        <div class="w-9 h-9 rounded-xl bg-primary-50 flex items-center justify-center text-primary-500 shrink-0 shadow-inner">
-            <i class="fa-solid fa-bag-shopping text-sm animate-bounce"></i>
-        </div>
-        <div class="text-[11px] overflow-hidden">
-            <p class="font-bold text-slate-900" id="live-buyer-title">Transaksi Berhasil</p>
-            <p class="text-slate-500 truncate" id="live-buyer-desc">Farel baru saja membeli AIM HEAD 90%</p>
-            <p class="text-[9px] text-primary-500 mt-0.5"><i class="fa-regular fa-clock"></i> <span id="live-buyer-time">Baru saja</span></p>
-        </div>
-    </div>
-
-    <!-- MAIN DATA & LOGIC JAVASCRIPT -->
-    <script>
-        // Database SMM
-        const sosmedData = {
-            tiktok: {
-                categories: {
-                    followers_id: {
-                        label: 'Followers Indonesia 🇮🇩',
-                        desc: 'Followers asli murni akun Indonesia',
-                        packages: [
-                            { qty: '50 Followers', price: 'Rp 5.130' },
-                            { qty: '100 Followers', price: 'Rp 10.260' },
-                            { qty: '150 Followers', price: 'Rp 13.389' },
-                            { qty: '200 Followers', price: 'Rp 15.519' },
-                            { qty: '250 Followers', price: 'Rp 19.649' },
-                            { qty: '300 Followers', price: 'Rp 22.779' },
-                            { qty: '350 Followers', price: 'Rp 24.908' },
-                            { qty: '400 Followers', price: 'Rp 28.038' },
-                            { qty: '450 Followers', price: 'Rp 32.168' },
-                            { qty: '500 Followers', price: 'Rp 35.298' },
-                            { qty: '550 Followers', price: 'Rp 38.427' },
-                            { qty: '600 Followers', price: 'Rp 41.557' },
-                            { qty: '650 Followers', price: 'Rp 44.687' },
-                            { qty: '700 Followers', price: 'Rp 47.817' },
-                            { qty: '750 Followers', price: 'Rp 50.945' },
-                            { qty: '800 Followers', price: 'Rp 54.076' },
-                            { qty: 'Kustom Lainnya', price: 'Tanya Admin', isCustom: true, labelMinMax: 'Jumlah Lain? Chat Admin (Bebas)' }
-                        ]
-                    },
-                    followers_global: {
-                        label: 'Followers Global 🌏',
-                        desc: 'Followers akun Worldwide internasional',
-                        packages: [
-                            { qty: '50 Followers', price: 'Rp 4.322' },
-                            { qty: '100 Followers', price: 'Rp 7.644' },
-                            { qty: '150 Followers', price: 'Rp 9.965' },
-                            { qty: '200 Followers', price: 'Rp 12.287' },
-                            { qty: '250 Followers', price: 'Rp 14.609' },
-                            { qty: '300 Followers', price: 'Rp 16.931' },
-                            { qty: '350 Followers', price: 'Rp 19.253' },
-                            { qty: '400 Followers', price: 'Rp 22.574' },
-                            { qty: '450 Followers', price: 'Rp 24.896' },
-                            { qty: '500 Followers', price: 'Rp 26.218' },
-                            { qty: '550 Followers', price: 'Rp 29.540' },
-                            { qty: '600 Followers', price: 'Rp 32.862' },
-                            { qty: '650 Followers', price: 'Rp 35.183' },
-                            { qty: '700 Followers', price: 'Rp 36.505' },
-                            { qty: '750 Followers', price: 'Rp 38.837' },
-                            { qty: '800 Followers', price: 'Rp 41.149' },
-                            { qty: '850 Followers', price: 'Rp 44.471' },
-                            { qty: '900 Followers', price: 'Rp 46.179' },
-                            { qty: '950 Followers', price: 'Rp 48.114' },
-                            { qty: '1000 Followers', price: 'Rp 51.436' },
-                            { qty: 'Kustom Lainnya', price: 'Tanya Admin', isCustom: true, labelMinMax: 'Jumlah Lain? Chat Admin (Bebas)' }
-                        ]
-                    },
-                    likes_id: {
-                        label: 'Likes Indonesia 🇮🇩',
-                        desc: 'Likes murni asal Indonesia',
-                        packages: [
-                            { qty: '100 Likes', price: 'Rp 5.510' },
-                            { qty: '150 Likes', price: 'Rp 6.265' },
-                            { qty: '200 Likes', price: 'Rp 9.020' },
-                            { qty: '250 Likes', price: 'Rp 11.755' },
-                            { qty: '300 Likes', price: 'Rp 13.530' },
-                            { qty: '350 Likes', price: 'Rp 15.285' },
-                            { qty: '400 Likes', price: 'Rp 17.040' },
-                            { qty: '450 Likes', price: 'Rp 18.759' },
-                            { qty: '500 Likes', price: 'Rp 20.550' },
-                            { qty: '550 Likes', price: 'Rp 22.305' },
-                            { qty: '600 Likes', price: 'Rp 24.060' },
-                            { qty: '650 Likes', price: 'Rp 26.815' },
-                            { qty: '700 Likes', price: 'Rp 28.570' },
-                            { qty: '750 Likes', price: 'Rp 30.325' },
-                            { qty: '800 Likes', price: 'Rp 32.080' },
-                            { qty: '850 Likes', price: 'Rp 34.835' },
-                            { qty: '900 Likes', price: 'Rp 36.590' },
-                            { qty: '950 Likes', price: 'Rp 38.345' },
-                            { qty: '1.000 Likes', price: 'Rp 40.100' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah like (Min 100 - Max 10.000)' }
-                        ]
-                    },
-                    likes_global: {
-                        label: 'Likes Global 🌏',
-                        desc: 'Sangat instan, murah, & stabil',
-                        packages: [
-                            { qty: '40 Likes', price: 'Rp 100 perak' },
-                            { qty: '50 Likes', price: 'Rp 135 perak' },
-                            { qty: '100 Likes', price: 'Rp 240 perak' },
-                            { qty: '150 Likes', price: 'Rp 345 perak' },
-                            { qty: '200 Likes', price: 'Rp 471 perak' },
-                            { qty: '250 Likes', price: 'Rp 555 perak' },
-                            { qty: '300 Likes', price: 'Rp 685 perak' },
-                            { qty: '350 Likes', price: 'Rp 770 perak' },
-                            { qty: '400 Likes', price: 'Rp 870 perak' },
-                            { qty: '450 Likes', price: 'Rp 1.100' },
-                            { qty: '500 Likes', price: 'Rp 1.400' },
-                            { qty: '550 Likes', price: 'Rp 2.000' },
-                            { qty: '600 Likes', price: 'Rp 2.500' },
-                            { qty: '650 Likes', price: 'Rp 3.000' },
-                            { qty: '700 Likes', price: 'Rp 3.500' },
-                            { qty: '750 Likes', price: 'Rp 4.000' },
-                            { qty: '800 Likes', price: 'Rp 4.577' },
-                            { qty: '850 Likes', price: 'Rp 4.682' },
-                            { qty: '900 Likes', price: 'Rp 5.000' },
-                            { qty: '950 Likes', price: 'Rp 5.500' },
-                            { qty: '1.000 Likes', price: 'Rp 5.800' },
-                            { qty: '2.000 Likes', price: 'Rp 6.000' },
-                            { qty: '3.000 Likes', price: 'Rp 7.000' },
-                            { qty: '4.000 Likes', price: 'Rp 10.412' },
-                            { qty: '5.000 Likes', price: 'Rp 14.515' },
-                            { qty: '6.000 Likes', price: 'Rp 16.618' },
-                            { qty: '7.000 Likes', price: 'Rp 18.000' },
-                            { qty: '8.000 Likes', price: 'Rp 20.000' },
-                            { qty: '9.000 Likes', price: 'Rp 22.000' },
-                            { qty: '10.000 Likes', price: 'Rp 24.000' },
-                            { qty: '11.000 Likes', price: 'Rp 26.000' },
-                            { qty: '12.000 Likes', price: 'Rp 28.000' },
-                            { qty: '13.000 Likes', price: 'Rp 31.000' },
-                            { qty: '14.000 Likes', price: 'Rp 33.000' },
-                            { qty: '15.000 Likes', price: 'Rp 35.000' },
-                            { qty: '16.000 Likes', price: 'Rp 37.000' },
-                            { qty: '17.000 Likes', price: 'Rp 39.000' },
-                            { qty: '18.000 Likes', price: 'Rp 42.000' },
-                            { qty: '19.000 Likes', price: 'Rp 44.000' },
-                            { qty: '20.000 Likes', price: 'Rp 46.000' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah (Min 10 - Max 1.000.000)' }
-                        ]
-                    },
-                    live_views: {
-                        label: 'Live Stream Views 🎥',
-                        desc: '100% Concurrent Live stream views',
-                        packages: [
-                            { qty: '100 Views', price: 'Rp 5.226' },
-                            { qty: '150 Views', price: 'Rp 7.000' },
-                            { qty: '200 Views', price: 'Rp 10.000' },
-                            { qty: '250 Views', price: 'Rp 12.000' },
-                            { qty: '300 Views', price: 'Rp 13.978' },
-                            { qty: '350 Views', price: 'Rp 14.291' },
-                            { qty: '400 Views', price: 'Rp 15.904' },
-                            { qty: '450 Views', price: 'Rp 17.517' },
-                            { qty: '500 Views', price: 'Rp 19.131' },
-                            { qty: '550 Views', price: 'Rp 22.744' },
-                            { qty: '600 Views', price: 'Rp 24.357' },
-                            { qty: '650 Views', price: 'Rp 25.970' },
-                            { qty: '700 Views', price: 'Rp 27.583' },
-                            { qty: '750 Views', pyice: 'Rp 29.196' },
-                            { qty: '800 Views', price: 'Rp 30.809' },
-                            { qty: '850 Views', price: 'Rp 32.422' },
-                            { qty: '900 Views', price: 'Rp 34.035' },
-                            { qty: '950 Views', price: 'Rp 35.648' },
-                            { qty: '1.000 Views', price: 'Rp 37.261' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah (Min 50 - Max 50.000)' }
-                        ]
-                    },
-                    likes_comm: {
-                        label: 'Likes Comments 💬',
-                        desc: 'Beri jempol di komentar video',
-                        packages: [
-                            { qty: '100 Likes', price: 'Rp 700 perak' },
-                            { qty: '150 Likes', price: 'Rp 1.000' },
-                            { qty: '200 Likes', price: 'Rp 1.500' },
-                            { qty: '250 Likes', price: 'Rp 2.000' },
-                            { qty: '300 Likes', price: 'Rp 2.500' },
-                            { qty: '350 Likes', price: 'Rp 3.000' },
-                            { qty: '400 Likes', price: 'Rp 3.500' },
-                            { qty: '450 Likes', price: 'Rp 4.000' },
-                            { qty: '500 Likes', price: 'Rp 4.500' },
-                            { qty: '550 Likes', price: 'Rp 5.000' },
-                            { qty: '600 Likes', price: 'Rp 5.500' },
-                            { qty: '650 Likes', price: 'Rp 6.000' },
-                            { qty: '700 Likes', price: 'Rp 6.500' },
-                            { qty: '750 Likes', price: 'Rp 7.000' },
-                            { qty: '800 Likes', price: 'Rp 7.500' },
-                            { qty: '850 Likes', price: 'Rp 8.000' },
-                            { qty: '900 Likes', price: 'Rp 8.500' },
-                            { qty: '950 Likes', price: 'Rp 9.000' },
-                            { qty: '1.000 Likes', price: 'Rp 9.500' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah (Min 100 - Max 100.000)' }
-                        ]
-                    }
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    window.minecraftStock = docSnap.data().stock;
+                } else {
+                    // Jika data belum diinisiasi, buat default stok bernilai 58
+                    setDoc(docRef, { stock: 58 }, { merge: true });
+                    window.minecraftStock = 58;
                 }
-            },
-            instagram: {
-                categories: {
-                    followers_id: {
-                        label: 'Followers Indonesia 🇮🇩',
-                        desc: 'Followers akun beridentitas Indonesia asli',
-                        packages: [
-                            { qty: '100 Followers', price: 'Rp 7.716' },
-                            { qty: '150 Followers', price: 'Rp 9.000' },
-                            { qty: '200 Followers', price: 'Rp 14.000' },
-                            { qty: '250 Followers', price: 'Rp 18.000' },
-                            { qty: '300 Followers', price: 'Rp 22.149' },
-                            { qty: '350 Followers', price: 'Rp 25.000' },
-                            { qty: '400 Followers', price: 'Rp 27.000' },
-                            { qty: '450 Followers', price: 'Rp 30.000' },
-                            { qty: '500 Followers', price: 'Rp 33.000' },
-                            { qty: '550 Followers', price: 'Rp 37.000' },
-                            { qty: '600 Followers', price: 'Rp 41.000' },
-                            { qty: '650 Followers', price: 'Rp 43.000' },
-                            { qty: '700 Followers', price: 'Rp 45.000' },
-                            { qty: '750 Followers', price: 'Rp 48.000' },
-                            { qty: '800 Followers', price: 'Rp 52.000' },
-                            { qty: '850 Followers', price: 'Rp 55.000' },
-                            { qty: '900 Followers', price: 'Rp 58.000' },
-                            { qty: '950 Followers', price: 'Rp 62.000' },
-                            { qty: '1.000 Followers', price: 'Rp 65.000' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah (Min 100 - Max 10.000)' }
-                        ]
-                    },
-                    followers_global: {
-                        label: 'Followers Luar 🌏',
-                        desc: 'Followers global murni cepat & stabil',
-                        packages: [
-                            { qty: '100 Followers', price: 'Rp 1.000' },
-                            { qty: '150 Followers', price: 'Rp 1.500' },
-                            { qty: '200 Followers', price: 'Rp 2.000' },
-                            { qty: '250 Followers', price: 'Rp 2.500' },
-                            { qty: '300 Followers', price: 'Rp 3.000' },
-                            { qty: '350 Followers', price: 'Rp 3.500' },
-                            { qty: '400 Followers', price: 'Rp 4.000' },
-                            { qty: '450 Followers', price: 'Rp 4.500' },
-                            { qty: '500 Followers', price: 'Rp 5.000' },
-                            { qty: '550 Followers', price: 'Rp 5.000' },
-                            { qty: '600 Followers', price: 'Rp 6.000' },
-                            { qty: '650 Followers', price: 'Rp 6.500' },
-                            { qty: '700 Followers', price: 'Rp 7.000' },
-                            { qty: '750 Followers', price: 'Rp 7.500' },
-                            { qty: '800 Followers', price: 'Rp 8.000' },
-                            { qty: '850 Followers', price: 'Rp 8.500' },
-                            { qty: '900 Followers', price: 'Rp 9.000' },
-                            { qty: '950 Followers', price: 'Rp 9.500' },
-                            { qty: '1.000 Followers', price: 'Rp 10.000' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah (Min 100 - Max 5.000.000)' }
-                        ]
-                    },
-                    likes_custom: {
-                        label: 'Likes Custom Target 💖',
-                        desc: 'Isi jumlah like berapapun yang Anda mau',
-                        packages: [
-                            { qty: 'Input Sesuai Selera', price: 'Tanya Admin', isCustom: true, labelMinMax: 'Ketik jumlah like (Min 10 - Max 500.000)' }
-                        ]
-                    }
-                }
-            },
-            whatsapp: {
-                categories: {
-                    followers_global: {
-                        label: 'Pengikut WhatsApp Global 🌏',
-                        desc: 'Suntik pengikut Saluran / Channel WA',
-                        packages: [
-                            { qty: '50 Followers', price: 'Rp 6.000' },
-                            { qty: '100 Followers', price: 'Rp 10.000' },
-                            { qty: '150 Followers', price: 'Rp 14.000' },
-                            { qty: '200 Followers', price: 'Rp 19.000' },
-                            { qty: '250 Followers', price: 'Rp 24.000' },
-                            { qty: '300 Followers', price: 'Rp 28.000' },
-                            { qty: '350 Followers', price: 'Rp 33.000' },
-                            { qty: '400 Followers', price: 'Rp 35.000' },
-                            { qty: '450 Followers', price: 'Rp 36.000' },
-                            { qty: '500 Followers', price: 'Rp 41.000' },
-                            { qty: '550 Followers', price: 'Rp 46.000' },
-                            { qty: '600 Followers', price: 'Rp 48.000' },
-                            { qty: '650 Followers', price: 'Rp 52.000' },
-                            { qty: '700 Followers', price: 'Rp 56.000' },
-                            { qty: '750 Followers', price: 'Rp 61.000' },
-                            { qty: '800 Followers', price: 'Rp 66.000' },
-                            { qty: '850 Followers', price: 'Rp 71.000' },
-                            { qty: '900 Followers', price: 'Rp 77.000' },
-                            { qty: '950 Followers', price: 'Rp 78.000' },
-                            { qty: '1000 Followers', price: 'Rp 80.000' },
-                            { qty: 'Jumlah Lain?', price: 'Hubungi Admin', isCustom: true, labelMinMax: 'Ketik jumlah pengikut (Min 10 - Max 50.000)' }
-                        ]
-                    }
-                }
+                updateMinecraftStockUI();
+            }, (error) => {
+                console.error("Firestore Listen Error: ", error);
+            });
+        };
+
+        // Fungsi Global untuk Mengurangi Stok Minecraft Global secara Realtime
+        window.decreaseMinecraftStockDb = async () => {
+            if (!user) return;
+            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'minecraft_stock', 'global_state');
+            try {
+                await updateDoc(docRef, {
+                    stock: increment(-1)
+                });
+            } catch (err) {
+                console.error("Gagal update stok:", err);
             }
         };
 
-        // State control
-        let activePlatform = '';
-        let activeCategoryKey = '';
-        let currentOrderType = 'all-file';
-        let currentProductName = '';
-        let currentProductPack = '';
-        let currentProductPrice = '';
-        let isInstagramFollower = false;
-        let isPackageCustom = false;
+        // Start initialization
+        initFirebase();
+    </script>
+
+    <!-- CORE WEB LOGIC JAVASCRIPT -->
+    <script>
+        const ADMIN_NUMBER = "6285816148963";
+
+        // APP STATES
+        let currentSelectedCategory = '';
+        let currentSmmPlatform = 'tiktok';
+        let currentSmmService = '';
+        let currentSelectedProduct = null;
+        let isUserRegistered = false;
+        let discountEndTime = null;
+        let timerInterval = null;
+
+        // =========================================================================
+        // 🌟 TEMPAT EDIT FOTO, JUDUL, DAN HARGA KATALOG AKUN (FREE FIRE & ROBLOX) 🌟
+        // =========================================================================
+        // Di sini Anda bisa menambahkan URL gambar di dalam tanda kutip "".
+        // - Jika gambar dikosongkan "" maka otomatis menampilkan status: "KOSONG / TIDAK ADA STOK".
+        // - Jika gambar diisi link url, otomatis statusnya menjadi: "READY / BISA DIBELI".
+        // =========================================================================
         
-        let countdownInterval = null;
-        let promoInterval = null;
-        
-        // Auth State
-        let currentAuthMode = 'login'; // login or register
-        let loggedUser = null;
-
-        // Custom Notification Toast Function
-        function showToast(message) {
-            const toast = document.getElementById('custom-toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.textContent = message;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
-            
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 3500);
-        }
-
-        // Live Server Status Checker
-        function updateServerStatus() {
-            const statusDotNav = document.querySelector('#nav-server-status .relative');
-            const statusPingNav = document.querySelector('#nav-server-status .animate-ping');
-            const statusBadgeHero = document.getElementById('hero-server-status-badge');
-            const statusDotHero = document.getElementById('hero-server-status-dot');
-            const statusTextHero = document.getElementById('hero-server-status-text');
-            const footerTime = document.getElementById('footer-server-time');
-
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const timeString = `${String(hours).padStart(2, '0')}:${minutes}`;
-
-            // Server Online jam 05.00 sampai 22.00
-            const isOnline = (hours >= 5 && hours < 23);
-
-            if (isOnline) {
-                if(statusDotNav) statusDotNav.className = "relative inline-flex rounded-full h-2 w-2 bg-emerald-500";
-                if(statusPingNav) statusPingNav.className = "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400";
-                
-                statusBadgeHero.className = "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-100";
-                statusDotHero.className = "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse";
-                statusTextHero.textContent = `Server Online • CS Aktif (${timeString} WIB)`;
-                
-                footerTime.innerHTML = `<span class="text-emerald-500 font-bold">● Server Online</span> (Jam Kerja: 05:00 - 22:00 WIB)`;
-            } else {
-                if(statusDotNav) statusDotNav.className = "relative inline-flex rounded-full h-2 w-2 bg-rose-500";
-                if(statusPingNav) statusPingNav.className = "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-rose-400";
-                
-                statusBadgeHero.className = "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-50 text-rose-600 border border-rose-100";
-                statusDotHero.className = "w-1.5 h-1.5 rounded-full bg-rose-500";
-                statusTextHero.textContent = `Server Offline (Buka Jam 05.00 • ${timeString} WIB)`;
-                
-                footerTime.innerHTML = `<span class="text-rose-500 font-bold">● Server Offline</span> (Buka Jam 05:00 WIB)`;
-            }
-        }
-
-        // Live Transaction Notification Simulator
-        const buyersList = ["Aris", "Farel", "Siti", "Hendra", "Budi", "Dewi", "Gilang", "Rizky", "Rian", "Putri", "Amelia", "Yusuf", "Lutfi", "Andi", "Indah", "Dimas", "Bintang", "Aditya", "Agung", "Chandra", "Ahmad", "Salsa", "Dinda", "Fitri", "Taufik", "Wahyu", "Robby", "Eko", "Yanto", "Lilis", "Tri", "Sri", "Bayu", "Dwi", "Guntur", "Santi", "Kevin", "Naufal", "Rangga", "Mega", "Joko", "Farhan", "Rara", "Dono", "Rudi", "Eka", "Siska", "Tari", "Maya", "Doni"];
-        const boughtItemsList = [
-            "AIM HEAD 90% (OB53 Free Fire)",
-            "SpxToolsV1 (OB53 Free Fire)",
-            "100 Followers TikTok Indo 🇮🇩",
-            "500 Followers Instagram Luar 🌏",
-            "200 Likes TikTok Indo 🇮🇩",
-            "1000 Likes TikTok Global 🌏",
-            "50 Followers WhatsApp Global 🌏",
-            "250 Followers TikTok Indo 🇮🇩",
-            "100 Followers Instagram Indo 🇮🇩",
-            "300 Views TikTok Live Stream 🎥",
-            "500 Likes Comments TikTok 💬",
-            "200 Followers WhatsApp Global 🌏"
+        // --- DATA AKUN FREE FIRE (BARIS 410) ---
+        const LIST_AKUN_FF = [
+            { id: 1, name: "Akun FF Tier Master Elite", image: "", price: 150000 },
+            { id: 2, name: "Akun FF Full Set Legend", image: "", price: 280000 },
+            { id: 3, name: "Akun FF Bundle Lama Kuno", image: "", price: 420000 },
+            { id: 4, name: "Akun FF Vault Melimpah", image: "", price: 195000 },
+            { id: 5, name: "Akun FF Elite Pass S2", image: "", price: 650000 },
+            { id: 6, name: "Akun FF Tier Heroic Murah", image: "", price: 90000 },
+            { id: 7, name: "Akun FF Spek Sultan Ak", image: "", price: 1200000 },
+            { id: 8, name: "Akun FF Polosan Diamond", image: "", price: 45000 },
+            { id: 9, name: "Akun FF Old Gg Raw", image: "", price: 320000 },
+            { id: 10, name: "Akun FF Level Tinggi", image: "", price: 150000 },
         ];
-        
-        let shuffledBuyers = [];
-        let shuffledItems = [];
 
-        function shuffleArray(array) {
-            let shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        // --- DATA AKUN ROBLOX (BARIS 425) ---
+        const LIST_AKUN_ROBLOX = [
+            { id: 1, name: "Akun Roblox Blox Fruit Max", image: "", price: 125000 },
+            { id: 2, name: "Akun Roblox Tier Gede", image: "", price: 85000 },
+            { id: 3, name: "Akun Roblox Premium Avatar", image: "", price: 250000 },
+            { id: 4, name: "Akun Roblox Pet Simulator 99", image: "", price: 110000 },
+            { id: 5, name: "Akun Roblox King Legacy", image: "", price: 95000 },
+            { id: 6, name: "Akun Roblox Murder Mystery 2", image: "", price: 70000 },
+            { id: 7, name: "Akun Roblox Polosan Tahun 2018", image: "", price: 50000 },
+            { id: 8, name: "Akun Roblox Bedwars Pro", image: "", price: 140000 },
+            { id: 9, name: "Akun Roblox Blade Ball", image: "", price: 160000 },
+            { id: 10, name: "Akun Roblox Legend Item", image: "", price: 350000 },
+        ];
+
+        // Layanan SMM Data
+        const SMM_DATA = {
+            tiktok: {
+                followers_indo: [
+                    { qty: 50, price: 5130 }, { qty: 100, price: 10260 }, { qty: 150, price: 13389 },
+                    { qty: 200, price: 15519 }, { qty: 250, price: 19649 }, { qty: 300, price: 22779 },
+                    { qty: 350, price: 24908 }, { qty: 400, price: 28038 }, { qty: 450, price: 32168 },
+                    { qty: 500, price: 35298 }, { qty: 550, price: 38427 }, { qty: 600, price: 41557 },
+                    { qty: 650, price: 44687 }, { qty: 700, price: 47817 }, { qty: 750, price: 50945 },
+                    { qty: 800, price: 54076 }
+                ],
+                followers_luar: [
+                    { qty: 50, price: 4322 }, { qty: 100, price: 7644 }, { qty: 150, price: 9965 },
+                    { qty: 200, price: 12287 }, { qty: 250, price: 14609 }, { qty: 300, price: 16931 },
+                    { qty: 350, price: 19253 }, { qty: 400, price: 22574 }, { qty: 450, price: 24896 },
+                    { qty: 500, price: 26218 }, { qty: 550, price: 29540 }, { qty: 600, price: 32862 },
+                    { qty: 650, price: 35183 }, { qty: 700, price: 36505 }, { qty: 750, price: 38837 },
+                    { qty: 800, price: 41149 }, { qty: 850, price: 44471 }, { qty: 900, price: 46179 },
+                    { qty: 950, price: 48114 }, { qty: 1000, price: 51436 }
+                ],
+                like_indo: [
+                    { qty: 100, price: 5510 }, { qty: 150, price: 6265 }, { qty: 200, price: 9020 },
+                    { qty: 250, price: 11755 }, { qty: 300, price: 13530 }, { qty: 350, price: 15285 },
+                    { qty: 400, price: 17040 }, { qty: 450, price: 18759 }, { qty: 500, price: 20550 },
+                    { qty: 550, price: 22305 }, { qty: 600, price: 24060 }, { qty: 650, price: 26815 },
+                    { qty: 700, price: 28570 }, { qty: 750, price: 30325 }, { qty: 800, price: 32080 },
+                    { qty: 850, price: 34835 }, { qty: 900, price: 36590 }, { qty: 950, price: 38345 },
+                    { qty: 1000, price: 40100 }
+                ],
+                like_luar: [
+                    { qty: 40, price: 100 }, { qty: 50, price: 135 }, { qty: 100, price: 240 },
+                    { qty: 150, price: 345 }, { qty: 200, price: 471 }, { qty: 250, price: 555 },
+                    { qty: 300, price: 685 }, { qty: 350, price: 770 }, { qty: 400, price: 870 },
+                    { qty: 450, price: 1100 }, { qty: 500, price: 1400 }, { qty: 550, price: 2000 },
+                    { qty: 600, price: 2500 }, { qty: 650, price: 3000 }, { qty: 700, price: 3500 },
+                    { qty: 750, price: 4000 }, { qty: 800, price: 4577 }, { qty: 850, price: 4682 },
+                    { qty: 900, price: 5000 }, { qty: 950, price: 5500 }, { qty: 1000, price: 5800 },
+                    { qty: 2000, price: 6000 }, { qty: 3000, price: 7000 }, { qty: 4000, price: 10412 },
+                    { qty: 5000, price: 14515 }, { qty: 6000, price: 16618 }, { qty: 7000, price: 18000 },
+                    { qty: 8000, price: 20000 }, { qty: 9000, price: 22000 }, { qty: 10000, price: 24000 },
+                    { qty: 11000, price: 26000 }, { qty: 12000, price: 28000 }, { qty: 13000, price: 31000 },
+                    { qty: 14000, price: 33000 }, { qty: 15000, price: 35000 }, { qty: 16000, price: 37000 },
+                    { qty: 17000, price: 39000 }, { qty: 18000, price: 42000 }, { qty: 19000, price: 44000 },
+                    { qty: 20000, price: 46000 }
+                ],
+                live_stream: [
+                    { qty: 100, price: 5226 }, { qty: 150, price: 7000 }, { qty: 200, price: 10000 },
+                    { qty: 250, price: 12000 }, { qty: 300, price: 13978 }, { qty: 350, price: 14291 },
+                    { qty: 400, price: 15904 }, { qty: 450, price: 17517 }, { qty: 500, price: 19131 },
+                    { qty: 550, price: 22744 }, { qty: 600, price: 24357 }, { qty: 650, price: 25970 },
+                    { qty: 700, price: 27583 }, { qty: 750, py: 29196 }, { qty: 800, price: 30809 },
+                    { qty: 850, price: 32422 }, { qty: 900, price: 34035 }, { qty: 950, price: 35648 },
+                    { qty: 1000, price: 37261 }
+                ],
+                comment_like: [
+                    { qty: 100, price: 700 }, { qty: 150, price: 1000 }, { qty: 200, price: 1500 },
+                    { qty: 250, price: 2000 }, { qty: 300, price: 2500 }, { qty: 350, price: 3000 },
+                    { qty: 400, price: 3500 }, { qty: 450, price: 4000 }, { qty: 500, price: 4500 },
+                    { qty: 550, price: 5000 }, { qty: 600, price: 5500 }, { qty: 650, price: 6000 },
+                    { qty: 700, price: 6500 }, { qty: 750, price: 7000 }, { qty: 800, price: 7500 },
+                    { qty: 850, price: 8000 }, { qty: 900, price: 8500 }, { qty: 950, price: 9000 },
+                    { qty: 1000, price: 9500 }
+                ]
+            },
+            instagram: {
+                followers_indo: [
+                    { qty: 100, price: 7716 }, { qty: 150, price: 9000 }, { qty: 200, price: 14000 },
+                    { qty: 250, price: 18000 }, { qty: 300, price: 22149 }, { qty: 350, price: 25000 },
+                    { qty: 400, price: 27000 }, { qty: 450, price: 30000 }, { qty: 500, price: 33000 },
+                    { qty: 550, price: 37000 }, { qty: 600, price: 41000 }, { qty: 650, price: 43000 },
+                    { qty: 700, price: 45000 }, { qty: 750, price: 48000 }, { qty: 800, price: 52000 },
+                    { qty: 850, price: 55000 }, { qty: 900, price: 58000 }, { qty: 950, price: 62000 },
+                    { qty: 1000, price: 65000 }
+                ],
+                followers_luar: [
+                    { qty: 100, price: 1000 }, { qty: 150, price: 1500 }, { qty: 200, price: 2000 },
+                    { qty: 250, price: 2500 }, { qty: 300, price: 3000 }, { qty: 350, price: 3500 },
+                    { qty: 400, price: 4000 }, { qty: 450, price: 4500 }, { qty: 500, price: 5000 },
+                    { qty: 550, price: 5000 }, { qty: 600, price: 6000 }, { qty: 650, price: 6500 },
+                    { qty: 700, price: 7000 }, { qty: 750, price: 7500 }, { qty: 800, price: 8000 },
+                    { qty: 850, price: 8500 }, { qty: 900, price: 9000 }, { qty: 950, price: 9500 },
+                    { qty: 1000, price: 10000 }
+                ]
+            },
+            whatsapp: {
+                followers: [
+                    { qty: 50, price: 6000 }, { qty: 100, price: 10000 }, { qty: 150, price: 14000 },
+                    { qty: 200, price: 19000 }, { qty: 250, price: 24000 }, { qty: 300, price: 28000 },
+                    { qty: 350, price: 33000 }, { qty: 400, price: 35000 }, { qty: 450, price: 36000 },
+                    { qty: 500, price: 41000 }, { qty: 550, price: 46000 }, { qty: 600, price: 48000 },
+                    { qty: 650, price: 52000 }, { qty: 700, price: 56000 }, { qty: 750, price: 61000 },
+                    { qty: 800, price: 66000 }, { qty: 850, price: 71000 }, { qty: 900, price: 77000 },
+                    { qty: 950, price: 78000 }, { qty: 1000, price: 80000 }
+                ]
             }
-            return shuffled;
+        };
+
+        // Default local stock jika Firebase belum siap dimuat
+        window.minecraftStock = 58;
+
+        // ============================================
+        // 2. TEMA DINAMIS (WARNA CUSTOM)
+        // ============================================
+        function toggleThemePanel() {
+            const panel = document.getElementById('themePalettePanel');
+            panel.classList.toggle('hidden');
         }
 
-        function getNextLiveBuyer() {
-            if (shuffledBuyers.length === 0) {
-                shuffledBuyers = shuffleArray(buyersList);
-            }
-            if (shuffledItems.length === 0) {
-                shuffledItems = shuffleArray(boughtItemsList);
-            }
-            return {
-                name: shuffledBuyers.pop(),
-                item: shuffledItems.pop()
-            };
-        }
-
-        function triggerLiveBuyerNotification() {
-            const toast = document.getElementById('live-buyer-toast');
-            const buyerDesc = document.getElementById('live-buyer-desc');
-            const buyerTime = document.getElementById('live-buyer-time');
-
-            const data = getNextLiveBuyer();
-
-            buyerDesc.innerHTML = `<strong class="text-slate-800">${data.name}</strong> baru saja membeli <strong class="text-primary-500">${data.item}</strong>`;
-            buyerTime.textContent = "Baru saja";
-
-            // Slide In
-            toast.className = "fixed bottom-4 left-4 z-40 bg-white border border-slate-200 p-3 rounded-2xl shadow-xl flex items-center gap-3 w-72 transform translate-x-0 transition-transform duration-500 pointer-events-none";
-
-            // Slide Out after 4.5 seconds
-            setTimeout(() => {
-                toast.className = "fixed bottom-4 left-4 z-40 bg-white border border-slate-200 p-3 rounded-2xl shadow-xl flex items-center gap-3 w-72 transform -translate-x-[340px] transition-transform duration-500 pointer-events-none";
-            }, 4500);
-        }
-
-        // AUTH SYSTEM LOGIC (DAFTAR & LOGIN LOCAL STORAGE)
-        function openAuthModal() {
-            currentAuthMode = 'login';
-            updateAuthModalUI();
+        function setThemeColors(primary, hover, light, border, gradStart, gradEnd, glow) {
+            const root = document.documentElement;
+            root.style.setProperty('--primary-color', primary);
+            root.style.setProperty('--primary-hover', hover);
+            root.style.setProperty('--primary-light', light);
+            root.style.setProperty('--primary-border', border);
+            root.style.setProperty('--primary-gradient-start', gradStart);
+            root.style.setProperty('--primary-gradient-end', gradEnd);
+            root.style.setProperty('--primary-glow', glow);
             
-            const modal = document.getElementById('authModal');
-            const container = document.getElementById('authModalContainer');
+            // Perbarui warna elemen UI dinamis non-tailwind
+            document.getElementById('step-one-badge').style.backgroundColor = light;
+            document.getElementById('step-one-badge').style.color = primary;
+            document.getElementById('step-two-badge').style.backgroundColor = light;
+            document.getElementById('step-two-badge').style.color = primary;
+            document.getElementById('step-three-badge').style.backgroundColor = light;
+            document.getElementById('step-three-badge').style.color = primary;
+
+            document.getElementById('faq-icon-svg').style.color = primary;
+            document.getElementById('info-promo-icon').style.color = primary;
+
+            document.getElementById('cat-icon-ff').style.color = primary;
+            document.getElementById('cat-icon-suntik').style.color = primary;
+            document.getElementById('cat-icon-akff').style.color = primary;
+            document.getElementById('cat-icon-akroblox').style.color = primary;
+            document.getElementById('cat-icon-drag').style.color = primary;
+            document.getElementById('cat-icon-mc').style.color = primary;
+        }
+
+        // ============================================
+        // 3. HELPER UI & AKORDION & VALIDASI CUSTOM
+        // ============================================
+        function toggleAccordion(contentId, arrowId) {
+            const content = document.getElementById(contentId);
+            const arrow = document.getElementById(arrowId);
+            content.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        function formatIDR(value) {
+            if (typeof value === 'string') return value;
+            return "Rp " + value.toLocaleString("id-ID");
+        }
+
+        // Custom Premium Warning Modal
+        function triggerWarningModal(title, message) {
+            document.getElementById('warningTitle').innerText = title;
+            document.getElementById('warningMessage').innerText = message;
+            document.getElementById('validationWarningModal').classList.remove('hidden');
+        }
+
+        function closeWarningModal() {
+            document.getElementById('validationWarningModal').classList.add('hidden');
+        }
+
+        // ============================================
+        // 4. DAFTAR MEMBER & KONTROL DISKON 24 JAM
+        // ============================================
+        function openRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function submitRegister() {
+            const name = document.getElementById('regNameInput').value;
+            const wa = document.getElementById('regWaInput').value;
+
+            if (!name || !wa) {
+                return triggerWarningModal("Formulir Daftar Kosong", "Mohon lengkapi seluruh pendaftaran nama dan nomor WhatsApp Anda!");
+            }
+
+            isUserRegistered = true;
+            discountEndTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 Jam ke depan
+
+            // Simpan status di localStorage agar tidak hilang ketika di-refresh
+            localStorage.setItem('pidz_user', JSON.stringify({ name, wa, discountEndTime }));
+
+            updateUserSessionUI(name);
+            closeRegisterModal();
+
+            // Refresh tampilan produk jika sedang membuka kategori Free Fire
+            if (currentSelectedCategory === 'ff') {
+                changeCategory('ff');
+            }
+        }
+
+        function updateUserSessionUI(name) {
+            const container = document.getElementById('authContainer');
+            container.innerHTML = `
+                <div class="flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-2.5 rounded-xl text-xs font-bold text-blue-700 shadow-sm dynamic-bg-light dynamic-text dynamic-border-light">
+                    <i class="fa-solid fa-circle-check"></i> Member: ${name}
+                </div>
+            `;
             
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                container.classList.remove('scale-95');
-                container.classList.add('scale-100');
-            }, 10);
+            document.getElementById('memberPromoCard').innerHTML = `
+                <div class="absolute -right-8 -bottom-8 text-blue-500/15 text-8xl font-black"><i class="fa-solid fa-circle-check"></i></div>
+                <h4 class="font-bold text-blue-700 text-sm flex items-center gap-1.5 dynamic-text"><i class="fa-solid fa-tags"></i> Potongan Harga Aktif</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Selamat! Akun member Anda aktif. Nikmati promo hemat produk Free Fire <strong>SpxToolsV1</strong> &amp; <strong>Easy Drag 90%</strong> seharga <strong>Rp20.000</strong>.</p>
+            `;
         }
 
-        function closeAuthModal() {
-            const modal = document.getElementById('authModal');
-            const container = document.getElementById('authModalContainer');
-            
-            container.classList.remove('scale-100');
-            container.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 150);
-        }
-
-        function toggleAuthMode() {
-            currentAuthMode = currentAuthMode === 'login' ? 'register' : 'login';
-            updateAuthModalUI();
-        }
-
-        function updateAuthModalUI() {
-            const title = document.getElementById('auth-title');
-            const btnSubmit = document.getElementById('btn-submit-auth');
-            const toggleText = document.getElementById('auth-toggle-text');
-            const btnToggle = document.getElementById('btn-auth-toggle');
-
-            if (currentAuthMode === 'login') {
-                title.textContent = "Masuk ke PidzStore";
-                btnSubmit.textContent = "Masuk Sekarang";
-                toggleText.textContent = "Belum punya akun?";
-                btnToggle.textContent = "Daftar Akun Baru";
-            } else {
-                title.textContent = "Daftar Akun PidzStore";
-                btnSubmit.textContent = "Daftar Akun (Dapatkan Diskon)";
-                toggleText.textContent = "Sudah punya akun?";
-                btnToggle.textContent = "Masuk di Sini";
-            }
-        }
-
-        function submitAuth() {
-            const usn = document.getElementById('auth-username').value.trim();
-            const pas = document.getElementById('auth-password').value.trim();
-
-            if (!usn || !pas) {
-                showToast("Username dan Password tidak boleh kosong!");
-                return;
-            }
-
-            const users = JSON.parse(localStorage.getItem('pidzstore_users') || '{}');
-
-            if (currentAuthMode === 'register') {
-                if (users[usn]) {
-                    showToast("Username sudah digunakan, silakan pilih yang lain!");
-                    return;
-                }
-
-                // Buat akun baru & Set waktu dimulainya promo 24 Jam
-                const promoStartTime = new Date().getTime();
-                users[usn] = {
-                    password: pas,
-                    promoStart: promoStartTime
-                };
-
-                localStorage.setItem('pidzstore_users', JSON.stringify(users));
-                
-                // Set active user session
-                loggedUser = { username: usn, promoStart: promoStartTime };
-                localStorage.setItem('pidzstore_active_session', JSON.stringify(loggedUser));
-
-                showToast("Registrasi Berhasil! Anda mendapatkan promo diskon 24 jam!");
-                closeAuthModal();
-                checkUserSession();
-            } else {
-                // Mode Login
-                if (!users[usn] || users[usn].password !== pas) {
-                    showToast("Username atau Password salah!");
-                    return;
-                }
-
-                loggedUser = { username: usn, promoStart: users[usn].promoStart };
-                localStorage.setItem('pidzstore_active_session', JSON.stringify(loggedUser));
-
-                showToast(`Selamat datang kembali, ${usn}!`);
-                closeAuthModal();
-                checkUserSession();
-            }
-        }
-
-        function handleLogout() {
-            localStorage.removeItem('pidzstore_active_session');
-            loggedUser = null;
-            showToast("Anda telah keluar dari akun.");
-            checkUserSession();
-        }
-
-        // Memeriksa Sesi User dan Memperbarui Harga serta Countdown Diskon
-        function checkUserSession() {
-            const session = localStorage.getItem('pidzstore_active_session');
-            const areaLoginBtn = document.getElementById('btn-show-login');
-            const areaUserContainer = document.getElementById('logged-user-container');
-            const userDispName = document.getElementById('user-display-name');
-            const userAvatarChar = document.getElementById('user-avatar-char');
-
+        // Jalankan pengecekan sesi saat loading halaman pertama kali
+        window.addEventListener('load', () => {
+            const session = localStorage.getItem('pidz_user');
             if (session) {
-                loggedUser = JSON.parse(session);
-                
-                // Update UI Navbar
-                areaLoginBtn.classList.add('hidden');
-                areaUserContainer.classList.remove('hidden');
-                userDispName.textContent = loggedUser.username;
-                userAvatarChar.textContent = loggedUser.username.charAt(0).toUpperCase();
-
-                // Mulai Hitung Mundur Promo Personal
-                startPromoCountdown();
-            } else {
-                loggedUser = null;
-                
-                // Reset UI Navbar
-                areaLoginBtn.classList.remove('hidden');
-                areaUserContainer.classList.add('hidden');
-
-                // Matikan Hitung Mundur & Kembalikan Harga Normal
-                stopPromoCountdown();
-                resetToNormalPrices();
-            }
-        }
-
-        // Logika Hitung Mundur Promo Diskon 24 Jam
-        function startPromoCountdown() {
-            if (promoInterval) clearInterval(promoInterval);
-
-            const promoBanner = document.getElementById('promo-banner-container');
-            const promoGlobalTimer = document.getElementById('promo-global-countdown');
-            
-            // Elemen di dalam SPX Card
-            const promoTagSpx = document.getElementById('promo-tag-spx');
-            const promoCdtBoxSpx = document.getElementById('promo-countdown-box-spx');
-            const personalTimerSpx = document.getElementById('personal-timer-spx');
-            const priceOldSpx = document.getElementById('price-old-spx');
-            const priceActiveSpx = document.getElementById('price-active-spx');
-
-            // Elemen di dalam AIM Card
-            const promoTagAim = document.getElementById('promo-tag-aim');
-            const promoCdtBoxAim = document.getElementById('promo-countdown-box-aim');
-            const personalTimerAim = document.getElementById('personal-timer-aim');
-            const priceOldAim = document.getElementById('price-old-aim');
-            const priceActiveAim = document.getElementById('price-active-aim');
-
-            function updatePromo() {
-                if (!loggedUser) {
-                    stopPromoCountdown();
-                    return;
-                }
-
+                const parsed = JSON.parse(session);
                 const now = new Date().getTime();
-                const promoEnd = loggedUser.promoStart + (24 * 60 * 60 * 1000); // 24 Jam semenjak daftar
-                const timeLeft = promoEnd - now;
-
-                if (timeLeft > 0) {
-                    // Masih dalam masa promo diskon
-                    let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                    let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                    hours = hours < 10 ? "0" + hours : hours;
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                    const formattedTime = `${hours}:${minutes}:${seconds}`;
-
-                    // Update Countdown Text di Berbagai Tempat
-                    promoBanner.classList.remove('hidden');
-                    promoGlobalTimer.textContent = formattedTime;
-
-                    // SPX Card Update ke Harga Promo (Rp 20.000)
-                    promoTagSpx.classList.remove('hidden');
-                    promoCdtBoxSpx.classList.remove('hidden');
-                    personalTimerSpx.textContent = formattedTime;
-                    priceOldSpx.classList.remove('hidden');
-                    priceActiveSpx.textContent = "Rp 20.000";
-
-                    // AIM Card Update ke Harga Promo (Rp 20.000)
-                    promoTagAim.classList.remove('hidden');
-                    promoCdtBoxAim.classList.remove('hidden');
-                    personalTimerAim.textContent = formattedTime;
-                    priceOldAim.classList.remove('hidden');
-                    priceActiveAim.textContent = "Rp 20.000";
+                if (now < parsed.discountEndTime) {
+                    isUserRegistered = true;
+                    discountEndTime = parsed.discountEndTime;
+                    updateUserSessionUI(parsed.name);
                 } else {
-                    // Promo sudah hangus (24 jam berlalu)
-                    stopPromoCountdown();
-                    resetToNormalPrices();
+                    localStorage.removeItem('pidz_user');
                 }
             }
+            updateMinecraftStockUI();
+        });
 
-            updatePromo();
-            promoInterval = setInterval(updatePromo, 1000);
-        }
-
-        function stopPromoCountdown() {
-            if (promoInterval) {
-                clearInterval(promoInterval);
-                promoInterval = null;
-            }
-            document.getElementById('promo-banner-container').classList.add('hidden');
-        }
-
-        function resetToNormalPrices() {
-            // SPX Card Normal
-            document.getElementById('promo-tag-spx').classList.add('hidden');
-            document.getElementById('promo-countdown-box-spx').classList.add('hidden');
-            document.getElementById('price-old-spx').classList.add('hidden');
-            document.getElementById('price-active-spx').textContent = "Rp 25.000";
-
-            // AIM Card Normal
-            document.getElementById('promo-tag-aim').classList.add('hidden');
-            document.getElementById('promo-countdown-box-aim').classList.add('hidden');
-            document.getElementById('price-old-aim').classList.add('hidden');
-            document.getElementById('price-active-aim').textContent = "Rp 25.000";
-        }
-
-        // Switch Tab Kategori
-        function switchCategory(category) {
-            const btnAll = document.getElementById('btn-all');
-            const btnSuntik = document.getElementById('btn-suntik');
-            const secAll = document.getElementById('section-all');
-            const secSuntik = document.getElementById('section-suntik');
-
-            if (category === 'all') {
-                btnAll.classList.add('active-tab');
-                btnAll.classList.remove('text-slate-600', 'hover:text-primary-500');
-                btnSuntik.classList.remove('active-tab');
-                btnSuntik.classList.add('text-slate-600', 'hover:text-primary-500');
-
-                secAll.classList.remove('hidden');
-                secSuntik.classList.add('hidden');
-            } else {
-                btnSuntik.classList.add('active-tab');
-                btnSuntik.classList.remove('text-slate-600', 'hover:text-primary-500');
-                btnAll.classList.remove('active-tab');
-                btnAll.classList.add('text-slate-600', 'hover:text-primary-500');
-
-                secSuntik.classList.remove('hidden');
-                secAll.classList.add('hidden');
+        function updateMinecraftStockUI() {
+            const countLabel = document.getElementById('minecraftStockLabel');
+            if (countLabel) {
+                countLabel.innerText = window.minecraftStock;
             }
         }
 
-        // LANGKAH 1: Pilih Platform Sosmed
-        function selectPlatform(platform) {
-            activePlatform = platform;
-            document.querySelectorAll('.platform-card').forEach(card => card.classList.remove('active'));
-            document.getElementById(`plat-${platform}`).classList.add('active');
-            renderServiceTypes();
-            document.getElementById('container-packages').classList.add('hidden');
+        // =======================================================
+        // 5. HANDLER KATEGORI UTAMA & INTERAKSI DRAG SIMULATOR
+        // =======================================================
+        function openDragSimulatorModal() {
+            document.getElementById('dragSimulatorModal').classList.remove('hidden');
         }
 
-        // LANGKAH 2: Render Kategori Layanan (Followers, Likes, dll)
-        function renderServiceTypes() {
-            const container = document.getElementById('container-service-types');
-            const listDiv = document.getElementById('service-types-list');
-            listDiv.innerHTML = '';
+        function closeDragSimulatorModal() {
+            document.getElementById('dragSimulatorModal').classList.add('hidden');
+        }
 
-            const categories = sosmedData[activePlatform].categories;
-            
-            Object.keys(categories).forEach(key => {
-                const cat = categories[key];
-                const btn = document.createElement('button');
-                btn.className = 'service-type-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
-                btn.id = `btn-cat-${key}`;
-                btn.innerHTML = cat.label;
-                btn.onclick = () => selectCategoryService(key);
-                listDiv.appendChild(btn);
+        function changeCategory(cat) {
+            currentSelectedCategory = cat;
+            currentSelectedProduct = null;
+
+            // Highlight tombol kategori yang aktif
+            document.querySelectorAll('.category-card').forEach(btn => {
+                btn.classList.remove('border-blue-500', 'ring-2', 'ring-blue-500/20', 'bg-blue-50/10', 'selected-active');
             });
+            const activeBtn = document.getElementById(`cat-btn-${cat}`);
+            if (activeBtn) activeBtn.classList.add('selected-active');
 
-            container.classList.remove('hidden');
+            // Kontrol visibilitas panel samping & formulir input
+            const subPanel = document.getElementById('subCategoryPanel');
+            const formPanel = document.getElementById('purchaseFormPanel');
+            const smmNav = document.getElementById('smmMiniNav');
+            const smmServ = document.getElementById('smmServiceNav');
+            const igWarning = document.getElementById('igWarningBox');
+            const customQtyBox = document.getElementById('customQtyContainer');
+            
+            subPanel.classList.remove('hidden');
+            formPanel.classList.add('hidden');
+            smmNav.classList.add('hidden');
+            smmServ.classList.add('hidden');
+            igWarning.classList.add('hidden');
+            customQtyBox.classList.add('hidden');
+
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            // AUTO-SCROLL otomatis ke Step 2
+            subPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (cat === 'ff') {
+                document.getElementById('subCategoryTitle').innerText = "Pilih Layanan Optimasi Game Free Fire";
+                
+                // Cek harga normal vs harga diskon member
+                const isPromoActive = isUserRegistered && (new Date().getTime() < discountEndTime);
+                const ffPrice = isPromoActive ? 20000 : 25000;
+
+                // SpxTools V1 Card
+                grid.innerHTML += `
+                    <div onclick="selectFinalProduct('ff', 'ff_spxtools', 'SpxToolsV1', ${ffPrice})" class="border border-slate-100 rounded-3xl p-5 hover:border-blue-500 hover:bg-slate-50 cursor-pointer transition relative bg-white shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <h4 class="font-extrabold text-sm text-slate-800">SpxToolsV1</h4>
+                                ${isPromoActive ? '<span class="bg-emerald-50 text-emerald-600 font-extrabold text-[9px] px-2 py-0.5 rounded-full">DISKON AKTIF</span>' : ''}
+                            </div>
+                            <p class="text-slate-400 text-[10px] leading-relaxed mb-3">Penambahan responsif layar handphone untuk pergerakan licin &amp; stabil.</p>
+                            
+                            <div class="bg-slate-50 p-3 rounded-2xl mb-4 text-[10px] text-slate-600 space-y-1">
+                                <p class="font-bold text-blue-600 mb-1 dynamic-text"><i class="fa-solid fa-list-check"></i> FITUR SPXTOOLS:</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Easy to head</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Easy drag</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Screen response</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Smooth the screen</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Clear cache</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Increase performance</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Optimize free fire</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between border-t pt-3">
+                            <span class="text-blue-600 font-black text-sm dynamic-text">${formatIDR(ffPrice)}</span>
+                            <span class="text-xxs font-bold text-slate-400">PILIH <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                        </div>
+                    </div>
+                `;
+
+                // Easy Drag 90% Card
+                grid.innerHTML += `
+                    <div onclick="selectFinalProduct('ff', 'ff_easydrag', 'Easy Drag 90%', ${ffPrice})" class="border border-slate-100 rounded-3xl p-5 hover:border-blue-500 hover:bg-slate-50 cursor-pointer transition relative bg-white shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <h4 class="font-extrabold text-sm text-slate-800">Easy Drag 90%</h4>
+                                ${isPromoActive ? '<span class="bg-emerald-50 text-emerald-600 font-extrabold text-[9px] px-2 py-0.5 rounded-full">DISKON AKTIF</span>' : ''}
+                            </div>
+                            <p class="text-slate-400 text-[10px] leading-relaxed mb-3">Formula pelancar layar sensitivitas drag tembakan game hingga 90% lebih responsif.</p>
+                            
+                            <div class="bg-slate-50 p-3 rounded-2xl mb-4 text-[10px] text-slate-600 space-y-1">
+                                <p class="font-bold text-blue-600 mb-1 dynamic-text"><i class="fa-solid fa-list-check"></i> LAYANAN PREMIUM:</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Menambah responsif layar</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Anti delay touch respon</p>
+                                <p><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Sensitivitas layar penuh</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between border-t pt-3">
+                            <span class="text-blue-600 font-black text-sm dynamic-text">${formatIDR(ffPrice)}</span>
+                            <span class="text-xxs font-bold text-slate-400">PILIH <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                        </div>
+                    </div>
+                `;
+            } 
+            else if (cat === 'suntik') {
+                document.getElementById('subCategoryTitle').innerText = "Pilih Platform Suntik Sosmed";
+                smmNav.classList.remove('hidden');
+                selectSmmPlatform(currentSmmPlatform);
+            }
+            else if (cat === 'akun_ff' || cat === 'akun_roblox') {
+                document.getElementById('subCategoryTitle').innerText = cat === 'akun_ff' ? "Katalog Slot Akun Free Fire" : "Katalog Slot Akun Roblox";
+                const activeGallery = cat === 'akun_ff' ? LIST_AKUN_FF : LIST_AKUN_ROBLOX;
+                
+                activeGallery.forEach(item => {
+                    if (item.image && item.image.trim() !== "") {
+                        grid.innerHTML += `
+                            <div class="border border-slate-100 rounded-3xl overflow-hidden bg-white shadow-sm hover:border-blue-500 transition-all duration-300">
+                                <div class="aspect-square w-full bg-slate-100 relative">
+                                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                                    <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[9px] px-2.5 py-1 rounded-full shadow-sm">READY STOK</span>
+                                </div>
+                                <div class="p-4">
+                                    <h5 class="font-extrabold text-sm text-slate-800 line-clamp-1">${item.name}</h5>
+                                    <p class="text-blue-600 font-black text-sm mt-1 dynamic-text">${formatIDR(item.price)}</p>
+                                    <button onclick="selectFinalProduct('gallery', '${cat}_${item.id}', '${item.name}', ${item.price})" class="w-full mt-3 py-2.5 bg-blue-600 hover:opacity-90 text-white font-extrabold text-xs rounded-xl transition shadow-md shadow-blue-500/10 dynamic-bg">
+                                        Beli Akun Ini
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        grid.innerHTML += `
+                            <div class="border-2 border-dashed border-slate-200 rounded-3xl p-6 bg-slate-50/50 flex flex-col items-center justify-center text-center h-60">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mb-3">
+                                    <i class="fa-solid fa-box-open text-xl text-slate-400"></i>
+                                </div>
+                                <h5 class="font-extrabold text-xs text-slate-400 tracking-wider">SLOT ${item.id}</h5>
+                                <p class="text-[10px] text-slate-400 mt-1">Kosong / Tidak Ada Stok</p>
+                            </div>
+                        `;
+                    }
+                });
+            }
+            else if (cat === 'minecraft') {
+                document.getElementById('subCategoryTitle').innerText = "Pilih Produk Game Original";
+                
+                grid.innerHTML = `
+                    <div onclick="selectFinalProduct('minecraft', 'mc_ori', 'Aplikasi Minecraft Ori PlayStore', 15000)" class="border-2 border-blue-100 hover:border-blue-500 rounded-2xl p-5 bg-blue-50/30 cursor-pointer col-span-full transition flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <span class="bg-emerald-100 text-emerald-700 font-extrabold text-[9px] px-2.5 py-1 rounded-full uppercase tracking-wider">PlayStore Premium</span>
+                            <h4 class="font-extrabold text-slate-900 mt-2">Aplikasi Minecraft Ori PlayStore</h4>
+                            <p class="text-slate-500 text-xs mt-1">Dapatkan link download resmi &amp; lisensi legal langsung via Google Play Store.</p>
+                            <p class="text-xs font-bold text-blue-700 mt-2 flex items-center gap-1.5 dynamic-text">
+                                <i class="fa-solid fa-cubes-stacked"></i> Stok Global: <span id="minecraftStockLabel" class="font-extrabold">${window.minecraftStock}</span> Unit Tersisa
+                            </p>
+                        </div>
+                        <div class="text-right flex sm:flex-col justify-between sm:justify-center items-center sm:items-end w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0">
+                            <span class="text-xs text-slate-400 font-medium">Harga Promo</span>
+                            <span class="text-lg font-black text-blue-600 dynamic-text">Rp 15.000</span>
+                        </div>
+                    </div>
+                `;
+            }
         }
 
-        // LANGKAH 3: Pilih Jenis Kategori & Render Paket (Grid 2-2)
-        function selectCategoryService(categoryKey) {
-            activeCategoryKey = categoryKey;
-            document.querySelectorAll('.service-type-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-cat-${categoryKey}`).classList.add('active');
+        // ============================================
+        // 6. LAYANAN BINGKAI SOSIAL MEDIA & PRODUK SMM
+        // ============================================
+        function selectSmmPlatform(platform) {
+            currentSmmPlatform = platform;
 
-            const containerPackages = document.getElementById('container-packages');
-            const packagesGrid = document.getElementById('packages-grid');
-            const packagesTitle = document.getElementById('packages-title');
+            // Highlight platform button
+            document.querySelectorAll('#smmMiniNav button').forEach(btn => {
+                btn.classList.remove('border-blue-500', 'bg-blue-50/50', 'ring-2', 'ring-blue-500/10');
+            });
+            const activeBtn = document.getElementById(`smm-platform-${platform}`);
+            if (activeBtn) activeBtn.classList.add('border-blue-500', 'bg-blue-50/50', 'ring-2', 'ring-blue-500/10');
 
-            const categoryData = sosmedData[activePlatform].categories[categoryKey];
-            packagesTitle.textContent = `${sosmedData[activePlatform].categories[categoryKey].label} - Paket Pilihan`;
+            const smmServ = document.getElementById('smmServiceNav');
+            smmServ.classList.remove('hidden');
+            smmServ.innerHTML = '';
 
-            packagesGrid.innerHTML = '';
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            document.getElementById('purchaseFormPanel').classList.add('hidden');
+            document.getElementById('igWarningBox').classList.add('hidden');
 
-            categoryData.packages.forEach(pack => {
-                const card = document.createElement('div');
-                card.className = 'bg-white border border-slate-200 hover:border-primary-500 rounded-xl p-3.5 flex flex-col justify-between shadow-sm hover:shadow transition-all';
-                
-                let detailsHtml = `
-                    <div>
-                        <h4 class="font-bold text-slate-900 text-xs">${pack.qty}</h4>
-                        <p class="text-[10px] text-slate-400 mt-0.5">${categoryData.desc}</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-3">
-                        <span class="font-extrabold text-primary-500 text-xs">${pack.price}</span>
-                        <button onclick="handleSelectPack('${categoryData.label}', '${pack.qty}', '${pack.price}', ${!!pack.isCustom}, '${pack.labelMinMax || ''}')" class="px-3 py-1.5 bg-slate-900 text-white rounded-md text-[10px] font-bold hover:bg-slate-800 transition-all">
-                            Pilih
+            if (platform === 'tiktok') {
+                smmServ.innerHTML = `
+                    <button onclick="selectSmmService('tiktok_followers_indo')" id="serv-btn-tiktok_followers_indo" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Followers Indo 🇮🇩</button>
+                    <button onclick="selectSmmService('tiktok_followers_luar')" id="serv-btn-tiktok_followers_luar" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Followers Luar 🌏</button>
+                    <button onclick="selectSmmService('tiktok_like_indo')" id="serv-btn-tiktok_like_indo" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Like Indo 🇮🇩</button>
+                    <button onclick="selectSmmService('tiktok_like_luar')" id="serv-btn-tiktok_like_luar" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Like Luar 🌏</button>
+                    <button onclick="selectSmmService('tiktok_live_stream')" id="serv-btn-tiktok_live_stream" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Live Views ⚡</button>
+                    <button onclick="selectSmmService('tiktok_comment_like')" id="serv-btn-tiktok_comment_like" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Like Komen 💬</button>
+                `;
+            } 
+            else if (platform === 'instagram') {
+                smmServ.innerHTML = `
+                    <button onclick="selectSmmService('ig_followers_indo')" id="serv-btn-ig_followers_indo" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Followers Indo 🇮🇩</button>
+                    <button onclick="selectSmmService('ig_followers_luar')" id="serv-btn-ig_followers_luar" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Followers Luar 🌏</button>
+                    <button onclick="selectSmmService('ig_like_kustom')" id="serv-btn-ig_like_kustom" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Kustom Likes ❤️</button>
+                `;
+            }
+            else if (platform === 'whatsapp') {
+                smmServ.innerHTML = `
+                    <button onclick="selectSmmService('wa_followers_global')" id="serv-btn-wa_followers_global" class="p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase">Pengikut Global 🌏</button>
+                `;
+            }
+        }
+
+        function selectSmmService(serviceKey) {
+            currentSmmService = serviceKey;
+
+            // Highlight sub-layanan yang diklik
+            document.querySelectorAll('#smmServiceNav button').forEach(btn => {
+                btn.className = "p-3 border rounded-xl font-bold text-[10px] tracking-wide text-slate-700 bg-white hover:border-blue-500 transition uppercase";
+            });
+            const activeBtn = document.getElementById(`serv-btn-${serviceKey}`);
+            if (activeBtn) activeBtn.className = "p-3 border-2 border-blue-500 font-black text-[10px] tracking-wide text-blue-600 bg-blue-50/30 rounded-xl transition uppercase";
+
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            document.getElementById('purchaseFormPanel').classList.add('hidden');
+            document.getElementById('igWarningBox').classList.add('hidden');
+
+            if (serviceKey.startsWith('ig_followers')) {
+                document.getElementById('igWarningBox').classList.remove('hidden');
+            }
+
+            if (serviceKey === 'tiktok_followers_indo') {
+                renderDirectPackageGrid("Tiktok Followers Indo 🇮🇩", SMM_DATA.tiktok.followers_indo, "Followers", 50, 800, 67);
+            }
+            else if (serviceKey === 'tiktok_followers_luar') {
+                renderDirectPackageGrid("Tiktok Followers Luar 🌏", SMM_DATA.tiktok.followers_luar, "Followers", 50, 1000, 51);
+            }
+            else if (serviceKey === 'tiktok_like_indo') {
+                renderDirectPackageGrid("Tiktok Like Indo 🇮🇩", SMM_DATA.tiktok.like_indo, "Like", 100, 10000, 40);
+            }
+            else if (serviceKey === 'tiktok_like_luar') {
+                renderDirectPackageGrid("Tiktok Like Luar 🌏", SMM_DATA.tiktok.like_luar, "Like", 10, 1000000, 2.4);
+            }
+            else if (serviceKey === 'tiktok_live_stream') {
+                renderDirectPackageGrid("Tiktok Live Stream Views", SMM_DATA.tiktok.live_stream, "View", 50, 50000, 37);
+            }
+            else if (serviceKey === 'tiktok_comment_like') {
+                renderDirectPackageGrid("Like Comments Tiktok", SMM_DATA.tiktok.comment_like, "Like", 100, 100000, 9.5);
+            }
+            else if (serviceKey === 'ig_followers_indo') {
+                renderDirectPackageGrid("Instagram Followers Indo 🇮🇩", SMM_DATA.instagram.followers_indo, "Followers", 100, 10000, 65);
+            }
+            else if (serviceKey === 'ig_followers_luar') {
+                renderDirectPackageGrid("Instagram Followers Luar 🌏", SMM_DATA.instagram.followers_luar, "Followers", 100, 5000000, 10);
+            }
+            else if (serviceKey === 'ig_like_kustom') {
+                grid.innerHTML = `
+                    <div class="border-2 border-dashed border-slate-200 rounded-3xl p-6 bg-white shadow-sm flex flex-col justify-between col-span-full">
+                        <div>
+                            <span class="bg-blue-100 text-blue-700 font-extrabold text-[9px] px-2.5 py-1 rounded-full uppercase tracking-wider dynamic-bg-light dynamic-text">Instagram Like</span>
+                            <h4 class="font-extrabold text-slate-800 mt-2">Ketik Jumlah Instagram Like Sesuai Keinginan</h4>
+                            <p class="text-slate-400 text-[10px] leading-relaxed mt-1">Batas pemesanan: minimal 10 like dan maksimal 500.000 like. Harga dihitung secara otomatis berdasarkan nominal jumlah.</p>
+                        </div>
+                        <button onclick="activateCustomPricing('Instagram Like', 10, 500000, 45, 'Like')" class="w-full mt-4 py-3 bg-blue-600 hover:opacity-90 text-white font-extrabold text-xs rounded-xl transition shadow-md shadow-blue-500/10 dynamic-bg">
+                            Mulai Kustomisasi Instagram Like
                         </button>
                     </div>
                 `;
-                
-                card.innerHTML = detailsHtml;
-                packagesGrid.appendChild(card);
+            }
+            else if (serviceKey === 'wa_followers_global') {
+                renderDirectPackageGrid("Pengikut Whatsapp Global 🌏", SMM_DATA.whatsapp.followers, "Followers", 10, 50000, 80);
+            }
+        }
+
+        function renderDirectPackageGrid(title, dbList, unit, minQty, maxQty, rate) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            dbList.forEach(item => {
+                grid.innerHTML += `
+                    <div onclick="selectFinalProduct('smm', '${title.toLowerCase().replace(/ /g, '_')}', '${title} (${item.qty} ${unit})', ${item.price})" class="border border-slate-100 rounded-2xl p-4 hover:border-blue-500 hover:bg-slate-50/50 cursor-pointer transition bg-white shadow-sm flex justify-between items-center group">
+                        <div>
+                            <h5 class="font-extrabold text-xs text-slate-800 group-hover:text-blue-600 transition dynamic-text">${item.qty} ${unit}</h5>
+                            <p class="text-[9px] text-slate-400 mt-0.5">Proses kilat &amp; aman</p>
+                        </div>
+                        <span class="text-blue-600 font-black text-xs dynamic-text">${formatIDR(item.price)}</span>
+                    </div>
+                `;
             });
 
-            containerPackages.classList.remove('hidden');
-            containerPackages.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            grid.innerHTML += `
+                <div onclick="activateCustomPricing('${title}', ${minQty}, ${maxQty}, ${rate}, '${unit}')" class="border-2 border-dashed border-slate-200 rounded-2xl p-4 hover:border-blue-500 bg-slate-50/40 hover:bg-white cursor-pointer transition flex justify-between items-center group col-span-full">
+                    <div>
+                        <h5 class="font-extrabold text-xs text-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> JUMLAH LAIN? CHAT ADMIN</h5>
+                        <p class="text-[9px] text-slate-400 mt-0.5">Bebas ketik jumlah order Anda sendiri</p>
+                    </div>
+                    <span class="text-xxs font-bold text-slate-400">MULAI KUSTOM <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                </div>
+            `;
         }
 
-        // Buka Modal Detail Transaksi & Set Up defaultnya
-        function handleSelectPack(productName, packQty, price, isCustom, customLabel) {
-            currentProductName = productName;
-            currentProductPack = packQty;
-            currentProductPrice = price;
-            isPackageCustom = isCustom;
-            isInstagramFollower = (activePlatform === 'instagram' && activeCategoryKey.includes('followers'));
+        // =========================================================================
+        // 7. AKTIVASI SELEKSI FINAL PRODUK & TAMPILAN RESUME PEMESANAN DENGAN JELAS
+        // =========================================================================
+        function selectFinalProduct(type, id, name, price) {
+            currentSelectedProduct = { type, id, name, price, isCustom: false };
 
-            openModal(productName, price, 'smm', isInstagramFollower, isCustom, customLabel);
-        }
+            // Update resume ringkasan produk di Step 3
+            document.getElementById('summaryProductName').innerText = name;
+            document.getElementById('summaryProductPrice').innerText = formatIDR(price);
 
-        // Integrasi Tombol Beli Khusus ALL FILE (Untuk deteksi harga promo terupdate)
-        function handlePurchaseAllFile(productName, priceElementId) {
-            const activePriceText = document.getElementById(priceElementId).textContent;
-            currentProductPack = "Lisensi File Utama";
-            openModal(productName, activePriceText, 'all-file', false, false, '');
-        }
-
-        // Buka Popup Modal & Set Timer 2 Jam
-        function openModal(name, price, type, isIG = false, isCustom = false, customLabel = '') {
-            currentOrderType = type;
-            currentProductName = name;
-            currentProductPrice = price;
-
-            document.getElementById('modal-product-name').textContent = name;
-            document.getElementById('modal-product-pack').textContent = currentProductPack;
-            document.getElementById('modal-product-price').textContent = price;
-
-            const targetContainer = document.getElementById('target-input-container');
-            const customAmountContainer = document.getElementById('custom-amount-container');
-            const igWarning = document.getElementById('ig-warning-note');
+            // Reset input kustom
+            document.getElementById('customQtyContainer').classList.add('hidden');
             
-            // Reset input target, custom amount, & start QRIS Timer
-            document.getElementById('target-link').value = '';
-            document.getElementById('input-custom-amount').value = '';
-            
-            startQrisTimer(7200); // 2 jam = 7200 detik
+            const targetContainer = document.getElementById('targetFieldContainer');
+            const targetLabel = document.getElementById('targetLabelText');
 
-            if (type === 'smm') {
-                targetContainer.classList.remove('hidden');
-                igWarning.classList.toggle('hidden', !isIG);
-                
-                if (isCustom) {
-                    customAmountContainer.classList.remove('hidden');
-                    document.getElementById('label-custom-amount').textContent = customLabel;
-                } else {
-                    customAmountContainer.classList.add('hidden');
-                }
-            } else {
+            if (type === 'ff') {
                 targetContainer.classList.add('hidden');
-                customAmountContainer.classList.add('hidden');
-                igWarning.classList.add('hidden');
-            }
-
-            const modal = document.getElementById('orderModal');
-            const container = document.getElementById('modalContainer');
-            
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                container.classList.remove('scale-95');
-                container.classList.add('scale-100');
-            }, 10);
-        }
-
-        // Start QRIS Countdown Timer (2 jam)
-        function startQrisTimer(duration) {
-            stopQrisTimer(); // clear any existing interval
-            let timer = duration;
-            const display = document.getElementById('qris-timer');
-
-            function tick() {
-                let hours = parseInt(timer / 3600, 10);
-                let minutes = parseInt((timer % 3600) / 60, 10);
-                let seconds = parseInt(timer % 60, 10);
-
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = hours + ":" + minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    display.textContent = "EXPIRED";
-                    stopQrisTimer();
-                }
-            }
-
-            tick();
-            countdownInterval = setInterval(tick, 1000);
-        }
-
-        function stopQrisTimer() {
-            if (countdownInterval) {
-                clearInterval(countdownInterval);
-                countdownInterval = null;
-            }
-        }
-
-        // Tutup Popup Modal
-        function closeModal() {
-            const modal = document.getElementById('orderModal');
-            const container = document.getElementById('modalContainer');
-            
-            container.classList.remove('scale-100');
-            container.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                stopQrisTimer();
-            }, 150);
-        }
-
-        // Toggle Accordion FAQ
-        function toggleFAQ(index) {
-            const content = document.getElementById(`faq-content-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.add('rotate-180');
+            } else if (type === 'minecraft') {
+                targetContainer.classList.remove('hidden');
+                targetLabel.innerHTML = 'Alamat Email Microsoft / Akun Minecraft <span class="text-rose-500">*</span>';
             } else {
-                content.classList.add('hidden');
-                icon.classList.remove('rotate-180');
+                targetContainer.classList.remove('hidden');
+                targetLabel.innerHTML = 'Target / Link Username Akun <span class="text-rose-500">*</span>';
+            }
+
+            // Update UI Harga Final
+            document.getElementById('finalPriceLabel').innerText = formatIDR(price);
+
+            const formPanel = document.getElementById('purchaseFormPanel');
+            formPanel.classList.remove('hidden');
+            formPanel.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function activateCustomPricing(title, min, max, ratePerItem, unit) {
+            currentSelectedProduct = { 
+                type: 'smm_custom', 
+                id: title.toLowerCase().replace(/ /g, '_'), 
+                name: title, 
+                price: 0, 
+                isCustom: true,
+                min,
+                max,
+                rate: ratePerItem,
+                unit
+            };
+
+            // Update resume ringkasan produk di Step 3
+            document.getElementById('summaryProductName').innerText = `${title} (Kustom Jumlah)`;
+            document.getElementById('summaryProductPrice').innerText = "Menghitung Harga...";
+
+            // Setup custom input
+            document.getElementById('customQtyContainer').classList.remove('hidden');
+            document.getElementById('customQtyLimits').innerText = `Batas jumlah pembelian: minimal ${min.toLocaleString()} dan maksimal ${max.toLocaleString()} ${unit}`;
+            document.getElementById('customQtyInput').value = '';
+            
+            const targetContainer = document.getElementById('targetFieldContainer');
+            targetContainer.classList.remove('hidden');
+            document.getElementById('targetLabelText').innerHTML = 'Target / Link Username Akun <span class="text-rose-500">*</span>';
+
+            document.getElementById('finalPriceLabel').innerText = "Tanyakan Harga";
+
+            const formPanel = document.getElementById('purchaseFormPanel');
+            formPanel.classList.remove('hidden');
+            formPanel.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calculateCustomPrice() {
+            if (!currentSelectedProduct || !currentSelectedProduct.isCustom) return;
+
+            const inputVal = parseInt(document.getElementById('customQtyInput').value);
+            const labelPrice = document.getElementById('finalPriceLabel');
+            const summaryPrice = document.getElementById('summaryProductPrice');
+
+            if (!inputVal || inputVal < currentSelectedProduct.min || inputVal > currentSelectedProduct.max) {
+                labelPrice.innerText = "Tanyakan Harga";
+                summaryPrice.innerText = "Tanyakan Harga";
+                return;
+            }
+
+            const calculatedPrice = Math.round(inputVal * currentSelectedProduct.rate);
+            currentSelectedProduct.price = calculatedPrice;
+            labelPrice.innerText = formatIDR(calculatedPrice);
+            summaryPrice.innerText = formatIDR(calculatedPrice);
+        }
+
+        // ============================================
+        // 8. PROSES PEMBAYARAN & SINKRONISASI WHATSAPP
+        // ============================================
+        function handleCheckout() {
+            const bName = document.getElementById('buyerNameInput').value;
+            const bWa = document.getElementById('buyerWaInput').value;
+            const bTarget = document.getElementById('buyerTargetInput').value;
+
+            if (!currentSelectedProduct) {
+                return triggerWarningModal("Layanan Belum Dipilih", "Silakan pilih salah satu kategori utama dan layanan/produk terlebih dahulu sebelum melanjutkan!");
+            }
+
+            // STRIKT VALIDASI FORM NAMA DAN WHATSAPP (MANDATORY POPUP WARNING)
+            if (!bName || bName.trim() === "") {
+                return triggerWarningModal("Nama Pembeli Kosong", "Mohon isi nama lengkap Anda pada kolom yang tersedia sebelum memproses pesanan!");
+            }
+            if (!bWa || bWa.trim() === "") {
+                return triggerWarningModal("Nomor WA Kosong", "Mohon masukkan nomor WhatsApp aktif Anda agar admin dapat menghubungi Anda!");
+            }
+
+            // Validasi field target kecuali kategori Free Fire
+            if (currentSelectedCategory !== 'ff' && (!bTarget || bTarget.trim() === "")) {
+                return triggerWarningModal("Target Pesanan Kosong", "Mohon isi tautan / username akun target sosial media Anda terlebih dahulu!");
+            }
+
+            // Validasi custom quantity jika ada
+            if (currentSelectedProduct.isCustom) {
+                const customQty = parseInt(document.getElementById('customQtyInput').value);
+                if (!customQty || customQty < currentSelectedProduct.min || customQty > currentSelectedProduct.max) {
+                    return triggerWarningModal("Jumlah Tidak Valid", `Mohon masukkan jumlah pemesanan antara ${currentSelectedProduct.min.toLocaleString()} s/d ${currentSelectedProduct.max.toLocaleString()}!`);
+                }
+                currentSelectedProduct.finalQty = customQty;
+            }
+
+            // Validasi Stok Minecraft Ori
+            if (currentSelectedProduct.id === 'mc_ori') {
+                if (window.minecraftStock <= 0) {
+                    return triggerWarningModal("Stok Habis", "Mohon maaf, stok aplikasi Minecraft Ori PlayStore sedang kosong!");
+                }
+            }
+
+            // Simpan Data Sementara di State
+            currentSelectedProduct.buyerName = bName;
+            currentSelectedProduct.buyerWa = bWa;
+            currentSelectedProduct.buyerTarget = bTarget;
+
+            // QRIS Otomatis dijalankan secara langsung
+            if (!currentSelectedProduct.isCustom) {
+                openQrisModal();
+            } else {
+                // Untuk custom order, arahkan ke admin via WA langsung guna mengonfirmasi ketersediaan harga kustom
+                sendOrderToWhatsApp("Manual/Tanya Admin");
             }
         }
 
-        // Kirim Order via WhatsApp API
-        document.getElementById('btn-submit-order').addEventListener('click', function() {
-            const adminPhone = "6285816148963";
-            let message = "";
+        // QRIS Pop up Timer Logic
+        function openQrisModal() {
+            document.getElementById('qrisProductName').innerText = currentSelectedProduct.name;
+            document.getElementById('qrisProductPrice').innerText = formatIDR(currentSelectedProduct.price);
+            document.getElementById('qrisModal').classList.remove('hidden');
 
-            if (currentOrderType === 'smm') {
-                const targetVal = document.getElementById('target-link').value.trim();
-                if (!targetVal) {
-                    showToast('Harap isi Target atau Username Sosmed!');
-                    return;
+            let timerSecs = 2 * 60 * 60; // 2 Jam
+            const timerText = document.getElementById('qrisTimerText');
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                let h = Math.floor(timerSecs / 3600);
+                let m = Math.floor((timerSecs % 3600) / 60);
+                let s = timerSecs % 60;
+
+                h = h < 10 ? '0' + h : h;
+                m = m < 10 ? '0' + m : m;
+                s = s < 10 ? '0' + s : s;
+
+                timerText.innerText = `${h}:${m}:${s}`;
+
+                if (--timerSecs < 0) {
+                    clearInterval(timerInterval);
+                    alert("Waktu pembayaran QRIS telah habis!");
+                    document.getElementById('qrisModal').classList.add('hidden');
                 }
+            }, 1000);
+        }
 
-                let finalPack = currentProductPack;
-                let finalPrice = currentProductPrice;
+        function confirmQrisPayment() {
+            clearInterval(timerInterval);
+            document.getElementById('qrisModal').classList.add('hidden');
+            sendOrderToWhatsApp("Lunas (QRIS Otomatis)");
+        }
 
-                if (isPackageCustom) {
-                    const customAmountVal = document.getElementById('input-custom-amount').value.trim();
-                    if (!customAmountVal) {
-                        showToast('Harap masukkan jumlah kuantitas pesanan kustom!');
-                        return;
-                    }
-                    finalPack = `${customAmountVal} unit (Jumlah Kustom)`;
-                    finalPrice = "Tanyakan harga ke admin";
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        // KIRIM PESAN STRUK KE WHATSAPP ADMIN
+        function sendOrderToWhatsApp(paymentStatus) {
+            let message = `*PESANAN BARU - PIDZSTORE*\n`;
+            message += `-------------------------------------------\n`;
+            message += `👤 Nama Pembeli: ${currentSelectedProduct.buyerName}\n`;
+            message += `📱 No. WhatsApp: ${currentSelectedProduct.buyerWa}\n`;
+            message += `📦 Layanan/Produk: ${currentSelectedProduct.name}\n`;
+
+            if (currentSelectedProduct.isCustom) {
+                message += `🔢 Jumlah Kustom: ${currentSelectedProduct.finalQty} ${currentSelectedProduct.unit}\n`;
+            }
+
+            if (currentSelectedCategory !== 'ff') {
+                message += `🎯 Target/Link: ${currentSelectedProduct.buyerTarget}\n`;
+            }
+
+            const displayPrice = currentSelectedProduct.isCustom && currentSelectedProduct.price === 0 
+                ? "Tanyakan ke Admin" 
+                : formatIDR(currentSelectedProduct.price);
+            
+            message += `💰 Total Harga: ${displayPrice}\n`;
+            message += `💳 Status Pembayaran: ${paymentStatus}\n`;
+            message += `-------------------------------------------\n`;
+            message += `_Mohon segera diproses ya Kak!_`;
+
+            // Kurangi stok Minecraft secara Global di Firestore jika membeli Minecraft
+            if (currentSelectedProduct.id === 'mc_ori') {
+                if (typeof window.decreaseMinecraftStockDb === 'function') {
+                    window.decreaseMinecraftStockDb();
                 }
+            }
 
-                message = `Halo Admin PidzStore,\n\nSaya ingin memesan Layanan Suntik Sosmed:\n`;
-                message += `*Platform:* ${activePlatform.toUpperCase()}\n`;
-                message += `*Kategori:* ${currentProductName}\n`;
-                message += `*Paket:* ${finalPack}\n`;
-                message += `*Target:* ${targetVal}\n`;
-                message += `*Metode Bayar:* QRIS Instan (Bukti transfer dilampirkan)\n`;
-                message += `*Estimasi Harga:* ${finalPrice}\n\n`;
+            // Simpan ke riwayat transaksi lokal browser
+            saveToLocalHistory(currentSelectedProduct, paymentStatus);
+
+            // Buka API Link WhatsApp
+            window.open(`https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // ============================================
+        // 9. RIWAYAT PEMBELIAN (LOCALSTORAGE)
+        // ============================================
+        function saveToLocalHistory(product, paymentStatus) {
+            const history = JSON.parse(localStorage.getItem('pidz_history')) || [];
+            history.unshift({
+                date: new Date().toLocaleString('id-ID'),
+                productName: product.name,
+                price: product.price === 0 ? "Tanya Admin" : formatIDR(product.price),
+                status: paymentStatus
+            });
+            localStorage.setItem('pidz_history', JSON.stringify(history));
+        }
+
+        function toggleHistoryModal() {
+            const modal = document.getElementById('historyModal');
+            const container = document.getElementById('historyListContainer');
+            
+            if (modal.classList.contains('hidden')) {
+                // Render List
+                container.innerHTML = '';
+                const history = JSON.parse(localStorage.getItem('pidz_history')) || [];
                 
-                if (isInstagramFollower) {
-                    message += `_Catatan: Saya sudah mematikan fitur "Laporkan untuk Ditinjau" di akun Instagram saya._\n\n`;
+                if (history.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-slate-400">
+                            <i class="fa-solid fa-folder-open text-3xl mb-2 text-slate-300"></i>
+                            <p class="text-xs font-semibold text-slate-400">Belum ada transaksi di perangkat ini</p>
+                        </div>
+                    `;
+                } else {
+                    history.forEach(item => {
+                        container.innerHTML += `
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center text-xs animate-fade-in">
+                                <div class="space-y-1">
+                                    <p class="font-extrabold text-slate-800">${item.productName}</p>
+                                    <p class="text-[10px] text-slate-400">${item.date}</p>
+                                </div>
+                                <div class="text-right space-y-1">
+                                    <p class="font-black text-blue-600 dynamic-text">${item.price}</p>
+                                    <span class="inline-block text-[9px] bg-blue-50 text-blue-600 font-extrabold px-2.5 py-0.5 rounded-full dynamic-bg-light dynamic-text">${item.status}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
                 }
-
-                message += `Saya melampirkan screenshot bukti transfer sukses QRIS bersama pesan ini. Mohon segera diproses!\n`;
+                modal.classList.remove('hidden');
             } else {
-                // Untuk ALL FILE
-                message = `Halo Admin PidzStore,\n\nSaya ingin memesan Produk Digital:\n`;
-                message += `*Nama Produk:* ${currentProductName}\n`;
-                message += `*Durasi:* Selama OB53 Free Fire\n`;
-                message += `*Metode Bayar:* QRIS Instan (Bukti transfer dilampirkan)\n`;
-                message += `*Harga:* ${currentProductPrice}\n\n`;
-                message += `Saya melampirkan screenshot bukti transfer sukses QRIS bersama pesan ini. Mohon segera kirimkan file lisensi!\n`;
-            }
-
-            const encodedMessage = encodeURIComponent(message);
-            const waUrl = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
-            
-            window.open(waUrl, '_blank');
-            closeModal();
-        });
-
-        // Close modal when click outside of container
-        window.onclick = function(event) {
-            const modal = document.getElementById('orderModal');
-            const authModal = document.getElementById('authModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-            if (event.target === authModal) {
-                closeAuthModal();
+                modal.classList.add('hidden');
             }
         }
-
-        // INIT SCRIPT ONLOAD
-        window.onload = function() {
-            // Update real-time server status initially & continuously
-            updateServerStatus();
-            setInterval(updateServerStatus, 15000);
-
-            // Shuffling buyers initially to ensure pure randomness on first load
-            shuffledBuyers = shuffleArray(buyersList);
-            shuffledItems = shuffleArray(boughtItemsList);
-
-            // Check active login session
-            checkUserSession();
-
-            // Start Live Purchase Notification Simulator
-            setTimeout(triggerLiveBuyerNotification, 1500); 
-            setInterval(triggerLiveBuyerNotification, 11000); 
-        };
     </script>
 </body>
 </html>
