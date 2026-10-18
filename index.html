@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PidzStore - Mod Menu - Uid Cantik</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=1">
+    <meta name="description" content="Pidzstore menyediakan layanan optimasi media sosial, suntik sosmed, dan kebutuhan game termurah, cepat, dan aman.">
+    <meta name="keywords" content="pidzstore, suntik sosmed, mod menu freefire, uid cantik free fire">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2.5s infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'marquee': 'marquee 22s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.8, transform: 'scale(1)' },
+                            '50%': { opacity: 1, transform: 'scale(1.04)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+        
+        /* Shimmer Banner Glow Effect */
+        .shimmer-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-glow::after {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            content: '';
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+            transform: rotate(30deg);
+            animation: shimmerEffect 4s infinite;
+        }
+        @keyframes shimmerEffect {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        /* Ambient floating lights */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: floatOrb 10s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -50px) scale(1.15); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
+
+    <!-- WELCOME SCREEN ANIMATION OVERLAY -->
+    <div id="welcome-screen" onclick="dismissWelcome()" class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center p-6 overflow-hidden cursor-pointer transition-all duration-1000">
+        <canvas id="welcome-canvas" class="absolute inset-0 z-0 pointer-events-none"></canvas>
+
+        <div class="orb w-96 h-96 bg-sky-500/30 -top-20 -left-20 animate-pulse"></div>
+        <div class="orb w-96 h-96 bg-indigo-600/30 -bottom-20 -right-20 animate-pulse delay-1000"></div>
+        <div class="orb w-80 h-80 bg-cyan-400/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="relative z-10 max-w-lg w-full text-center space-y-6 px-4 flex flex-col items-center justify-center">
+            <div class="relative group animate-float">
+                <div class="absolute -inset-4 bg-gradient-to-r from-sky-500 via-cyan-400 to-blue-600 rounded-full blur-xl opacity-75 group-hover:opacity-100 animate-pulse transition duration-1000"></div>
+                <img src="https://cdn.phototourl.com/member/2026-10-15-1b87b2c4-2a86-44cc-9efb-87469eeed529.jpg" 
+                     onerror="this.src='https://placehold.co/180x180/0284c7/fff?text=PS'" 
+                     alt="PidzStore Logo" 
+                     class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-sky-400 object-cover shadow-2xl shadow-sky-500/50 hover:scale-105 smooth-transition">
+            </div>
+
+            <div class="space-y-1 pt-2">
+                <h1 class="text-4xl sm:text-6xl font-black font-display tracking-tight text-white drop-shadow-2xl">
+                    PIDZ<span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500 animate-pulse">STORE</span>
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-300 font-medium max-w-sm mx-auto tracking-wider uppercase opacity-90">
+                    ALL PRODUK PIDZ
+                </p>
+            </div>
+
+            <div class="pt-6 flex flex-col items-center justify-center space-y-2 opacity-80 animate-pulse">
+                <span class="text-xs font-extrabold text-sky-400 uppercase tracking-widest">Sentuh layar untuk masuk</span>
+                <i class="fas fa-chevron-down text-sky-400 text-sm animate-bounce"></i>
+            </div>
+
+            <div class="flex items-center justify-center gap-6 text-xs text-slate-400 font-semibold pt-4">
+                <span class="flex items-center gap-1.5"><i class="fas fa-shield-alt text-emerald-400"></i> 100% Aman</span>
+                <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-amber-400"></i> Cepat</span>
+                <span class="flex items-center gap-1.5"><i class="fas fa-headset text-sky-400"></i> CS ON</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP RUNNING TEXT (MARQUEE ANNOUNCEMENT) -->
+    <div class="bg-slate-900 text-slate-200 text-xs font-semibold py-2.5 px-4 border-b border-slate-800 overflow-hidden relative z-30 flex items-center shadow-inner">
+        <div class="shrink-0 bg-sky-600 text-white px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider mr-3 flex items-center gap-1 shadow-md animate-pulse">
+            <i class="fas fa-bullhorn text-[9px]"></i> Info
+        </div>
+        <div class="overflow-hidden w-full relative flex items-center">
+            <div class="whitespace-nowrap animate-marquee inline-block font-medium text-slate-300">
+                Selamat datang diwebsite pidz store , jangan ragu jangan bimbang transaksi dipidz udah pasti aman, terimakasih yang telah bertransaksi di pidz store
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header class="sticky top-0 z-30 bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchView('home')">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-sky-500 rounded-full blur-xs opacity-75 group-hover:opacity-100 smooth-transition"></div>
+                    <img src="https://cdn.phototourl.com/member/2026-10-15-1b87b2c4-2a86-44cc-9efb-87469eeed529.jpg" 
+                         onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=PS'" 
+                         alt="PidzStore Logo" 
+                         class="relative w-10 h-10 rounded-full border-2 border-sky-400 object-cover shadow-sm group-hover:scale-105 smooth-transition">
+                </div>
+                <div>
+                    <h1 class="text-xl font-black font-display tracking-tight text-white leading-none">Pidz<span class="text-sky-400">Store</span></h1>
+                    <p class="text-[10px] text-slate-400 font-semibold tracking-wide">@bukaaannndapitt</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-3">
+                <a href="https://whatsapp.com/channel/0029Vb8iiv7HLHQehhIl5r0Q" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center space-x-1.5 text-xs font-bold text-emerald-400 bg-emerald-950/60 px-3.5 py-1.5 rounded-xl border border-emerald-800/80 hover:bg-emerald-900/80 smooth-transition shadow-sm hover:scale-105">
+                    <i class="fab fa-whatsapp text-sm text-emerald-400"></i>
+                    <span>Saluran Cheat</span>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb8WZbAH5JLwJzymm90G" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center space-x-1.5 text-xs font-bold text-sky-400 bg-sky-950/60 px-3.5 py-1.5 rounded-xl border border-sky-800/80 hover:bg-sky-900/80 smooth-transition shadow-sm hover:scale-105">
+                    <i class="fab fa-whatsapp text-sm text-sky-400"></i>
+                    <span>Saluran UID</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full">
+
+        <!-- VIEW 1: HOME / PRODUCTS STOREFRONT -->
+        <div id="home-view" class="space-y-6">
+
+            <!-- Banner Section -->
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 shimmer-glow group">
+                <img src="https://cdn.phototourl.com/member/2026-10-17-9f2d8a4d-4dec-43a2-b524-da8226fe356a.png" 
+                     onerror="this.src='https://placehold.co/1200x400/0284c7/ffffff?text=PidzStore+Special+Promo'" 
+                     alt="PidzStore Banner" 
+                     class="w-full h-auto object-cover max-h-[340px] group-hover:scale-102 smooth-transition">
+            </div>
+
+            <!-- WhatsApp Channels Info Cards (Mobile View) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:hidden">
+                <a href="https://whatsapp.com/channel/0029Vb8iiv7HLHQehhIl5r0Q" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3.5 bg-slate-900/90 border border-emerald-900/80 rounded-2xl hover:border-emerald-500 smooth-transition">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-extrabold text-white">Saluran Download Cheat</p>
+                            <p class="text-[10px] text-slate-400 font-medium">Update & File Mod Terbaru</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs text-emerald-400 pr-1"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb8WZbAH5JLwJzymm90G" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3.5 bg-slate-900/90 border border-sky-900/80 rounded-2xl hover:border-sky-500 smooth-transition">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-sky-500/10 text-sky-400 rounded-xl flex items-center justify-center text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-extrabold text-white">Saluran Info ID Cantik</p>
+                            <p class="text-[10px] text-slate-400 font-medium">Stok ID Langka & Murah</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs text-sky-400 pr-1"></i>
+                </a>
+            </div>
+
+            <!-- FAQ & INFO BADGE -->
+            <div class="bg-indigo-950/60 border border-indigo-800/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-white">Ingin Tahu Tentang Garansi Layanan Sosmed?</h4>
+                        <p class="text-[11px] text-slate-300">Penjelasan status "Apakah Permanen / No Drop" pada layanan kami.</p>
+                    </div>
+                </div>
+                <button onclick="showModal('permanen-info-modal')" class="shrink-0 text-xs font-extrabold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl border border-indigo-400/30 smooth-transition shadow-sm">
+                    <i class="fas fa-info-circle mr-1"></i> APAKAH PERMANEN?
+                </button>
+            </div>
+
+            <!-- Category Selection Header -->
+            <div class="pt-2">
+                <h2 class="text-base font-extrabold font-display text-white tracking-tight flex items-center gap-2">
+                    <i class="fas fa-th-large text-sky-400"></i> Pilih Kategori Produk
+                </h2>
+                <p class="text-xs text-slate-400 mt-0.5">Silahkan klik salah satu kategori di bawah ini untuk melihat daftar produk</p>
+            </div>
+
+            <!-- Category Grid -->
+            <div class="grid grid-cols-3 gap-3.5 max-w-2xl mx-auto">
+                <button onclick="selectCategory('cheat_ff')" id="cat-btn-cheat_ff" 
+                        class="category-card flex flex-col items-center p-3.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-lg hover:border-sky-500 hover:-translate-y-1 smooth-transition group relative overflow-hidden">
+                    <div class="w-14 h-14 mb-2 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 group-hover:scale-105 smooth-transition shadow-md">
+                        <img src="https://cdn.phototourl.com/member/2026-10-17-132a1ff4-8d14-49c6-b300-276a329aa926.jpg" 
+                             onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=FF'" 
+                             alt="Cheat FF" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-extrabold text-slate-200 group-hover:text-sky-400 text-center leading-tight">Cheat Free Fire</span>
+                    <span class="text-[9px] font-bold text-sky-400 bg-sky-950/80 px-2 py-0.5 rounded-full mt-1 border border-sky-800">Utama</span>
+                </button>
+
+                <button onclick="selectCategory('uid_cantik')" id="cat-btn-uid_cantik"
+                        class="category-card flex flex-col items-center p-3.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-lg hover:border-sky-500 hover:-translate-y-1 smooth-transition group relative overflow-hidden">
+                    <div class="w-14 h-14 mb-2 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 group-hover:scale-105 smooth-transition shadow-md">
+                        <img src="https://cdn.phototourl.com/member/2026-10-17-123a7371-bb9f-4047-b56d-f8ea36c6613f.jpg" 
+                             onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=UID'" 
+                             alt="UID Cantik" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-extrabold text-slate-200 group-hover:text-sky-400 text-center leading-tight">UID Cantik</span>
+                    <span class="text-[9px] font-semibold text-slate-400 mt-1 flex items-center gap-0.5">Website <i class="fas fa-external-link-alt text-[7px]"></i></span>
+                </button>
+
+                <button onclick="selectCategory('suntik_sosmed')" id="cat-btn-suntik_sosmed"
+                        class="category-card flex flex-col items-center p-3.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-lg hover:border-sky-500 hover:-translate-y-1 smooth-transition group relative overflow-hidden">
+                    <div class="w-14 h-14 mb-2 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 group-hover:scale-105 smooth-transition shadow-md">
+                        <img src="https://cdn.phototourl.com/member/2026-10-17-fe33d80a-651f-45be-a129-a554cb871fdf.png" 
+                             onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=Sosmed'" 
+                             alt="Suntik Sosmed" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-extrabold text-slate-200 group-hover:text-sky-400 text-center leading-tight">Suntik Sosmed</span>
+                    <span class="text-[9px] text-emerald-400 font-bold mt-1 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800">Aktif</span>
+                </button>
+            </div>
+
+            <!-- SEARCH BAR -->
+            <div id="search-container" class="mt-4">
+                <div class="relative max-w-xl mx-auto">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                        <i class="fas fa-search text-sm"></i>
+                    </div>
+                    <input type="text" id="product-search-input" onkeyup="handleSearchInput()" 
+                           placeholder="Cari cheat, followers tiktok, instagram like..." 
+                           class="w-full pl-10 pr-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 smooth-transition shadow-inner">
+                </div>
+            </div>
+
+            <!-- Products Section Container -->
+            <div id="products-section" class="mt-6 pt-4 border-t border-slate-800/80">
+                
+                <!-- State 0: Belum Memilih Kategori -->
+                <div id="no-category-selected" class="text-center py-14 bg-slate-900/60 rounded-2xl border border-slate-800 shadow-sm px-4">
+                    <div class="w-16 h-16 bg-sky-950/80 text-sky-400 border border-sky-800/60 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-md animate-pulse">
+                        <i class="fas fa-hand-pointer text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Silahkan Pilih Kategori Produk</h3>
+                    <p class="text-xs text-slate-400 max-w-sm mx-auto mt-1 leading-relaxed">Pilih salah satu kategori produk di atas atau gunakan bilah pencarian untuk menemukan layanan.</p>
+                </div>
+
+                <!-- State 1: Cheat FF Selected -->
+                <div id="cheat-ff-products" class="hidden space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800 shadow-sm">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-extrabold text-white"><i class="fas fa-filter text-sky-400 mr-1"></i> Filter Platform:</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <button onclick="filterPlatform('all')" id="btn-plat-all" class="platform-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-sky-500 bg-sky-600 text-white shadow-xs smooth-transition">Semua Platform</button>
+                            <button onclick="filterPlatform('android')" id="btn-plat-android" class="platform-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition"><i class="fab fa-android text-emerald-400 mr-1"></i> Android Only</button>
+                            <button onclick="filterPlatform('cross')" id="btn-plat-cross" class="platform-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition"><i class="fab fa-apple text-slate-200 mr-1"></i> Android & iOS</button>
+                        </div>
+                    </div>
+
+                    <div id="cheat-list-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                </div>
+
+                <!-- State 2: Suntik Sosmed Selected -->
+                <div id="sosmed-products" class="hidden space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800 shadow-sm">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-extrabold text-white"><i class="fas fa-layer-group text-sky-400 mr-1"></i> Platform Sosmed:</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <button onclick="filterSosmedCategory('all')" id="btn-sosmed-all" class="sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-sky-500 bg-sky-600 text-white shadow-xs smooth-transition">Semua Platform</button>
+                            <button onclick="filterSosmedCategory('tiktok')" id="btn-sosmed-tiktok" class="sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition"><i class="fab fa-tiktok text-cyan-400 mr-1"></i> TikTok</button>
+                            <button onclick="filterSosmedCategory('instagram')" id="btn-sosmed-instagram" class="sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition"><i class="fab fa-instagram text-pink-400 mr-1"></i> Instagram</button>
+                            <button onclick="filterSosmedCategory('whatsapp')" id="btn-sosmed-whatsapp" class="sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition"><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> WhatsApp</button>
+                        </div>
+                    </div>
+
+                    <div id="sosmed-list-grid" class="space-y-6"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- VIEW 2: SEPARATE PAYMENT PAGE VIEW (QRIS METODE PEMBAYARAN) -->
+        <div id="payment-view" class="hidden max-w-2xl mx-auto space-y-6 py-2">
+            
+            <button onclick="switchView('home')" class="inline-flex items-center space-x-2 text-xs font-bold text-slate-300 bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl hover:bg-slate-800 shadow-sm smooth-transition">
+                <i class="fas fa-arrow-left"></i>
+                <span>Kembali ke Produk</span>
+            </button>
+
+            <!-- Checkout Details Card -->
+            <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-2xl p-5 sm:p-6 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-[10px] font-bold text-sky-400 tracking-wider uppercase bg-sky-950 px-2.5 py-1 rounded-md border border-sky-800">Detail Pesanan</span>
+                    <h2 id="checkout-title" class="text-xl font-black font-display text-white mt-2">NAMA PRODUK</h2>
+                    <p id="checkout-duration" class="text-xs font-extrabold text-slate-400 mt-0.5">Durasi/Varian: -</p>
+                    <div class="mt-3 flex items-center justify-between bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-xs font-semibold text-slate-400">Total Pembayaran:</span>
+                        <span id="checkout-price" class="text-xl font-black text-sky-400">Rp 0</span>
+                    </div>
+                </div>
+
+                <!-- Target Input Box (Hidden for Cheat, Visible for Sosmed) -->
+                <div id="checkout-target-container" class="space-y-2 bg-slate-950 p-4 rounded-xl border border-slate-800 hidden">
+                    <label for="checkout-target" class="block text-xs font-bold text-slate-200">
+                        <i class="fas fa-link text-sky-400 mr-1"></i> Target / Link Akun:
+                    </label>
+                    <input type="text" id="checkout-target" placeholder="Contoh: https://tiktok.com/@user / https://instagram.com/p/..." 
+                           class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500">
+                    <p class="text-[10px] text-slate-400">Pastikan link / target sosmed sudah benar sebelum melanjutkan.</p>
+                </div>
+
+                <!-- QRIS Image Section -->
+                <div class="text-center space-y-3">
+                    <div class="inline-flex items-center space-x-2 bg-sky-950/80 px-3 py-1 rounded-full border border-sky-800 text-sky-400 text-xs font-extrabold">
+                        <i class="fas fa-qrcode"></i>
+                        <span>METODE PEMBAYARAN UTAMA</span>
+                    </div>
+                    <p class="text-xs font-extrabold text-white">Scan QRIS Di Bawah Ini Untuk Membayar:</p>
+                    <div class="inline-block p-3 bg-white border-2 border-slate-700 rounded-2xl shadow-lg">
+                        <img id="qris-image" src="https://cdn.phototourl.com/member/2026-10-15-7ee5cf83-8bfd-4f70-b074-f47a3f792911.jpg" 
+                             onerror="this.src='https://placehold.co/300x400/0284c7/fff?text=QRIS+PidzStore'" 
+                             alt="QRIS Pembayaran PidzStore" 
+                             class="max-w-[260px] sm:max-w-[290px] w-full h-auto mx-auto rounded-xl">
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium">Bisa di-scan menggunakan seluruh E-Wallet & Bank di Indonesia</p>
+                </div>
+
+                <!-- Supported Payment Methods Logos -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-3.5 text-center space-y-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Mendukung Pembayaran Via</span>
+                    <div class="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs font-extrabold text-slate-900">
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">DANA</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-blue-600">GOPAY</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-purple-600">OVO</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-orange-600">SHOPEEPAY</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-blue-800">BCA</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-blue-500">MANDIRI</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-emerald-600">BRI</span>
+                        <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs text-slate-800">ALL BANK/E-WALLET</span>
+                    </div>
+                </div>
+
+                <!-- Download Notice Banner -->
+                <div class="bg-amber-950/80 border-l-4 border-amber-500 p-4 rounded-r-2xl space-y-1">
+                    <div class="flex items-center space-x-2 text-amber-300 font-bold text-xs">
+                        <i class="fas fa-exclamation-triangle text-amber-400"></i>
+                        <span>PENTING! UNTUK PEMBELIAN CHEAT:</span>
+                    </div>
+                    <p class="text-xs text-amber-200 leading-relaxed font-medium">
+                        Untuk mendownload file cheat dan info update lisensi setelah pembayaran, pastikan Anda sudah bergabung di saluran resmi kami:
+                    </p>
+                    <a href="https://whatsapp.com/channel/0029Vb8iiv7HLHQehhIl5r0Q" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center space-x-1.5 text-xs font-extrabold text-amber-400 underline hover:text-amber-300 mt-1">
+                        <i class="fab fa-whatsapp text-emerald-400"></i>
+                        <span>Klik Di Sini Untuk Masuk Saluran Download Cheat</span>
+                    </a>
+                </div>
+
+                <!-- Instructions -->
+                <div class="space-y-2 text-xs text-slate-300 border-t border-slate-800 pt-4">
+                    <h4 class="font-bold text-white">Cara Pembayaran:</h4>
+                    <ol class="list-decimal list-inside space-y-1.5 pl-1 font-medium">
+                        <li>Buka aplikasi E-Wallet (DANA, GoPay, OVO, LinkAja) atau M-Banking Anda.</li>
+                        <li>Pilih menu <b>Scan / Pay QRIS</b>.</li>
+                        <li>Scan gambar QRIS di atas atau upload tangkapan layar QRIS ini.</li>
+                        <li>Masukkan nominal persis: <b id="checkout-exact-price" class="text-sky-400">Rp 0</b>.</li>
+                        <li>Selesaikan transaksi hingga pembayaran Berhasil.</li>
+                        <li>Simpan bukti transfer dan klik tombol <b>Konfirmasi Via WhatsApp</b> di bawah.</li>
+                    </ol>
+                </div>
+
+                <!-- WA Confirmation Button -->
+                <button onclick="confirmOrderWhatsApp()" 
+                        class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold rounded-xl shadow-lg flex items-center justify-center space-x-2 smooth-transition text-sm">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Konfirmasi Pembayaran via WhatsApp</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL 1: VARIANT SELECTOR MODAL -->
+    <div id="product-variant-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-slate-900 rounded-2xl max-w-md w-full p-5 sm:p-6 space-y-4 shadow-2xl border border-slate-800 transform transition-all scale-100 max-h-[90vh] overflow-y-auto">
+            
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center space-x-3">
+                    <img id="modal-product-logo" src="" alt="Product Logo" class="w-10 h-10 rounded-xl object-cover border border-slate-700">
+                    <div>
+                        <h3 id="modal-product-name" class="text-sm font-extrabold text-white leading-tight">PRODUCT NAME</h3>
+                        <span id="modal-product-badge" class="text-[9px] font-bold px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">
+                            Android & iOS
+                        </span>
+                    </div>
+                </div>
+                <button onclick="closeVariantModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- INSTAGRAM WARNING BANNER -->
+            <div id="ig-warning-banner" class="hidden bg-rose-950/90 border border-rose-700 p-3.5 rounded-xl space-y-1.5 text-xs text-rose-200">
+                <div class="font-extrabold text-rose-300 flex items-center gap-1.5">
+                    <i class="fas fa-exclamation-circle text-rose-400"></i> Baca Sebelum Beli Followers Instagram!
+                </div>
+                <p class="text-[11px] font-medium leading-relaxed">
+                    Instruksi berikut harus ikuti secara ketat untuk mencegah <b>Flag of Review / Spam Followers</b>:
+                </p>
+                <ol class="list-decimal list-inside text-[10px] space-y-0.5 text-rose-100 font-medium">
+                    <li>Buka Pengaturan/Setting Akun IG.</li>
+                    <li>Pilih opsi "Ikuti dan Undang Teman".</li>
+                    <li><b>Nonaktifkan</b> fitur "Laporkan untuk Ditinjau".</li>
+                </ol>
+            </div>
+
+            <div>
+                <p id="modal-variant-heading" class="text-xs font-extrabold text-slate-200 mb-2">Pilih Jumlah / Paket / Harga:</p>
+                <div id="modal-variant-list" class="space-y-2 max-h-[260px] overflow-y-auto pr-1">
+                </div>
+            </div>
+
+            <!-- CUSTOM QUANTITY INPUT -->
+            <div id="custom-quantity-container" class="hidden border-t border-slate-800 pt-3 space-y-2">
+                <p id="custom-qty-title" class="text-xs font-extrabold text-amber-400"><i class="fas fa-edit mr-1"></i> Jumlah Lain?</p>
+                <p id="custom-qty-desc" class="text-[10px] text-slate-400">Isi dibawah sini, lalu kirim dan tanyakan harga ke admin</p>
+                <div class="space-y-2 pt-1">
+                    <input type="number" id="custom-qty-input" placeholder="Masukkan jumlah..." 
+                           class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <input type="text" id="custom-target-input" placeholder="Target / Username / Link Akun..." 
+                           class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <button onclick="orderCustomQuantityWA()" class="w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-black text-xs rounded-xl smooth-transition shadow-md">
+                        <i class="fab fa-whatsapp mr-1"></i> Kirim & Tanyakan Harga ke Admin
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="closeVariantModal()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-extrabold text-xs rounded-xl smooth-transition">
+                Batal
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: APAKAH PERMANEN INFO MODAL -->
+    <div id="permanen-info-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-slate-900 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-slate-800 transform transition-all scale-100">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-sky-400"></i> Informasi Garansi & Status Permanen
+                </h3>
+                <button onclick="closeModal('permanen-info-modal')" class="text-slate-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3 text-xs text-slate-300 font-medium leading-relaxed max-h-[60vh] overflow-y-auto pr-1">
+                <p class="font-bold text-sky-300">
+                    Banyak yang sering tanya, "Ini beneran permanen gak?" atau "Kok masih turun padahal tulisannya No Drop?". Yuk, disimak bentar biar nggak salah paham sebelum order:
+                </p>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
+                    <p class="font-bold text-amber-400">1. Gak Ada yang 100% Abadi:</p>
+                    <p class="text-[11px] text-slate-400">
+                        Di dunia SMM, istilah "Permanen" atau "No Drop" itu sifatnya estimasi. Kenapa? Karena Instagram, TikTok, dan sosmed lainnya rutin melakukan pembersihan akun bot/fake secara otomatis.
+                    </p>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
+                    <p class="font-bold text-amber-400">2. Pilihan di Tangan Anda:</p>
+                    <p class="text-[11px] text-slate-400">
+                        Kami gak mau kasih janji manis atau promosi jebakan. Kalau kamu ragu atau belum siap dengan risiko drop, sangat disarankan untuk tidak melakukan order. Kami lebih menghargai kejujuran di awal daripada komplain di akhir.
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="closeModal('permanen-info-modal')" class="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl smooth-transition">
+                Saya Mengerti
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="font-bold text-slate-400">PidzStore &copy; 2026 - Official  Store</p>
+            <p class="text-[11px] text-slate-600">Layanan Transaksi  Terpercaya, dan Berkualitas</p>
+        </div>
+    </footer>
+
+    <script>
+        const WA_ADMIN_NUMBER = "6285141631493";
+
+        const LOGO_MAP = {
+            AIM_HACK: "https://cdn.phototourl.com/member/2026-10-17-181b4bf8-86bf-4801-a52b-d5509fd85a33.jpg",
+            HG_CHEATS: "https://cdn.phototourl.com/member/2026-10-17-5597520a-546c-4984-991d-137826dcd51e.jpg",
+            PINZ_EXTERNAL: "https://cdn.phototourl.com/member/2026-10-17-db4ae92c-3e40-40f1-91ce-380ac938b44b.jpg",
+            PINZ_PROXY: "https://cdn.phototourl.com/member/2026-10-17-db4ae92c-3e40-40f1-91ce-380ac938b44b.jpg",
+            SILENT_CHEATS: "https://cdn.phototourl.com/member/2026-10-17-0269d645-7636-44c4-9041-61be1ebef0b1.jpg",
+            XREG: "https://cdn.phototourl.com/member/2026-10-17-124676e4-9b83-4a83-8238-303d43295626.jpg",
+            DRIP_CLIENT: "https://cdn.phototourl.com/member/2026-10-17-67f6162b-66dc-4019-95a2-4c832d8cedc5.jpg",
+            TIKTOK_ICON: "https://cdn.phototourl.com/member/2026-10-17-fe33d80a-651f-45be-a129-a554cb871fdf.png",
+            IG_ICON: "https://cdn.phototourl.com/member/2026-10-17-fe33d80a-651f-45be-a129-a554cb871fdf.png",
+            WA_ICON: "https://cdn.phototourl.com/member/2026-10-17-fe33d80a-651f-45be-a129-a554cb871fdf.png"
+        };
+
+        const CHEAT_PRODUCTS = [
+            {
+                id: "aimhack",
+                name: "AIM HACK FF NO ROOT",
+                logo: LOGO_MAP.AIM_HACK,
+                isCrossPlatform: true,
+                packages: [
+                    { duration: "1 JAM", price: "7.000" },
+                    { duration: "3 JAM", price: "11.000" },
+                    { duration: "6 JAM", price: "13.800" },
+                    { duration: "12 JAM", price: "17.000" },
+                    { duration: "1 DAY", price: "24.000" },
+                    { duration: "7 DAY", price: "70.000" }
+                ]
+            },
+            {
+                id: "drip_client",
+                name: "DRIP CLIENT FF NO ROOT",
+                logo: LOGO_MAP.DRIP_CLIENT,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "10.000" },
+                    { duration: "3 DAY", price: "25.000" },
+                    { duration: "7 DAY", price: "40.000" },
+                    { duration: "30 DAY", price: "95.000" }
+                ]
+            },
+            {
+                id: "drip_proxy",
+                name: "DRIP PROXY NO ROOT",
+                logo: LOGO_MAP.DRIP_CLIENT,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "13.000" },
+                    { duration: "3 DAY", price: "22.000" },
+                    { duration: "7 DAY", price: "40.000" },
+                    { duration: "30 DAY", price: "95.000" }
+                ]
+            },
+            {
+                id: "drip_wire",
+                name: "DRIP WIRE FF NO ROOT",
+                logo: LOGO_MAP.DRIP_CLIENT,
+                isCrossPlatform: true,
+                packages: [
+                    { duration: "6 JAM", price: "10.000" },
+                    { duration: "12 JAM", price: "13.000" },
+                    { duration: "1 DAY", price: "18.000" },
+                    { duration: "7 DAY", price: "65.000" }
+                ]
+            },
+            {
+                id: "hg_cheats",
+                name: "HG CHEATS FF NO ROOT",
+                logo: LOGO_MAP.HG_CHEATS,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "14.250" },
+                    { duration: "7 DAY", price: "35.000" },
+                    { duration: "10 DAY", price: "40.000" },
+                    { duration: "30 DAY", price: "90.000" }
+                ]
+            },
+            {
+                id: "pinz_external",
+                name: "PINZX EXTERNAL FF NO ROOT",
+                logo: LOGO_MAP.PINZ_EXTERNAL,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "8.000" },
+                    { duration: "3 DAY", price: "14.000" },
+                    { duration: "7 DAY", price: "25.000" },
+                    { duration: "15 DAY", price: "35.000" },
+                    { duration: "31 DAY", price: "55.000" }
+                ]
+            },
+            {
+                id: "pinz_proxy",
+                name: "PINZX PROXY FF NO ROOT",
+                logo: LOGO_MAP.PINZ_PROXY,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "5.000" },
+                    { duration: "3 DAY", price: "12.000" },
+                    { duration: "7 DAY", price: "18.500" },
+                    { duration: "15 DAY", price: "28.000" },
+                    { duration: "31 DAY", price: "45.000" }
+                ]
+            },
+            {
+                id: "silent_cheats",
+                name: "SILENT CHEATS FF NO ROOT",
+                logo: LOGO_MAP.SILENT_CHEATS,
+                isCrossPlatform: false,
+                packages: [
+                    { duration: "1 DAY", price: "15.500" },
+                    { duration: "3 DAY", price: "25.000" },
+                    { duration: "7 DAY", price: "55.000" },
+                    { duration: "14 DAY", price: "85.000" },
+                    { duration: "28 DAY", price: "130.000" }
+                ]
+            },
+            {
+                id: "xreg",
+                name: "XREG FF NO ROOT",
+                logo: LOGO_MAP.XREG,
+                isCrossPlatform: true,
+                packages: [
+                    { duration: "1 JAM", price: "8.000" },
+                    { duration: "3 JAM", price: "11.000" },
+                    { duration: "6 JAM", price: "13.000" },
+                    { duration: "12 JAM", price: "17.000" },
+                    { duration: "1 DAY", price: "20.000" }
+                ]
+            }
+        ];
+
+        const SOSMED_PRODUCTS = [
+            {
+                id: "tt_followers_id",
+                name: "Followers TikTok Indonesia 🇮🇩",
+                logo: LOGO_MAP.TIKTOK_ICON,
+                packages: [
+                    { duration: "50 Followers", price: "5.130" },
+                    { duration: "100 Followers", price: "10.260" },
+                    { duration: "150 Followers", price: "13.389" },
+                    { duration: "200 Followers", price: "15.519" },
+                    { duration: "250 Followers", price: "19.649" },
+                    { duration: "300 Followers", price: "22.779" },
+                    { duration: "350 Followers", price: "24.908" },
+                    { duration: "400 Followers", price: "28.038" },
+                    { duration: "450 Followers", price: "32.168" },
+                    { duration: "500 Followers", price: "35.298" },
+                    { duration: "550 Followers", price: "38.427" },
+                    { duration: "600 Followers", price: "41.557" },
+                    { duration: "650 Followers", price: "44.687" },
+                    { duration: "700 Followers", price: "47.817" },
+                    { duration: "750 Followers", price: "50.945" },
+                    { duration: "800 Followers", price: "54.076" }
+                ]
+            },
+            {
+                id: "tt_followers_global",
+                name: "Followers TikTok Luar 🌏",
+                logo: LOGO_MAP.TIKTOK_ICON,
+                packages: [
+                    { duration: "50 Followers", price: "4.322" },
+                    { duration: "100 Followers", price: "7.644" },
+                    { duration: "150 Followers", price: "9.965" },
+                    { duration: "200 Followers", price: "12.287" },
+                    { duration: "250 Followers", price: "14.609" },
+                    { duration: "300 Followers", price: "16.931" },
+                    { duration: "350 Followers", price: "19.253" },
+                    { duration: "400 Followers", price: "22.574" },
+                    { duration: "450 Followers", price: "24.896" },
+                    { duration: "500 Followers", price: "26.218" },
+                    { duration: "550 Followers", price: "29.540" },
+                    { duration: "600 Followers", price: "32.862" },
+                    { duration: "650 Followers", price: "35.183" },
+                    { duration: "700 Followers", price: "36.505" },
+                    { duration: "750 Followers", price: "38.837" },
+                    { duration: "800 Followers", price: "41.149" },
+                    { duration: "850 Followers", price: "44.471" },
+                    { duration: "900 Followers", price: "46.179" },
+                    { duration: "950 Followers", price: "48.114" },
+                    { duration: "1000 Followers", price: "51.436" }
+                ]
+            },
+            {
+                id: "tt_like_id",
+                name: "TikTok Like Indonesia 🇮🇩",
+                logo: LOGO_MAP.TIKTOK_ICON,
+                packages: [
+                    { duration: "100 Like", price: "5.510" },
+                    { duration: "150 Like", price: "6.265" },
+                    { duration: "200 Like", price: "9.020" },
+                    { duration: "250 Like", price: "11.755" },
+                    { duration: "300 Like", price: "13.530" },
+                    { duration: "350 Like", price: "15.285" },
+                    { duration: "400 Like", price: "17.040" },
+                    { duration: "450 Like", price: "18.759" },
+                    { duration: "500 Like", price: "20.550" },
+                    { duration: "550 Like", price: "22.305" },
+                    { duration: "600 Like", price: "24.060" },
+                    { duration: "650 Like", price: "26.815" },
+                    { duration: "700 Like", price: "28.570" },
+                    { duration: "750 Like", price: "30.325" },
+                    { duration: "800 Like", price: "32.080" },
+                    { duration: "850 Like", price: "34.835" },
+                    { duration: "900 Like", price: "36.590" },
+                    { duration: "950 Like", price: "38.345" },
+                    { duration: "1.000 Like", price: "40.100" }
+                ]
+            },
+            {
+                id: "tt_like_global",
+                name: "TikTok Like Luar 🌏",
+                logo: LOGO_MAP.TIKTOK_ICON,
+                packages: [
+                    { duration: "40 Like", price: "250 Perak" },
+                    { duration: "50 Like", price: "340 Perak" },
+                    { duration: "100 Like", price: "470 Perak" },
+                    { duration: "150 Like", price: "560 Perak" },
+                    { duration: "200 Like", price: "680 Perak" },
+                    { duration: "250 Like", price: "800 Perak" },
+                    { duration: "300 Like", price: "1.000" },
+                    { duration: "1.000 Like", price: "6.122" },
+                    { duration: "5.000 Like", price: "20.610" },
+                    { duration: "10.000 Like", price: "36.220" }
+                ]
+            },
+            {
+                id: "ig_followers_id",
+                name: "Followers Instagram Indonesia 🇮🇩",
+                logo: LOGO_MAP.IG_ICON,
+                isInstagram: true,
+                hasCustomQty: true,
+                minCustomQty: 100,
+                maxCustomQty: 10000,
+                packages: [
+                    { duration: "100 Followers", price: "7.716" },
+                    { duration: "150 Followers", price: "9.000" },
+                    { duration: "200 Followers", price: "14.000" },
+                    { duration: "250 Followers", price: "18.000" },
+                    { duration: "300 Followers", price: "22.149" },
+                    { duration: "350 Followers", price: "25.000" },
+                    { duration: "400 Followers", price: "27.000" },
+                    { duration: "450 Followers", price: "30.000" },
+                    { duration: "500 Followers", price: "33.000" },
+                    { duration: "550 Followers", price: "37.000" },
+                    { duration: "600 Followers", price: "41.000" },
+                    { duration: "650 Followers", price: "43.000" },
+                    { duration: "700 Followers", price: "45.000" },
+                    { duration: "750 Followers", price: "48.000" },
+                    { duration: "800 Followers", price: "52.000" },
+                    { duration: "850 Followers", price: "55.000" },
+                    { duration: "900 Followers", price: "58.000" },
+                    { duration: "950 Followers", price: "62.000" },
+                    { duration: "1000 Followers", price: "65.000" }
+                ]
+            },
+            {
+                id: "ig_followers_global",
+                name: "Followers Instagram Luar 🌏",
+                logo: LOGO_MAP.IG_ICON,
+                isInstagram: true,
+                hasCustomQty: true,
+                minCustomQty: 100,
+                maxCustomQty: 5000000,
+                packages: [
+                    { duration: "50 Followers", price: "6.281" },
+                    { duration: "100 Followers", price: "8.562" },
+                    { duration: "150 Followers", price: "10.842" },
+                    { duration: "200 Followers", price: "13.123" },
+                    { duration: "250 Followers", price: "15.404" },
+                    { duration: "300 Followers", price: "17.685" },
+                    { duration: "350 Followers", price: "19.965" },
+                    { duration: "400 Followers", price: "23.246" },
+                    { duration: "450 Followers", price: "24.527" },
+                    { duration: "500 Followers", price: "30.808" },
+                    { duration: "550 Followers", price: "31.088" },
+                    { duration: "600 Followers", price: "32.369" },
+                    { duration: "650 Followers", price: "34.650" },
+                    { duration: "700 Followers", price: "36.931" },
+                    { duration: "750 Followers", price: "38.211" },
+                    { duration: "800 Followers", price: "41.492" },
+                    { duration: "850 Followers", price: "42.773" },
+                    { duration: "900 Followers", price: "46.054" },
+                    { duration: "950 Followers", price: "48.334" },
+                    { duration: "1000 Followers", price: "50.615" }
+                ]
+            },
+            {
+                id: "ig_like",
+                name: "Instagram Like ❤️",
+                logo: LOGO_MAP.IG_ICON,
+                isInstagram: true,
+                isCustomOnly: true,
+                minCustomQty: 10,
+                maxCustomQty: 500000,
+                packages: []
+            },
+            {
+                id: "wa_followers_global",
+                name: "Pengikut Whatsapp Global 🌏",
+                logo: LOGO_MAP.WA_ICON,
+                packages: [
+                    { duration: "50 Followers", price: "440 Perak" },
+                    { duration: "100 Followers", price: "880 Perak" },
+                    { duration: "150 Followers", price: "920 Perak" },
+                    { duration: "200 Followers", price: "2.961" },
+                    { duration: "250 Followers", price: "2.999" },
+                    { duration: "300 Followers", price: "3.441" },
+                    { duration: "350 Followers", price: "3.980" },
+                    { duration: "400 Followers", price: "4.450" },
+                    { duration: "450 Followers", price: "5.161" },
+                    { duration: "500 Followers", price: "5.402" },
+                    { duration: "550 Followers", price: "5.642" },
+                    { duration: "600 Followers", price: "5.980" },
+                    { duration: "650 Followers", price: "6.122" },
+                    { duration: "700 Followers", price: "6.450" },
+                    { duration: "750 Followers", price: "6.555" },
+                    { duration: "800 Followers", price: "6.666" },
+                    { duration: "850 Followers", price: "7.340" },
+                    { duration: "900 Followers", price: "7.500" },
+                    { duration: "950 Followers", price: "8.000" },
+                    { duration: "1000 Followers", price: "9.000" }
+                ]
+            }
+        ];
+
+        let selectedCategoryState = null;
+        let activePlatformFilter = 'all';
+        let activeSosmedFilter = 'all';
+        let currentCheckoutItem = null;
+        let activeSelectedProduct = null;
+
+        function dismissWelcome() {
+            const welcomeElem = document.getElementById('welcome-screen');
+            welcomeElem.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            setTimeout(() => {
+                welcomeElem.classList.add('hidden');
+            }, 800);
+        }
+
+        function handleSearchInput() {
+            const query = document.getElementById('product-search-input').value.toLowerCase().trim();
+            if (!query) {
+                if (selectedCategoryState === 'cheat_ff') renderCheatProducts();
+                else if (selectedCategoryState === 'suntik_sosmed') renderSosmedProducts();
+                return;
+            }
+
+            if (!selectedCategoryState) {
+                selectedCategoryState = 'suntik_sosmed';
+                document.getElementById('no-category-selected').classList.add('hidden');
+            }
+
+            if (selectedCategoryState === 'cheat_ff') {
+                renderCheatProducts(query);
+            } else {
+                document.getElementById('cheat-ff-products').classList.add('hidden');
+                document.getElementById('sosmed-products').classList.remove('hidden');
+                renderSosmedProducts(query);
+            }
+        }
+
+        function selectCategory(catKey) {
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.classList.remove('border-sky-500', 'ring-2', 'ring-sky-500/30');
+            });
+
+            if (catKey === 'uid_cantik') {
+                window.location.href = "https://pidzstore.web.id";
+                return;
+            }
+
+            selectedCategoryState = catKey;
+            const activeBtn = document.getElementById(`cat-btn-${catKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('border-sky-500', 'ring-2', 'ring-sky-500/30');
+            }
+
+            document.getElementById('no-category-selected').classList.add('hidden');
+            document.getElementById('product-search-input').value = '';
+            
+            if (catKey === 'cheat_ff') {
+                document.getElementById('cheat-ff-products').classList.remove('hidden');
+                document.getElementById('sosmed-products').classList.add('hidden');
+                renderCheatProducts();
+            } else if (catKey === 'suntik_sosmed') {
+                document.getElementById('cheat-ff-products').classList.add('hidden');
+                document.getElementById('sosmed-products').classList.remove('hidden');
+                renderSosmedProducts();
+            }
+        }
+
+        function filterSosmedCategory(plat) {
+            activeSosmedFilter = plat;
+            document.querySelectorAll('.sosmed-cat-btn').forEach(btn => {
+                btn.className = "sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition";
+            });
+
+            const activeBtn = document.getElementById(`btn-sosmed-${plat}`);
+            if (activeBtn) {
+                activeBtn.className = "sosmed-cat-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-sky-500 bg-sky-600 text-white shadow-xs smooth-transition";
+            }
+
+            renderSosmedProducts(document.getElementById('product-search-input').value.toLowerCase().trim());
+        }
+
+        function filterPlatform(platform) {
+            activePlatformFilter = platform;
+            document.querySelectorAll('.platform-btn').forEach(btn => {
+                btn.className = "platform-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800 smooth-transition";
+            });
+
+            const activeBtn = document.getElementById(`btn-plat-${platform}`);
+            if (activeBtn) {
+                activeBtn.className = "platform-btn px-3 py-1.5 text-xs font-bold rounded-xl border border-sky-500 bg-sky-600 text-white shadow-xs smooth-transition";
+            }
+
+            renderCheatProducts();
+        }
+
+        function renderSosmedProducts(searchQuery = '') {
+            const grid = document.getElementById('sosmed-list-grid');
+            grid.innerHTML = '';
+
+            const filtered = SOSMED_PRODUCTS.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery);
+                if (activeSosmedFilter === 'all') return matchesSearch;
+                if (activeSosmedFilter === 'tiktok') return matchesSearch && item.id.startsWith('tt_');
+                if (activeSosmedFilter === 'instagram') return matchesSearch && item.id.startsWith('ig_');
+                if (activeSosmedFilter === 'whatsapp') return matchesSearch && item.id.startsWith('wa_');
+                return matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="text-center py-10 bg-slate-900/60 rounded-2xl border border-slate-800 text-xs text-slate-400">Tidak ada layanan sosmed ditemukan.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const section = document.createElement('div');
+                section.className = "bg-slate-900 border border-slate-800/90 rounded-2xl p-4 sm:p-5 shadow-xl space-y-4 hover:border-sky-500/50 smooth-transition";
+
+                let headerHtml = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.logo}" 
+                                 onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=Sosmed'" 
+                                 alt="${item.name}" 
+                                 class="w-11 h-11 rounded-xl object-cover border border-slate-700 shadow-md">
+                            <div>
+                                <h3 class="text-sm font-extrabold text-white leading-tight flex items-center gap-2">
+                                    ${item.name}
+                                </h3>
+                                <span class="text-[10px] text-sky-400 font-semibold">${item.isCustomOnly ? 'Order Jumlah Custom' : 'Pilih Varian & Jumlah Paket'}</span>
+                            </div>
+                        </div>
+                `;
+
+                if (item.isInstagram) {
+                    headerHtml += `
+                        <div class="bg-rose-950/80 border border-rose-800/80 text-rose-300 px-3 py-1.5 rounded-xl text-[10px] font-bold flex items-center gap-1.5">
+                            <i class="fas fa-exclamation-triangle text-rose-400"></i> Matikan "Laporkan Untuk Ditinjau" di IG
+                        </div>
+                    `;
+                }
+
+                headerHtml += `</div>`;
+
+                let bodyContentHtml = '';
+                if (item.isCustomOnly) {
+                    bodyContentHtml = `
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+                            <p class="text-xs font-semibold text-slate-300 leading-relaxed">
+                                Ketik jumlah like yang Anda mau minimal <b>${item.minCustomQty.toLocaleString('id-ID')} like</b> dan maksimal <b>${item.maxCustomQty.toLocaleString('id-ID')} like</b>, harga tanyakan kepada admin. Kirim target di sini, nanti pesanan akan segera diproses.
+                            </p>
+                            <button onclick="openVariantModal('${item.id}', 'suntik_sosmed')" class="w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-black text-xs rounded-xl smooth-transition shadow-md flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-sm"></i> Order & Tanyakan Harga Like ke Admin
+                            </button>
+                        </div>
+                    `;
+                } else if (item.packages && item.packages.length > 0) {
+                    bodyContentHtml = `<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 pt-1">`;
+                    item.packages.forEach(pkg => {
+                        const formattedPrice = pkg.price.toLowerCase().includes('perak') ? pkg.price : `Rp ${pkg.price}`;
+                        const safeTitle = item.name.replace(/'/g, "\\'");
+                        const safeDuration = pkg.duration.replace(/'/g, "\\'");
+                        const safePrice = formattedPrice.replace(/'/g, "\\'");
+                        
+                        bodyContentHtml += `
+                            <button onclick="buyProduct('${safeTitle}', '${safeDuration}', '${safePrice}', 'suntik_sosmed')" 
+                                    class="flex flex-col justify-between p-3 bg-slate-950 border border-slate-800 rounded-xl hover:border-sky-500 hover:bg-sky-950/50 group smooth-transition text-left shadow-xs">
+                                <span class="text-xs font-bold text-slate-200 group-hover:text-sky-300 leading-snug mb-2">${pkg.duration}</span>
+                                <div class="flex items-center justify-between w-full pt-1 border-t border-slate-900">
+                                    <span class="text-xs font-black text-sky-400">${formattedPrice}</span>
+                                    <span class="text-[9px] font-bold bg-sky-600 group-hover:bg-sky-500 text-white px-2 py-0.5 rounded-md">Beli</span>
+                                </div>
+                            </button>
+                        `;
+                    });
+
+                    if (item.hasCustomQty) {
+                        bodyContentHtml += `
+                            <button onclick="openVariantModal('${item.id}', 'suntik_sosmed')" 
+                                    class="flex flex-col justify-between p-3 bg-amber-950/40 border border-amber-800/80 rounded-xl hover:border-amber-500 hover:bg-amber-900/40 group smooth-transition text-left shadow-xs col-span-2 sm:col-span-1">
+                                <span class="text-xs font-extrabold text-amber-300 leading-snug mb-1"><i class="fas fa-edit mr-1"></i> Jumlah Lain?</span>
+                                <span class="text-[9px] text-amber-200/80 font-medium">Min ${item.minCustomQty.toLocaleString('id-ID')} - Max ${item.maxCustomQty.toLocaleString('id-ID')}</span>
+                                <div class="flex items-center justify-between w-full pt-1 border-t border-amber-900/60 mt-1">
+                                    <span class="text-[10px] font-bold text-amber-400">Tanya Admin</span>
+                                    <span class="text-[9px] font-bold bg-amber-600 text-slate-950 px-2 py-0.5 rounded-md">Isi</span>
+                                </div>
+                            </button>
+                        `;
+                    }
+                    bodyContentHtml += `</div>`;
+                }
+
+                section.innerHTML = headerHtml + bodyContentHtml;
+                grid.appendChild(section);
+            });
+        }
+
+        function renderCheatProducts(searchQuery = '') {
+            const grid = document.getElementById('cheat-list-grid');
+            grid.innerHTML = '';
+
+            const filtered = CHEAT_PRODUCTS.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(searchQuery);
+                if (activePlatformFilter === 'all') return matchSearch;
+                if (activePlatformFilter === 'cross') return matchSearch && item.isCrossPlatform;
+                if (activePlatformFilter === 'android') return matchSearch; 
+                return matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-8 text-xs text-slate-400">Tidak ada produk cheat ditemukan.</div>`;
+                return;
+            }
+
+            filtered.forEach(cheat => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-lg hover:shadow-2xl hover:border-sky-500 smooth-transition flex flex-col justify-between space-y-4 group";
+                
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <img src="${cheat.logo}" 
+                                 onerror="this.src='https://placehold.co/100x100/0284c7/fff?text=Cheat'" 
+                                 alt="${cheat.name}" 
+                                 class="w-12 h-12 rounded-xl object-cover border border-slate-700 shadow-md group-hover:scale-105 smooth-transition">
+                            <div>
+                                <h3 class="text-xs font-extrabold text-white leading-snug">${cheat.name}</h3>
+                                <div class="mt-1">
+                                    <span class="text-[9px] font-bold px-2 py-0.5 rounded ${cheat.isCrossPlatform ? 'bg-purple-950 text-purple-300 border border-purple-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}">
+                                        ${cheat.isCrossPlatform ? 'Android & iOS' : 'Android Only'}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] font-medium text-slate-400 leading-tight">Tersedia ${cheat.packages.length} varian durasi paket.</p>
+                    </div>
+
+                    <button onclick="openVariantModal('${cheat.id}', 'cheat')" 
+                            class="w-full py-2.5 bg-slate-800 hover:bg-sky-600 text-white font-extrabold text-xs rounded-xl shadow-xs flex items-center justify-center space-x-2 smooth-transition group-hover:shadow-sky-500/20">
+                        <span>Lihat Varian & Harga</span>
+                        <i class="fas fa-chevron-right text-[10px] group-hover:translate-x-0.5 smooth-transition"></i>
+                    </button>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function openVariantModal(productId, type = 'cheat') {
+            const catalog = (type === 'suntik_sosmed') ? SOSMED_PRODUCTS : CHEAT_PRODUCTS;
+            const product = catalog.find(p => p.id === productId);
+            if (!product) return;
+
+            activeSelectedProduct = product;
+
+            document.getElementById('modal-product-name').innerText = product.name;
+            document.getElementById('modal-product-logo').src = product.logo;
+            
+            const igBanner = document.getElementById('ig-warning-banner');
+            if (product.isInstagram) {
+                igBanner.classList.remove('hidden');
+            } else {
+                igBanner.classList.add('hidden');
+            }
+
+            const badgeElem = document.getElementById('modal-product-badge');
+            if (type === 'cheat') {
+                badgeElem.innerText = product.isCrossPlatform ? 'Android & iOS' : 'Android Only';
+                badgeElem.className = `text-[9px] font-bold px-2 py-0.5 rounded ${product.isCrossPlatform ? 'bg-purple-950 text-purple-300 border border-purple-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}`;
+            } else {
+                badgeElem.innerText = 'Suntik Sosmed';
+                badgeElem.className = 'text-[9px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800';
+            }
+
+            const listContainer = document.getElementById('modal-variant-list');
+            const headingElem = document.getElementById('modal-variant-heading');
+            listContainer.innerHTML = '';
+
+            if (product.isCustomOnly) {
+                headingElem.innerText = "Order Jumlah Custom:";
+            } else {
+                headingElem.innerText = "Pilih Jumlah / Paket / Harga:";
+            }
+
+            if (product.packages && product.packages.length > 0) {
+                product.packages.forEach(pkg => {
+                    const btn = document.createElement('button');
+                    btn.className = "w-full flex items-center justify-between p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-sky-950/80 hover:border-sky-500 group smooth-transition text-left";
+                    
+                    const priceFormatted = pkg.price.toLowerCase().includes('perak') ? pkg.price : `Rp ${pkg.price}`;
+
+                    btn.onclick = () => {
+                        closeVariantModal();
+                        buyProduct(product.name, pkg.duration, priceFormatted, type);
+                    };
+
+                    btn.innerHTML = `
+                        <div class="flex items-center space-x-2">
+                            <i class="fas ${type === 'cheat' ? 'fa-clock' : 'fa-box'} text-sky-400 text-xs"></i>
+                            <span class="text-xs font-bold text-slate-200 group-hover:text-sky-300">${pkg.duration}</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-black text-sky-400">${priceFormatted}</span>
+                            <span class="text-[10px] font-bold bg-sky-600 text-white px-2 py-0.5 rounded-md group-hover:bg-sky-500">Beli</span>
+                        </div>
+                    `;
+                    listContainer.appendChild(btn);
+                });
+            }
+
+            const customContainer = document.getElementById('custom-quantity-container');
+            const customTitle = document.getElementById('custom-qty-title');
+            const customDesc = document.getElementById('custom-qty-desc');
+            const customInput = document.getElementById('custom-qty-input');
+            const targetInput = document.getElementById('custom-target-input');
+
+            customInput.value = '';
+            targetInput.value = '';
+
+            if (product.hasCustomQty || product.isCustomOnly) {
+                customContainer.classList.remove('hidden');
+                
+                const minStr = product.minCustomQty ? product.minCustomQty.toLocaleString('id-ID') : '10';
+                const maxStr = product.maxCustomQty ? product.maxCustomQty.toLocaleString('id-ID') : '10.000';
+
+                if (product.id === 'ig_like') {
+                    customTitle.innerHTML = `<i class="fas fa-heart text-rose-500 mr-1"></i> Ketik Jumlah Like Yang Anda Mau`;
+                    customDesc.innerText = `Minimal ${minStr} like dan maksimal ${maxStr} like. Harga tanyakan kepada admin. Kirim target disini, nanti pesanan akan segera diproses.`;
+                    customInput.placeholder = `Contoh: 500 (Min ${minStr}, Max ${maxStr})`;
+                } else {
+                    customTitle.innerHTML = `<i class="fas fa-edit mr-1"></i> Jumlah Lain?`;
+                    customDesc.innerText = `Isi dibawah sini, lalu kirim dan tanyakan harga ke admin (minimal ${minStr} followers, maksimal ${maxStr} followers)`;
+                    customInput.placeholder = `Jumlah followers (Min ${minStr}, Max ${maxStr})...`;
+                }
+            } else {
+                customContainer.classList.add('hidden');
+            }
+
+            showModal('product-variant-modal');
+        }
+
+        function orderCustomQuantityWA() {
+            if (!activeSelectedProduct) return;
+
+            const qty = document.getElementById('custom-qty-input').value.trim();
+            const target = document.getElementById('custom-target-input').value.trim();
+
+            if (!qty || isNaN(qty) || parseInt(qty) <= 0) {
+                alert("Silahkan masukkan jumlah yang valid terlebih dahulu.");
+                return;
+            }
+
+            const numQty = parseInt(qty);
+            const minQty = activeSelectedProduct.minCustomQty || 1;
+            const maxQty = activeSelectedProduct.maxCustomQty || 1000000;
+
+            if (numQty < minQty || numQty > maxQty) {
+                alert(`Jumlah harus antara ${minQty.toLocaleString('id-ID')} sampai ${maxQty.toLocaleString('id-ID')}.`);
+                return;
+            }
+
+            let textMsg = '';
+            if (activeSelectedProduct.id === 'ig_like') {
+                textMsg = `Halo Admin PidzStore, saya mau pesan Instagram Like:\n\n` +
+                          `📌 *Produk:* ${activeSelectedProduct.name}\n` +
+                          `❤️ *Jumlah Like:* ${numQty.toLocaleString('id-ID')} Like\n` +
+                          `🎯 *Target/Link Akun:* ${target || '-'}\n\n` +
+                          `Tolong infokan total harga dan instruksi pembayarannya min 🙏`;
+            } else {
+                textMsg = `Halo Admin PidzStore, saya mau tanyakan harga untuk paket custom:\n\n` +
+                          `📌 *Produk:* ${activeSelectedProduct.name}\n` +
+                          `📦 *Jumlah:* ${numQty.toLocaleString('id-ID')}\n` +
+                          `🎯 *Target/Link Akun:* ${target || '-'}\n\n` +
+                          `Berapa harganya min? 🙏`;
+            }
+
+            const encodedMsg = encodeURIComponent(textMsg);
+            const waUrl = `https://wa.me/${WA_ADMIN_NUMBER}?text=${encodedMsg}`;
+            window.open(waUrl, '_blank');
+        }
+
+        function closeVariantModal() {
+            closeModal('product-variant-modal');
+        }
+
+        function buyProduct(title, duration, price, type = 'cheat') {
+            currentCheckoutItem = { title, duration, price, type };
+
+            document.getElementById('checkout-title').innerText = title;
+            document.getElementById('checkout-duration').innerText = "Varian/Durasi: " + duration;
+            document.getElementById('checkout-price').innerText = price;
+            document.getElementById('checkout-exact-price').innerText = price;
+            document.getElementById('checkout-target').value = '';
+
+            const targetContainer = document.getElementById('checkout-target-container');
+            if (type === 'suntik_sosmed') {
+                targetContainer.classList.remove('hidden');
+            } else {
+                targetContainer.classList.add('hidden');
+            }
+
+            switchView('payment');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchView(viewName) {
+            if (viewName === 'home') {
+                document.getElementById('home-view').classList.remove('hidden');
+                document.getElementById('payment-view').classList.add('hidden');
+            } else if (viewName === 'payment') {
+                document.getElementById('home-view').classList.add('hidden');
+                document.getElementById('payment-view').classList.remove('hidden');
+            }
+        }
+
+        function confirmOrderWhatsApp() {
+            if (!currentCheckoutItem) return;
+            const target = document.getElementById('checkout-target').value.trim();
+
+            const textMsg = `Halo Admin PidzStore, saya mau konfirmasi pembayaran produk:\n\n` +
+                            `📌 *Produk:* ${currentCheckoutItem.title}\n` +
+                            `⏱ *Varian/Durasi:* ${currentCheckoutItem.duration}\n` +
+                            `💰 *Total Harga:* ${currentCheckoutItem.price}\n` +
+                            `🎯 *Target/Link Akun:* ${target || '-'}\n\n` +
+                            `Saya sudah melakukan transfer via QRIS. Berikut bukti transfernya min 🙏`;
+
+            const encodedMsg = encodeURIComponent(textMsg);
+            const waUrl = `https://wa.me/${WA_ADMIN_NUMBER}?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('welcome-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            for (let i = 0; i < 45; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 1,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vx *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        });
+    </script>
+
+</body>
+</html>
